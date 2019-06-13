@@ -1,10 +1,19 @@
 package Frontera;
 
+import Entidad.Asignacion;
+import Entidad.Restaurante;
+import Entidad.Sistema;
+import java.util.ArrayList;
+
 public class FramePrincipal extends javax.swing.JFrame {
 
+    
+    public static Sistema sistema = new Sistema();
+    
     public FramePrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        inicializacion();
     }
 
     /**
@@ -65,6 +74,31 @@ public class FramePrincipal extends javax.swing.JFrame {
                 new FramePrincipal().setVisible(true);
             }
         });
+    }
+
+    public void inicializacion() {
+
+        ArrayList<Asignacion> asignaciones = new ArrayList<>();
+
+        Asignacion a = new Asignacion();
+
+        a.setRestaurante("Delicias del Mar");
+        a.setPersona("Juana");
+        a.setMesa("21");
+        a.setTurno("2");
+
+        asignaciones.add(a);
+        
+        sistema.setAsignaciones(asignaciones);
+        
+        for (Asignacion asignacione : asignaciones) {
+            System.out.println(asignacione.getRestaurante());
+            System.out.println(asignacione.getPersona());
+            System.out.println(asignacione.getMesa());
+            System.out.println(asignacione.getTurno());
+            System.out.println("---------");
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
