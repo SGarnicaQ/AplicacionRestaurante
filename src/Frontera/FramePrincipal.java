@@ -13,8 +13,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    private Restaurante restaurante = new Restaurante();
-    private Asignacion asignacion = new Asignacion();
+    private FrameRestaurante restaurante = new FrameRestaurante();
+    private FrameAsignacion asignacion = new FrameAsignacion();
     private Dialogo dialogo = new Dialogo(null, true);
 
     public static Sistema sistema = new Sistema();
@@ -230,6 +230,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void asignacionIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionIconMouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
+        principalPanel.add(asignacion);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);

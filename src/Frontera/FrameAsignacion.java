@@ -2,12 +2,12 @@ package Frontera;
 
 import javax.swing.JOptionPane;
 
-public class Asignacion extends javax.swing.JPanel {
+public class FrameAsignacion extends javax.swing.JPanel {
 
     private NuevaAsignacion nueva = new NuevaAsignacion();
     public Dialogo dialogo = new Dialogo(null, true);
 
-    public Asignacion() {
+    public FrameAsignacion() {
         initComponents();
         inicioAsignacion();
     }
@@ -36,7 +36,7 @@ public class Asignacion extends javax.swing.JPanel {
             int selCon = dialogo.visible();
             if (selCon == 1) {
                 System.out.println("Datos guardados");
-                
+
             }
             if (selCon == 0) {
                 principalAsignacion.setVisible(false);
@@ -92,7 +92,7 @@ public class Asignacion extends javax.swing.JPanel {
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/log-out.png"))); // NOI18N
         back.setToolTipText("Atrás");
-        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -109,7 +109,7 @@ public class Asignacion extends javax.swing.JPanel {
 
         asignacionNuevaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asignacionNuevaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/support-ticket.png"))); // NOI18N
-        asignacionNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         asignacionNuevaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 asignacionNuevaIconMouseClicked(evt);
@@ -120,7 +120,7 @@ public class Asignacion extends javax.swing.JPanel {
         asignacionNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
         asignacionNuevaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asignacionNuevaLabel.setText("CREAR");
-        asignacionNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         asignacionVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asignacionVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-book.png"))); // NOI18N

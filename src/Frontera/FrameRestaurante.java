@@ -2,13 +2,13 @@ package Frontera;
 
 import javax.swing.JOptionPane;
 
-public class Restaurante extends javax.swing.JPanel {
+public class FrameRestaurante extends javax.swing.JPanel {
 
     private NuevoRestaurante nuevo = new NuevoRestaurante();
     private VerRestaurante ver = new VerRestaurante();
     private Dialogo dialogo = new Dialogo(null, true);
 
-    public Restaurante() {
+    public FrameRestaurante() {
         initComponents();
         inicioRestaurante();
     }
@@ -99,7 +99,7 @@ public class Restaurante extends javax.swing.JPanel {
 
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/log-out.png"))); // NOI18N
-        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -116,7 +116,7 @@ public class Restaurante extends javax.swing.JPanel {
 
         restauranteNuevaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteNuevaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/support-ticketB.png"))); // NOI18N
-        restauranteNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         restauranteNuevaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteNuevaIconMouseClicked(evt);
@@ -127,7 +127,7 @@ public class Restaurante extends javax.swing.JPanel {
         restauranteNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteNuevaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteNuevaLabel.setText("CREAR");
-        restauranteNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         restauranteNuevaLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteNuevaLabelMouseClicked(evt);
@@ -136,7 +136,7 @@ public class Restaurante extends javax.swing.JPanel {
 
         restauranteVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-bookB.png"))); // NOI18N
-        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         restauranteVerIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteVerIconMouseClicked(evt);
@@ -147,7 +147,7 @@ public class Restaurante extends javax.swing.JPanel {
         restauranteVerLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteVerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerLabel.setText("VER");
-        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         restauranteVerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteVerLabelMouseClicked(evt);
