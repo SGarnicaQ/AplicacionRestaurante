@@ -1,5 +1,9 @@
 package Frontera;
 
+import Entidad.Asignacion;
+import Entidad.Restaurante;
+import Entidad.Sistema;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Conexion.Conexion;
 import java.sql.Connection;
@@ -9,14 +13,17 @@ public class FramePrincipal extends javax.swing.JFrame {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    private Restaurante restaurante = new Restaurante();
-    private Asignacion asignacion = new Asignacion();
+    private FrameRestaurante restaurante = new FrameRestaurante();
+    private FrameAsignacion asignacion = new FrameAsignacion();
     private Dialogo dialogo = new Dialogo(null, true);
+
+    public static Sistema sistema = new Sistema();
 
     public FramePrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
         inicioGUI();
+        inicializacion();
     }
 
     /**
@@ -232,7 +239,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void asignacionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabelMouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
-        principalPanel.add(asignacion);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);
@@ -241,7 +247,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
-        principalPanel.add(restaurante);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);
@@ -250,7 +255,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void restauranteLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteLabel1MouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
-        principalPanel.add(restaurante);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);
@@ -302,8 +306,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         principalPanel.setVisible(true);
         inicioIcon.setVisible(false);
         inicioLabel.setVisible(false);
-        asignacion.inicioAsignacion();
-        restaurante.inicioRestaurante();
     }
 
     public void validarInicioGUI() {
@@ -316,8 +318,30 @@ public class FramePrincipal extends javax.swing.JFrame {
             principalPanel.setVisible(true);
             inicioIcon.setVisible(false);
             inicioLabel.setVisible(false);
-            asignacion.inicioAsignacion();
-            restaurante.inicioRestaurante();
+        }
+    }
+
+    public void inicializacion() {
+
+        ArrayList<Asignacion> asignaciones = new ArrayList<>();
+
+        Asignacion a = new Asignacion();
+
+        a.setRestaurante("Delicias del Mar");
+        a.setPersona("Juana");
+        a.setMesa("21");
+        a.setTurno("2");
+
+        asignaciones.add(a);
+
+        sistema.setAsignaciones(asignaciones);
+
+        for (Asignacion asignacione : asignaciones) {
+            System.out.println(asignacione.getRestaurante());
+            System.out.println(asignacione.getPersona());
+            System.out.println(asignacione.getMesa());
+            System.out.println(asignacione.getTurno());
+            System.out.println("---------");
         }
     }
 
