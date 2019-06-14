@@ -29,48 +29,48 @@
                               <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
                               <Component id="nombreLabel" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="restauranteTF1" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="nombreTF" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="390" pref="390" max="-2" attributes="0"/>
-                              <Component id="jSeparator1" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="primerSeparador" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
                               <Component id="ubicacionLabel" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="restauranteTF4" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="ubicacionTF" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="390" pref="390" max="-2" attributes="0"/>
-                              <Component id="jSeparator2" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="segundoSeparador" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
                               <Component id="tipoLabel" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="restauranteTF5" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="tipoTF" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="390" pref="390" max="-2" attributes="0"/>
-                              <Component id="jSeparator3" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="tercerSeparador" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
                               <Component id="horarioLabel" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="restauranteTF6" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="horarioTF" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="390" pref="390" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="cuartoSeparador" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="440" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jLabel6" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="guardar" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -83,29 +83,29 @@
               <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="nombreLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="restauranteTF1" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="nombreTF" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="primerSeparador" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ubicacionLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="restauranteTF4" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="ubicacionTF" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="segundoSeparador" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="tipoLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="restauranteTF5" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="tipoTF" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="tercerSeparador" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="horarioLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="restauranteTF6" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="horarioTF" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="cuartoSeparador" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace pref="239" max="32767" attributes="0"/>
-              <Component id="jLabel6" min="-2" pref="70" max="-2" attributes="0"/>
+              <Component id="guardar" min="-2" pref="70" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -160,7 +160,7 @@
         <Property name="text" type="java.lang.String" value="Horario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="restauranteTF1">
+    <Component class="javax.swing.JTextField" name="nombreTF">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="bf" green="ba" red="a4" type="rgb"/>
@@ -183,38 +183,14 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    <Component class="javax.swing.JSeparator" name="primerSeparador">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="3f" green="38" red="24" type="rgb"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="restauranteTF4">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="bf" green="ba" red="a4" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3f" green="38" red="24" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator2">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3f" green="38" red="24" type="rgb"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="restauranteTF5">
+    <Component class="javax.swing.JTextField" name="ubicacionTF">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="bf" green="ba" red="a4" type="rgb"/>
@@ -231,14 +207,14 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator3">
+    <Component class="javax.swing.JSeparator" name="segundoSeparador">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="3f" green="38" red="24" type="rgb"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="restauranteTF6">
+    <Component class="javax.swing.JTextField" name="tipoTF">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="bf" green="ba" red="a4" type="rgb"/>
@@ -255,14 +231,38 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator4">
+    <Component class="javax.swing.JSeparator" name="tercerSeparador">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="3f" green="38" red="24" type="rgb"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JTextField" name="horarioTF">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="bf" green="ba" red="a4" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3f" green="38" red="24" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="cuartoSeparador">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="3f" green="38" red="24" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="guardar">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -273,7 +273,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel6MouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

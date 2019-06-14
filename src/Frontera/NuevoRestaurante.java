@@ -1,50 +1,40 @@
 package Frontera;
 
-import Conexion.Conexion;
 import Control.ValidarRestaurante;
 import DAO.RestauranteDAO;
 import Entidad.Restaurante;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class NuevoRestaurante extends javax.swing.JPanel {
 
-    private Dialogo dialogo = new Dialogo(null, true);
+    private final Dialogo dialogo = new Dialogo(null, true);
 
-    Conexion con = new Conexion();
-    Connection Conectado = con.conectar("root", "17111996");
+    private final Restaurante restaurante = new Restaurante();
+    private final ValidarRestaurante validar = new ValidarRestaurante();
+    private final RestauranteDAO daoRes = new RestauranteDAO();
 
-    private Restaurante restaurante = new Restaurante();
-    private ValidarRestaurante validar = new ValidarRestaurante();
-    private RestauranteDAO daoRes = new RestauranteDAO();
-
-    private DialogoOK dialogoOk = new DialogoOK(null, true);
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public NuevoRestaurante() {
         initComponents();
     }
 
     public boolean validarCampos() {
-        return (restauranteTF1.getText().isEmpty() && restauranteTF4.getText().isEmpty() && restauranteTF5.getText().isEmpty() && restauranteTF6.getText().isEmpty());
+        return (nombreTF.getText().isEmpty() && ubicacionTF.getText().isEmpty() && tipoTF.getText().isEmpty() && horarioTF.getText().isEmpty());
     }
 
     public void vaciarCampos() {
-        restauranteTF1.setText("");
-        restauranteTF4.setText("");
-        restauranteTF5.setText("");
-        restauranteTF6.setText("");
+        nombreTF.setText("");
+        ubicacionTF.setText("");
+        tipoTF.setText("");
+        horarioTF.setText("");
     }
 
     public void guardarDatos() {
 
-        restaurante.setNombre(restauranteTF1.getText());
-        restaurante.setUbicacion(restauranteTF4.getText());
-        restaurante.setTipo(restauranteTF5.getText());
-        restaurante.setHorario(restauranteTF6.getText());
+        restaurante.setNombre(nombreTF.getText());
+        restaurante.setUbicacion(ubicacionTF.getText());
+        restaurante.setTipo(tipoTF.getText());
+        restaurante.setHorario(horarioTF.getText());
 
         String respuesta = validar.validarRestaurante(restaurante);
 
@@ -61,7 +51,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
         } else {
-            daoRes.crear(restaurante.getNombre(), restauranteTF4.getText(), restauranteTF5.getText(), restauranteTF6.getText());
+            daoRes.crear(restaurante.getNombre(), ubicacionTF.getText(), tipoTF.getText(), horarioTF.getText());
             vaciarCampos();
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
@@ -81,15 +71,15 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         nombreLabel = new javax.swing.JLabel();
         tipoLabel = new javax.swing.JLabel();
         horarioLabel = new javax.swing.JLabel();
-        restauranteTF1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        restauranteTF4 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        restauranteTF5 = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        restauranteTF6 = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
+        nombreTF = new javax.swing.JTextField();
+        primerSeparador = new javax.swing.JSeparator();
+        ubicacionTF = new javax.swing.JTextField();
+        segundoSeparador = new javax.swing.JSeparator();
+        tipoTF = new javax.swing.JTextField();
+        tercerSeparador = new javax.swing.JSeparator();
+        horarioTF = new javax.swing.JTextField();
+        cuartoSeparador = new javax.swing.JSeparator();
+        guardar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(164, 186, 191));
 
@@ -113,46 +103,46 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         horarioLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         horarioLabel.setText("Horario");
 
-        restauranteTF1.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF1.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF1.setBorder(null);
-        restauranteTF1.setCaretColor(new java.awt.Color(36, 56, 63));
-        restauranteTF1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombreTF.setBackground(new java.awt.Color(164, 186, 191));
+        nombreTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        nombreTF.setForeground(new java.awt.Color(36, 56, 63));
+        nombreTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombreTF.setBorder(null);
+        nombreTF.setCaretColor(new java.awt.Color(36, 56, 63));
+        nombreTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jSeparator1.setBackground(new java.awt.Color(36, 56, 63));
+        primerSeparador.setBackground(new java.awt.Color(36, 56, 63));
 
-        restauranteTF4.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF4.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF4.setBorder(null);
+        ubicacionTF.setBackground(new java.awt.Color(164, 186, 191));
+        ubicacionTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        ubicacionTF.setForeground(new java.awt.Color(36, 56, 63));
+        ubicacionTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ubicacionTF.setBorder(null);
 
-        jSeparator2.setBackground(new java.awt.Color(36, 56, 63));
+        segundoSeparador.setBackground(new java.awt.Color(36, 56, 63));
 
-        restauranteTF5.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF5.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF5.setBorder(null);
+        tipoTF.setBackground(new java.awt.Color(164, 186, 191));
+        tipoTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        tipoTF.setForeground(new java.awt.Color(36, 56, 63));
+        tipoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tipoTF.setBorder(null);
 
-        jSeparator3.setBackground(new java.awt.Color(36, 56, 63));
+        tercerSeparador.setBackground(new java.awt.Color(36, 56, 63));
 
-        restauranteTF6.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF6.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF6.setBorder(null);
+        horarioTF.setBackground(new java.awt.Color(164, 186, 191));
+        horarioTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        horarioTF.setForeground(new java.awt.Color(36, 56, 63));
+        horarioTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        horarioTF.setBorder(null);
 
-        jSeparator4.setBackground(new java.awt.Color(36, 56, 63));
+        cuartoSeparador.setBackground(new java.awt.Color(36, 56, 63));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/diskette.png"))); // NOI18N
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/diskette.png"))); // NOI18N
+        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                guardarMouseClicked(evt);
             }
         });
 
@@ -168,38 +158,38 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                                 .addGap(170, 170, 170)
                                 .addComponent(nombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(390, 390, 390)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(primerSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
                                 .addComponent(ubicacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ubicacionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(390, 390, 390)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(segundoSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
                                 .addComponent(tipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(restauranteTF5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tipoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(390, 390, 390)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tercerSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
                                 .addComponent(horarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(restauranteTF6, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(horarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(390, 390, 390)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cuartoSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 440, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -208,47 +198,47 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(primerSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ubicacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ubicacionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(segundoSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tercerSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(horarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cuartoSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
         guardarDatos();
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_guardarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator cuartoSeparador;
+    private javax.swing.JLabel guardar;
     private javax.swing.JLabel horarioLabel;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField horarioTF;
     private javax.swing.JLabel nombreLabel;
-    private javax.swing.JTextField restauranteTF1;
-    private javax.swing.JTextField restauranteTF4;
-    private javax.swing.JTextField restauranteTF5;
-    private javax.swing.JTextField restauranteTF6;
+    private javax.swing.JTextField nombreTF;
+    private javax.swing.JSeparator primerSeparador;
+    private javax.swing.JSeparator segundoSeparador;
+    private javax.swing.JSeparator tercerSeparador;
     private javax.swing.JLabel tipoLabel;
+    private javax.swing.JTextField tipoTF;
     private javax.swing.JLabel ubicacionLabel;
+    private javax.swing.JTextField ubicacionTF;
     // End of variables declaration//GEN-END:variables
 }

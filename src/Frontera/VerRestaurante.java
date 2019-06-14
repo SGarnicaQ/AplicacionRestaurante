@@ -1,18 +1,11 @@
 package Frontera;
 
-import Conexion.Conexion;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import DAO.RestauranteDAO;
 import javax.swing.table.DefaultTableModel;
 
 public class VerRestaurante extends javax.swing.JPanel {
 
-    Conexion con = new Conexion();
-    Connection Conectado = con.conectar("root", "17111996");
+    private RestauranteDAO daoRes = new RestauranteDAO();
 
     public VerRestaurante() {
         initComponents();
@@ -27,26 +20,11 @@ public class VerRestaurante extends javax.swing.JPanel {
         resTa.addColumn("Horario");
         tableRes.setModel(resTa);
 
-        String sqlBcu = "SELECT nombre, ubicacion, tipo, horario FROM RESTAURANTE";
-
         String[] dataRes = new String[4];
 
-        try {
-            Statement bcuSta = Conectado.createStatement();
-            ResultSet bcuRts = bcuSta.executeQuery(sqlBcu);
-            while (bcuRts.next()) {
-                dataRes[0] = bcuRts.getString(1);
-                dataRes[1] = bcuRts.getString(2);
-                dataRes[2] = bcuRts.getString(3);
-                dataRes[3] = bcuRts.getString(4);
-                resTa.addRow(dataRes);
-            }
-            tableRes.setModel(resTa);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePrincipal.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
+        dataRes = daoRes.ver();
+        resTa.addRow(dataRes);
+        tableRes.setModel(resTa);
 
     }
 
