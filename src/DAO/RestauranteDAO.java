@@ -36,7 +36,13 @@ public class RestauranteDAO {
 
     }
 
-    public String[] ver() {
+    public DefaultTableModel ver() {
+        DefaultTableModel resTa = new DefaultTableModel();
+
+        resTa.addColumn("Nombre");
+        resTa.addColumn("Ubicación");
+        resTa.addColumn("Tipo");
+        resTa.addColumn("Horario");
 
         String sqlBcu = "SELECT nombre, ubicacion, tipo, horario FROM RESTAURANTE";
 
@@ -50,12 +56,13 @@ public class RestauranteDAO {
                 dataRes[1] = bcuRts.getString(2);
                 dataRes[2] = bcuRts.getString(3);
                 dataRes[3] = bcuRts.getString(4);
+                resTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        return dataRes;
+        return resTa;
     }
 
     public void editar() {

@@ -12,20 +12,7 @@ public class VerRestaurante extends javax.swing.JPanel {
     }
 
     public void verRestaurante(String nombre) {
-        DefaultTableModel resTa = new DefaultTableModel();
-
-        resTa.addColumn("Nombre");
-        resTa.addColumn("Ubicación");
-        resTa.addColumn("Tipo");
-        resTa.addColumn("Horario");
-        tableRes.setModel(resTa);
-
-        String[] dataRes = new String[4];
-
-        dataRes = daoRes.ver();
-        resTa.addRow(dataRes);
-        tableRes.setModel(resTa);
-
+        tableRes.setModel(daoRes.ver());
     }
 
     /**
