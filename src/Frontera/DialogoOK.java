@@ -1,70 +1,29 @@
 package Frontera;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
+public class DialogoOK extends javax.swing.JDialog {
 
-public class Dialogo extends javax.swing.JDialog {
+    private int clickOk = 0;
 
-    /**
-     * A return status code - returned if Cancel button has been pressed
-     */
-    public static final int RET_CANCEL = 0;
-    /**
-     * A return status code - returned if OK button has been pressed
-     */
-    public static final int RET_OK = 1;
-
-    public Dialogo(java.awt.Frame parent, boolean modal) {
+    public DialogoOK(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-
-        // Close the dialog when Esc is pressed
-        String cancelName = "cancel";
-        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), cancelName);
-        ActionMap actionMap = getRootPane().getActionMap();
-        actionMap.put(cancelName, new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-                doClose(RET_CANCEL);
-            }
-        });
     }
 
-    /**
-     * @return the return status of this dialog - one of RET_OK or RET_CANCEL
-     */
-    int clickOk = 0;
-    int clickCan = 0;
-
-    public int getReturnStatus() {
-        return returnStatus;
+    public void textoLabel(String texto) {
+        textoLabel.setText(texto);
     }
 
-    public int visible() {
+    public void visible() {
         boolean val = true;
         this.setVisible(val);
         while (val == true) {
             if (clickOk == 1) {
                 val = false;
             }
-            if (clickCan == 1) {
-                val = false;
-            }
         }
-        clickCan = 0;
         clickOk = 0;
         this.setVisible(val);
-        return returnStatus;
-    }
-
-    public void textoLabel(String texto) {
-        textoLabel.setText(texto);
     }
 
     /**
@@ -79,14 +38,9 @@ public class Dialogo extends javax.swing.JDialog {
         dialogoPanel = new javax.swing.JPanel();
         textoLabel = new javax.swing.JLabel();
         ok = new javax.swing.JLabel();
-        cancel = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                closeDialog(evt);
-            }
-        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dialogoPanel.setBackground(new java.awt.Color(36, 56, 63));
@@ -101,54 +55,24 @@ public class Dialogo extends javax.swing.JDialog {
         ok.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         ok.setForeground(new java.awt.Color(164, 186, 191));
         ok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ok.setText("Sí");
+        ok.setText("OK");
         ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 okMouseClicked(evt);
             }
         });
-        dialogoPanel.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 40, 40));
-
-        cancel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        cancel.setForeground(new java.awt.Color(164, 186, 191));
-        cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cancel.setText("No");
-        cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        dialogoPanel.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 40, 40));
+        dialogoPanel.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, 40));
 
         getContentPane().add(dialogoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Closes the dialog
-     */
-    private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
-        doClose(RET_CANCEL);
-    }//GEN-LAST:event_closeDialog
-
     private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
         clickOk = 1;
-        doClose(RET_OK);
+        this.setVisible(false);
     }//GEN-LAST:event_okMouseClicked
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        clickCan = 1;
-        doClose(RET_CANCEL);
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void doClose(int retStatus) {
-        returnStatus = retStatus;
-        setVisible(false);
-        dispose();
-    }
 
     /**
      * @param args the command line arguments
@@ -167,20 +91,20 @@ public class Dialogo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogoOK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Dialogo dialog = new Dialogo(new javax.swing.JFrame(), true);
+                DialogoOK dialog = new DialogoOK(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -193,11 +117,8 @@ public class Dialogo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cancel;
     private javax.swing.JPanel dialogoPanel;
     private javax.swing.JLabel ok;
     private javax.swing.JLabel textoLabel;
     // End of variables declaration//GEN-END:variables
-
-    private int returnStatus = RET_CANCEL;
 }

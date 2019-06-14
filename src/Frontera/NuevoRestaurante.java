@@ -1,6 +1,9 @@
 package Frontera;
 
 import Conexion.Conexion;
+import Control.ValidarRestaurante;
+import DAO.RestauranteDAO;
+import Entidad.Restaurante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,12 +18,14 @@ public class NuevoRestaurante extends javax.swing.JPanel {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
+    private Restaurante restaurante = new Restaurante();
+    private ValidarRestaurante validar = new ValidarRestaurante();
+    private RestauranteDAO daoRes = new RestauranteDAO();
+
+    private DialogoOK dialogoOk = new DialogoOK(null, true);
+
     public NuevoRestaurante() {
         initComponents();
-    }
-
-    public static void mostrar(String r) {
-        JOptionPane.showMessageDialog(null, r);
     }
 
     public boolean validarCampos() {
@@ -35,42 +40,31 @@ public class NuevoRestaurante extends javax.swing.JPanel {
     }
 
     public void guardarDatos() {
-        String sqlRes = "INSERT INTO RESTAURANTE(nombre, ubicacion, tipo, horario) VALUES (?,?,?,?)";
 
-        if (restauranteTF1.getText().isEmpty()) {
-            mostrar("Por favor verifique la referencia.");
-        } else if (restauranteTF4.getText().isEmpty()) {
-            mostrar("Por favor verifique la fecha");
-        } else if (restauranteTF5.getText().isEmpty()) {
-            mostrar("Por favor verifique la marca");
-        } else if (restauranteTF6.getText().isEmpty()) {
-            mostrar("Por favor verifique la talla");
+        restaurante.setNombre(restauranteTF1.getText());
+        restaurante.setUbicacion(restauranteTF4.getText());
+        restaurante.setTipo(restauranteTF5.getText());
+        restaurante.setHorario(restauranteTF6.getText());
+
+        String respuesta = validar.validarRestaurante(restaurante);
+
+        if ("Longitud nombre incorrecta".equals(respuesta)) {
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
+        } else if ("Longitud ubicación incorrecta".equals(respuesta)) {
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
+        } else if ("Longitud tipo incorrecta".equals(respuesta)) {
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
+        } else if ("Longitud horario incorrecta".equals(respuesta)) {
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
         } else {
-
-            String nombreR;
-            String ubicacionR;
-            String tipoR;
-            String horarioR;
-
-            nombreR = restauranteTF1.getText();
-            ubicacionR = restauranteTF4.getText();
-            tipoR = restauranteTF5.getText();
-            horarioR = restauranteTF6.getText();
-
-            try {
-                try (PreparedStatement ps = Conectado.prepareStatement(sqlRes)) {
-                    ps.setString(1, nombreR);
-                    ps.setString(2, ubicacionR);
-                    ps.setString(3, tipoR);
-                    ps.setString(4, horarioR);
-                    ps.execute();
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(FramePrincipal.class
-                        .getName()).log(Level.SEVERE, null, ex);
-            }
+            daoRes.crear(restaurante.getNombre(), restauranteTF4.getText(), restauranteTF5.getText(), restauranteTF6.getText());
             vaciarCampos();
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
         }
     }
 
@@ -83,10 +77,10 @@ public class NuevoRestaurante extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        ubicacionLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        tipoLabel = new javax.swing.JLabel();
+        horarioLabel = new javax.swing.JLabel();
         restauranteTF1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         restauranteTF4 = new javax.swing.JTextField();
@@ -99,25 +93,25 @@ public class NuevoRestaurante extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(164, 186, 191));
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(36, 56, 63));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Ubicación");
+        ubicacionLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        ubicacionLabel.setForeground(new java.awt.Color(36, 56, 63));
+        ubicacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ubicacionLabel.setText("Ubicación");
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(36, 56, 63));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre");
+        nombreLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        nombreLabel.setForeground(new java.awt.Color(36, 56, 63));
+        nombreLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nombreLabel.setText("Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(36, 56, 63));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Horario");
+        tipoLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        tipoLabel.setForeground(new java.awt.Color(36, 56, 63));
+        tipoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        tipoLabel.setText("Tipo");
 
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(36, 56, 63));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Tipo");
+        horarioLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        horarioLabel.setForeground(new java.awt.Color(36, 56, 63));
+        horarioLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        horarioLabel.setText("Horario");
 
         restauranteTF1.setBackground(new java.awt.Color(164, 186, 191));
         restauranteTF1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -172,7 +166,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -180,7 +174,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ubicacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -188,7 +182,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(restauranteTF5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -196,7 +190,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(horarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(restauranteTF6, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -213,22 +207,22 @@ public class NuevoRestaurante extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ubicacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restauranteTF5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restauranteTF6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
@@ -243,18 +237,18 @@ public class NuevoRestaurante extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel horarioLabel;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField restauranteTF1;
     private javax.swing.JTextField restauranteTF4;
     private javax.swing.JTextField restauranteTF5;
     private javax.swing.JTextField restauranteTF6;
+    private javax.swing.JLabel tipoLabel;
+    private javax.swing.JLabel ubicacionLabel;
     // End of variables declaration//GEN-END:variables
 }

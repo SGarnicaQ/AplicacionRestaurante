@@ -239,6 +239,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void asignacionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabelMouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
+        principalPanel.add(asignacion);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);
@@ -247,6 +248,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
+        principalPanel.add(restaurante);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);
@@ -255,6 +257,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void restauranteLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteLabel1MouseClicked
         principalPanel.setVisible(false);
         principalPanel.removeAll();
+        principalPanel.add(restaurante);
         principalPanel.setVisible(true);
         inicioIcon.setVisible(true);
         inicioLabel.setVisible(true);

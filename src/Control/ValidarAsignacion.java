@@ -5,7 +5,7 @@ public class ValidarAsignacion {
     public ValidarAsignacion() {
     }
 
-    public boolean verificarLongitudNombreRestaurante() {
+    public boolean verificarLongitudNombre() {
         return true;
     }
 }
