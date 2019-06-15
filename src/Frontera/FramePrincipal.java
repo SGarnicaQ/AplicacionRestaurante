@@ -23,7 +23,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         inicioGUI();
-        inicializacion();
     }
 
     /**
@@ -324,7 +323,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         }
     }
 
-    public void inicializacion() {
+/*    public void inicializacion() {
 
         ArrayList<Asignacion> asignaciones = new ArrayList<>();
 
@@ -346,7 +345,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             System.out.println(asignacione.getTurno());
             System.out.println("---------");
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel asignacionIcon;

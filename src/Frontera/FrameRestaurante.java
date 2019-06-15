@@ -1,5 +1,6 @@
 package Frontera;
 
+import Entidad.Restaurante;
 import javax.swing.JOptionPane;
 
 public class FrameRestaurante extends javax.swing.JPanel {
@@ -7,6 +8,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
     private NuevoRestaurante nuevo = new NuevoRestaurante();
     private VerRestaurante ver = new VerRestaurante();
     private Dialogo dialogo = new Dialogo(null, true);
+    private DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameRestaurante() {
         initComponents();
@@ -19,25 +21,15 @@ public class FrameRestaurante extends javax.swing.JPanel {
         principalRestaurante.add(inicioRestaurante);
         principalRestaurante.setVisible(true);
         back.setVisible(false);
+        editar.setVisible(false);
     }
 
     public void validarInicioRestaurante() {
-        if (nuevo.validarCampos()) {
-            dialogo.textoLabel("¿Desea volver atrás?");
-            int selCon = dialogo.visible();
-            if (selCon == 1) {
-                principalRestaurante.setVisible(false);
-                principalRestaurante.removeAll();
-                principalRestaurante.add(inicioRestaurante);
-                principalRestaurante.setVisible(true);
-                back.setVisible(false);
-            }
-        } else {
+        if (!nuevo.validarCampos()) {
             dialogo.textoLabel("¿Desea guardar los datos?");
             int selCon = dialogo.visible();
             if (selCon == 1) {
                 System.out.println("Datos guardados");
-
             }
             if (selCon == 0) {
                 principalRestaurante.setVisible(false);
@@ -45,9 +37,19 @@ public class FrameRestaurante extends javax.swing.JPanel {
                 principalRestaurante.add(inicioRestaurante);
                 principalRestaurante.setVisible(true);
                 back.setVisible(false);
+                editar.setVisible(false);
                 nuevo.vaciarCampos();
             }
         }
+        if (nuevo.validarCampos()) {
+            principalRestaurante.setVisible(false);
+            principalRestaurante.removeAll();
+            principalRestaurante.add(inicioRestaurante);
+            principalRestaurante.setVisible(true);
+            back.setVisible(false);
+            editar.setVisible(false);
+        }
+
     }
 
     public void nuevoRestaurante() {
@@ -56,15 +58,34 @@ public class FrameRestaurante extends javax.swing.JPanel {
         principalRestaurante.add(nuevo);
         principalRestaurante.setVisible(true);
         back.setVisible(true);
+        editar.setVisible(false);
+        nuevo.nuevoVisible();
     }
-    
-    public void verRestaurante(){
-      principalRestaurante.setVisible(false);
+
+    public void verRestaurante() {
+        principalRestaurante.setVisible(false);
         principalRestaurante.removeAll();
         principalRestaurante.add(ver);
         principalRestaurante.setVisible(true);
         ver.verRestaurante("");
-        back.setVisible(true);  
+        back.setVisible(true);
+        editar.setVisible(true);
+        nuevo.editarVisible();
+    }
+
+    public void editarRestaurante() {
+        int temInt = ver.fila();
+        if (temInt >= 1) {
+            principalRestaurante.setVisible(false);
+            principalRestaurante.removeAll();
+            principalRestaurante.add(nuevo);
+            principalRestaurante.setVisible(true);
+            editar.setVisible(false);
+            nuevo.editar(ver.editarRestaurante(), temInt);
+        } else {
+            dialogoOk.textoLabel("Por favor seleccione una fila");
+            dialogoOk.visible();
+        }
     }
 
     /**
@@ -79,6 +100,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
         tituloRestaurante = new javax.swing.JPanel();
         restaurante = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        editar = new javax.swing.JLabel();
         principalRestaurante = new javax.swing.JPanel();
         inicioRestaurante = new javax.swing.JPanel();
         restauranteNuevaIcon = new javax.swing.JLabel();
@@ -99,6 +121,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
 
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/log-out.png"))); // NOI18N
+        back.setToolTipText("Atrás");
         back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,6 +129,18 @@ public class FrameRestaurante extends javax.swing.JPanel {
             }
         });
         tituloRestaurante.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 40));
+
+        editar.setForeground(new java.awt.Color(255, 255, 255));
+        editar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/note.png"))); // NOI18N
+        editar.setToolTipText("Editar");
+        editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarMouseClicked(evt);
+            }
+        });
+        tituloRestaurante.add(editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 10, 40, 40));
 
         add(tituloRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
@@ -116,7 +151,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
 
         restauranteNuevaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteNuevaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/support-ticketB.png"))); // NOI18N
-        restauranteNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         restauranteNuevaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteNuevaIconMouseClicked(evt);
@@ -127,7 +162,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
         restauranteNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteNuevaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteNuevaLabel.setText("CREAR");
-        restauranteNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         restauranteNuevaLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteNuevaLabelMouseClicked(evt);
@@ -136,7 +171,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
 
         restauranteVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-bookB.png"))); // NOI18N
-        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         restauranteVerIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteVerIconMouseClicked(evt);
@@ -147,7 +182,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
         restauranteVerLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteVerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerLabel.setText("VER");
-        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         restauranteVerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 restauranteVerLabelMouseClicked(evt);
@@ -207,9 +242,14 @@ public class FrameRestaurante extends javax.swing.JPanel {
         verRestaurante();
     }//GEN-LAST:event_restauranteVerLabelMouseClicked
 
+    private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
+        editarRestaurante();
+    }//GEN-LAST:event_editarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
+    private javax.swing.JLabel editar;
     private javax.swing.JPanel inicioRestaurante;
     private javax.swing.JPanel principalRestaurante;
     private javax.swing.JLabel restaurante;

@@ -39,23 +39,25 @@ public class RestauranteDAO {
     public DefaultTableModel ver() {
         DefaultTableModel resTa = new DefaultTableModel();
 
+        resTa.addColumn("ID");
         resTa.addColumn("Nombre");
         resTa.addColumn("Ubicación");
         resTa.addColumn("Tipo");
         resTa.addColumn("Horario");
 
-        String sqlBcu = "SELECT nombre, ubicacion, tipo, horario FROM RESTAURANTE";
+        String sqlRes = "SELECT resID, nombre, ubicacion, tipo, horario FROM RESTAURANTE";
 
-        String[] dataRes = new String[4];
+        String[] dataRes = new String[5];
 
         try {
             Statement bcuSta = Conectado.createStatement();
-            ResultSet bcuRts = bcuSta.executeQuery(sqlBcu);
+            ResultSet bcuRts = bcuSta.executeQuery(sqlRes);
             while (bcuRts.next()) {
                 dataRes[0] = bcuRts.getString(1);
                 dataRes[1] = bcuRts.getString(2);
                 dataRes[2] = bcuRts.getString(3);
                 dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
                 resTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
@@ -65,7 +67,23 @@ public class RestauranteDAO {
         return resTa;
     }
 
-    public void editar() {
+    public void editar(String nombre, String ubicacion, String tipo, String horario, int id) {
+
+        String sqlRes = "UPDATE RESTAURANTE SET nombre=?, ubicacion=?, tipo=?, horario=? WHERE resID = ?";
+
+        try {
+            PreparedStatement ps = Conectado.prepareStatement(sqlRes);
+            ps.setString(1, nombre);
+            ps.setString(2, ubicacion);
+            ps.setString(3, tipo);
+            ps.setString(4, horario);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 }

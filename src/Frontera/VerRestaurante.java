@@ -1,7 +1,7 @@
 package Frontera;
 
 import DAO.RestauranteDAO;
-import javax.swing.table.DefaultTableModel;
+import Entidad.Restaurante;
 
 public class VerRestaurante extends javax.swing.JPanel {
 
@@ -13,6 +13,28 @@ public class VerRestaurante extends javax.swing.JPanel {
 
     public void verRestaurante(String nombre) {
         tableRes.setModel(daoRes.ver());
+    }
+
+    public Restaurante editarRestaurante() {
+
+        Restaurante restaurante = new Restaurante();
+
+        int rowSel = tableRes.getSelectedRow();
+        if (rowSel >= 0) {
+            restaurante.setNombre(tableRes.getValueAt(rowSel, 1).toString());
+            restaurante.setUbicacion(tableRes.getValueAt(rowSel, 2).toString());
+            restaurante.setTipo(tableRes.getValueAt(rowSel, 3).toString());
+            restaurante.setHorario(tableRes.getValueAt(rowSel, 4).toString());
+        }
+        return restaurante;
+    }
+
+    public int fila() {
+        int rowSel = tableRes.getSelectedRow();
+        if (rowSel >= 0) {
+            return Integer.parseInt(tableRes.getValueAt(rowSel, 0).toString());
+        }
+        return 0;
     }
 
     /**
@@ -46,7 +68,7 @@ public class VerRestaurante extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105))
