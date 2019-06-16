@@ -59,7 +59,7 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Atr&#xe1;s"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -81,7 +81,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="60" width="-1" height="570"/>
+          <AbsoluteConstraints x="0" y="60" width="1080" height="570"/>
         </Constraint>
       </Constraints>
 
@@ -103,62 +103,66 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="asignacionNuevaIcon" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
-                              <Component id="asignacionVerIcon" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                              <Component id="asignacionEditarIcon" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="restauranteNuevaIcon" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
+                              <Component id="restauranteVerIcon" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="asignacionNuevaLabel" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
-                              <Component id="asignacionVerLabel" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                              <Component id="asignacionEditarLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="restauranteNuevaLabel" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
+                              <Component id="restauranteVerLabel" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="150" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                      <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="asignacionNuevaIcon" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="asignacionVerIcon" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="asignacionEditarIcon" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="restauranteNuevaIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="restauranteVerIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="asignacionNuevaLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="asignacionVerLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="asignacionEditarLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="restauranteNuevaLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="restauranteVerLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="232" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="asignacionNuevaIcon">
+            <Component class="javax.swing.JLabel" name="restauranteVerIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/support-ticket.png"/>
+                  <Image iconType="3" name="/Icons/phone-bookB.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="asignacionNuevaIconMouseClicked"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="asignacionNuevaLabel">
+            <Component class="javax.swing.JLabel" name="restauranteVerLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3f" green="38" red="24" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="VER"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="restauranteNuevaLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
@@ -169,49 +173,26 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="CREAR"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="restauranteNuevaLabelMouseClicked"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="asignacionVerIcon">
+            <Component class="javax.swing.JLabel" name="restauranteNuevaIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/phone-book.png"/>
+                  <Image iconType="3" name="/Icons/support-ticketB.png"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="asignacionVerLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3f" green="38" red="24" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="VER"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="asignacionEditarIcon">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/dialog.png"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="asignacionEditarLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3f" green="38" red="24" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="EDITAR"/>
-              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="restauranteNuevaIconMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -54,6 +54,8 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.removeAll();
         principalAsignacion.add(nueva);
         principalAsignacion.setVisible(true);
+        nueva.comboRes();
+        nueva.comboPer();
         back.setVisible(true);
     }
 
@@ -71,12 +73,10 @@ public class FrameAsignacion extends javax.swing.JPanel {
         back = new javax.swing.JLabel();
         principalAsignacion = new javax.swing.JPanel();
         inicioAsignacion = new javax.swing.JPanel();
-        asignacionNuevaIcon = new javax.swing.JLabel();
-        asignacionNuevaLabel = new javax.swing.JLabel();
-        asignacionVerIcon = new javax.swing.JLabel();
-        asignacionVerLabel = new javax.swing.JLabel();
-        asignacionEditarIcon = new javax.swing.JLabel();
-        asignacionEditarLabel = new javax.swing.JLabel();
+        restauranteVerIcon = new javax.swing.JLabel();
+        restauranteVerLabel = new javax.swing.JLabel();
+        restauranteNuevaLabel = new javax.swing.JLabel();
+        restauranteNuevaIcon = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -107,98 +107,91 @@ public class FrameAsignacion extends javax.swing.JPanel {
 
         inicioAsignacion.setBackground(new java.awt.Color(164, 186, 191));
 
-        asignacionNuevaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionNuevaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/support-ticket.png"))); // NOI18N
-        asignacionNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        asignacionNuevaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+        restauranteVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-bookB.png"))); // NOI18N
+        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        restauranteVerLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        restauranteVerLabel.setForeground(new java.awt.Color(36, 56, 63));
+        restauranteVerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteVerLabel.setText("VER");
+        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        restauranteNuevaLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        restauranteNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
+        restauranteNuevaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteNuevaLabel.setText("CREAR");
+        restauranteNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteNuevaLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                asignacionNuevaIconMouseClicked(evt);
+                restauranteNuevaLabelMouseClicked(evt);
             }
         });
 
-        asignacionNuevaLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        asignacionNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
-        asignacionNuevaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionNuevaLabel.setText("CREAR");
-        asignacionNuevaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        asignacionVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-book.png"))); // NOI18N
-
-        asignacionVerLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        asignacionVerLabel.setForeground(new java.awt.Color(36, 56, 63));
-        asignacionVerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionVerLabel.setText("VER");
-
-        asignacionEditarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionEditarIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dialog.png"))); // NOI18N
-
-        asignacionEditarLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        asignacionEditarLabel.setForeground(new java.awt.Color(36, 56, 63));
-        asignacionEditarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionEditarLabel.setText("EDITAR");
+        restauranteNuevaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteNuevaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/support-ticketB.png"))); // NOI18N
+        restauranteNuevaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteNuevaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteNuevaIconMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout inicioAsignacionLayout = new javax.swing.GroupLayout(inicioAsignacion);
         inicioAsignacion.setLayout(inicioAsignacionLayout);
         inicioAsignacionLayout.setHorizontalGroup(
             inicioAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inicioAsignacionLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(190, 190, 190)
                 .addGroup(inicioAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inicioAsignacionLayout.createSequentialGroup()
-                        .addComponent(asignacionNuevaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170)
-                        .addComponent(asignacionVerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(asignacionEditarIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(restauranteNuevaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190)
+                        .addComponent(restauranteVerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(inicioAsignacionLayout.createSequentialGroup()
-                        .addComponent(asignacionNuevaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170)
-                        .addComponent(asignacionVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(asignacionEditarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                        .addComponent(restauranteNuevaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190)
+                        .addComponent(restauranteVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         inicioAsignacionLayout.setVerticalGroup(
             inicioAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inicioAsignacionLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
+                .addGap(130, 130, 130)
                 .addGroup(inicioAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(asignacionNuevaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(asignacionVerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(asignacionEditarIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(restauranteNuevaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(restauranteVerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(inicioAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(asignacionNuevaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(asignacionVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(asignacionEditarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(232, Short.MAX_VALUE))
+                    .addComponent(restauranteNuevaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(restauranteVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         principalAsignacion.add(inicioAsignacion, java.awt.BorderLayout.CENTER);
 
-        add(principalAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, 570));
+        add(principalAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1080, 570));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void asignacionNuevaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionNuevaIconMouseClicked
-        nuevaAsignacion();
-    }//GEN-LAST:event_asignacionNuevaIconMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         validarInicioAsignacion();
     }//GEN-LAST:event_backMouseClicked
 
+    private void restauranteNuevaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteNuevaIconMouseClicked
+        nuevaAsignacion();
+    }//GEN-LAST:event_restauranteNuevaIconMouseClicked
+
+    private void restauranteNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteNuevaLabelMouseClicked
+        nuevaAsignacion();
+    }//GEN-LAST:event_restauranteNuevaLabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel asignacion;
-    private javax.swing.JLabel asignacionEditarIcon;
-    private javax.swing.JLabel asignacionEditarLabel;
-    private javax.swing.JLabel asignacionNuevaIcon;
-    private javax.swing.JLabel asignacionNuevaLabel;
-    private javax.swing.JLabel asignacionVerIcon;
-    private javax.swing.JLabel asignacionVerLabel;
     private javax.swing.JLabel back;
     private javax.swing.JPanel inicioAsignacion;
     private javax.swing.JPanel principalAsignacion;
+    private javax.swing.JLabel restauranteNuevaIcon;
+    private javax.swing.JLabel restauranteNuevaLabel;
+    private javax.swing.JLabel restauranteVerIcon;
+    private javax.swing.JLabel restauranteVerLabel;
     private javax.swing.JPanel tituloAsignacion;
     // End of variables declaration//GEN-END:variables
 }

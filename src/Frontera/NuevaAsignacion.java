@@ -1,20 +1,36 @@
 package Frontera;
 
+import DAO.AsignacionDAO;
+
 public class NuevaAsignacion extends javax.swing.JPanel {
 
+    private AsignacionDAO daoAsi = new AsignacionDAO();
+    
     public NuevaAsignacion() {
         initComponents();
     }
 
     public boolean validarCampos() {
-        return (restauranteTF1.getText().isEmpty() && restauranteTF4.getText().isEmpty() && restauranteTF5.getText().isEmpty() && restauranteTF6.getText().isEmpty());
+        return (restauranteTF5.getText().isEmpty() && restauranteTF6.getText().isEmpty());
     }
 
     public void vaciarCampos() {
-        restauranteTF1.setText("");
-        restauranteTF4.setText("");
         restauranteTF5.setText("");
         restauranteTF6.setText("");
+    }
+    
+    public void comboRes(){
+        comRes.setVisible(false);
+        comRes.removeAll();
+        comRes.setModel(daoAsi.comboRes());
+        comRes.setVisible(true);
+    }
+    
+        public void comboPer(){
+        comPer.setVisible(false);
+        comPer.removeAll();
+        comPer.setModel(daoAsi.comboPer());
+        comPer.setVisible(true);
     }
 
     /**
@@ -30,14 +46,12 @@ public class NuevaAsignacion extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        restauranteTF1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        restauranteTF4 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         restauranteTF5 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         restauranteTF6 = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
+        comPer = new javax.swing.JComboBox<>();
+        comRes = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(164, 186, 191));
 
@@ -61,22 +75,6 @@ public class NuevaAsignacion extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Turno");
 
-        restauranteTF1.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF1.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF1.setBorder(null);
-
-        jSeparator1.setBackground(new java.awt.Color(36, 56, 63));
-
-        restauranteTF4.setBackground(new java.awt.Color(164, 186, 191));
-        restauranteTF4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        restauranteTF4.setForeground(new java.awt.Color(36, 56, 63));
-        restauranteTF4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restauranteTF4.setBorder(null);
-
-        jSeparator2.setBackground(new java.awt.Color(36, 56, 63));
-
         restauranteTF5.setBackground(new java.awt.Color(164, 186, 191));
         restauranteTF5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         restauranteTF5.setForeground(new java.awt.Color(36, 56, 63));
@@ -93,6 +91,14 @@ public class NuevaAsignacion extends javax.swing.JPanel {
 
         jSeparator4.setBackground(new java.awt.Color(36, 56, 63));
 
+        comPer.setBackground(new java.awt.Color(164, 186, 191));
+        comPer.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        comPer.setForeground(new java.awt.Color(36, 56, 63));
+
+        comRes.setBackground(new java.awt.Color(164, 186, 191));
+        comRes.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        comRes.setForeground(new java.awt.Color(36, 56, 63));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,20 +107,9 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +125,12 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                         .addComponent(restauranteTF6, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(390, 390, 390)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(comRes, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(450, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,14 +139,12 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comRes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(restauranteTF4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                    .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restauranteTF5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,16 +160,14 @@ public class NuevaAsignacion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comPer;
+    private javax.swing.JComboBox<String> comRes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField restauranteTF1;
-    private javax.swing.JTextField restauranteTF4;
     private javax.swing.JTextField restauranteTF5;
     private javax.swing.JTextField restauranteTF6;
     // End of variables declaration//GEN-END:variables
