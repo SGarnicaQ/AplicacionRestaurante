@@ -56,6 +56,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         nueva.comboRes();
         nueva.comboPer();
+        nueva.nuevoVisible();
         back.setVisible(true);
     }
 
