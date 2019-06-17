@@ -1,13 +1,19 @@
 package Frontera;
 
+import DAO.AsignacionDAO;
+
 public class VerAsignacion extends javax.swing.JPanel {
 
+    private AsignacionDAO daoAsi = new AsignacionDAO();
+    
     public VerAsignacion() {
         initComponents();
     }
 
-    
-    
+    public void verRestaurante(String nombre) {
+        tableAsi.setModel(daoAsi.ver());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -18,11 +24,14 @@ public class VerAsignacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableRes = new javax.swing.JTable();
+        tableAsi = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(164, 186, 191));
 
-        tableRes.setModel(new javax.swing.table.DefaultTableModel(
+        tableAsi.setBackground(new java.awt.Color(36, 56, 63));
+        tableAsi.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 14)); // NOI18N
+        tableAsi.setForeground(new java.awt.Color(192, 212, 216));
+        tableAsi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -33,7 +42,10 @@ public class VerAsignacion extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(tableRes);
+        tableAsi.setGridColor(new java.awt.Color(36, 56, 63));
+        tableAsi.setSelectionBackground(new java.awt.Color(164, 186, 191));
+        tableAsi.setSelectionForeground(new java.awt.Color(36, 56, 63));
+        jScrollPane1.setViewportView(tableAsi);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -56,6 +68,6 @@ public class VerAsignacion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableRes;
+    private javax.swing.JTable tableAsi;
     // End of variables declaration//GEN-END:variables
 }

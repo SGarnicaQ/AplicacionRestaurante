@@ -51,6 +51,9 @@ public class VerRestaurante extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(164, 186, 191));
 
+        tableRes.setBackground(new java.awt.Color(36, 56, 63));
+        tableRes.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 14)); // NOI18N
+        tableRes.setForeground(new java.awt.Color(192, 212, 216));
         tableRes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -62,6 +65,9 @@ public class VerRestaurante extends javax.swing.JPanel {
 
             }
         ));
+        tableRes.setGridColor(new java.awt.Color(36, 56, 63));
+        tableRes.setSelectionBackground(new java.awt.Color(164, 186, 191));
+        tableRes.setSelectionForeground(new java.awt.Color(36, 56, 63));
         jScrollPane1.setViewportView(tableRes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

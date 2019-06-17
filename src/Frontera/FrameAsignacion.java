@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class FrameAsignacion extends javax.swing.JPanel {
 
     private NuevaAsignacion nueva = new NuevaAsignacion();
+    private VerAsignacion ver = new VerAsignacion();
     public Dialogo dialogo = new Dialogo(null, true);
 
     public FrameAsignacion() {
@@ -60,6 +61,16 @@ public class FrameAsignacion extends javax.swing.JPanel {
         back.setVisible(true);
     }
 
+    public void verRestaurante() {
+        principalAsignacion.setVisible(false);
+        principalAsignacion.removeAll();
+        principalAsignacion.add(ver);
+        principalAsignacion.setVisible(true);
+        ver.verRestaurante("");
+        back.setVisible(true);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +83,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
         tituloAsignacion = new javax.swing.JPanel();
         asignacion = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        editar = new javax.swing.JLabel();
         principalAsignacion = new javax.swing.JPanel();
         inicioAsignacion = new javax.swing.JPanel();
         restauranteVerIcon = new javax.swing.JLabel();
@@ -85,21 +97,27 @@ public class FrameAsignacion extends javax.swing.JPanel {
         tituloAsignacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         asignacion.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        asignacion.setForeground(new java.awt.Color(36, 56, 63));
+        asignacion.setForeground(new java.awt.Color(164, 186, 191));
         asignacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asignacion.setText("ASIGNACIÓN");
-        tituloAsignacion.add(asignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 9, 960, 40));
+        tituloAsignacion.add(asignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 9, 940, 40));
 
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/log-out.png"))); // NOI18N
         back.setToolTipText("Atrás");
-        back.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         tituloAsignacion.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 40));
+
+        editar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/note.png"))); // NOI18N
+        editar.setToolTipText("Editar");
+        editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tituloAsignacion.add(editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 10, 40, 40));
 
         add(tituloAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
@@ -110,13 +128,23 @@ public class FrameAsignacion extends javax.swing.JPanel {
 
         restauranteVerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/phone-bookB.png"))); // NOI18N
-        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteVerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteVerIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteVerIconMouseClicked(evt);
+            }
+        });
 
         restauranteVerLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         restauranteVerLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteVerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteVerLabel.setText("VER");
-        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteVerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteVerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteVerLabelMouseClicked(evt);
+            }
+        });
 
         restauranteNuevaLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         restauranteNuevaLabel.setForeground(new java.awt.Color(36, 56, 63));
@@ -183,10 +211,19 @@ public class FrameAsignacion extends javax.swing.JPanel {
         nuevaAsignacion();
     }//GEN-LAST:event_restauranteNuevaLabelMouseClicked
 
+    private void restauranteVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteVerIconMouseClicked
+        verRestaurante();
+    }//GEN-LAST:event_restauranteVerIconMouseClicked
+
+    private void restauranteVerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteVerLabelMouseClicked
+        verRestaurante();
+    }//GEN-LAST:event_restauranteVerLabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel asignacion;
     private javax.swing.JLabel back;
+    private javax.swing.JLabel editar;
     private javax.swing.JPanel inicioAsignacion;
     private javax.swing.JPanel principalAsignacion;
     private javax.swing.JLabel restauranteNuevaIcon;

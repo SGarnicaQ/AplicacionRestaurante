@@ -14,12 +14,13 @@ public class ValidarAsignacion {
         if (!verificarLongitudRestauranteAsignacion(asignacion.getRestaurante())) {
             return ("Longitud restaurante incorrecta");
         }
-        if (!verificarLongitudMesaAsignacion(asignacion.getMesa())) {
-            return ("Longitud mesa incorrecta");
-        }
         if (!verificarLongitudTurnoAsignacion(asignacion.getTurno())) {
             return ("Longitud turno incorrecta");
         }
+        if (!verificarLongitudMesaAsignacion(asignacion.getMesa())) {
+            return ("Longitud mesa incorrecta");
+        }
+
         return ("Datos guardados");
     }
 

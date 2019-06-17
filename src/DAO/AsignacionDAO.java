@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class AsignacionDAO {
 
@@ -34,7 +35,35 @@ public class AsignacionDAO {
         }
     }
 
-    public void ver() {
+    public DefaultTableModel ver() {
+        DefaultTableModel resTa = new DefaultTableModel();
+
+        resTa.addColumn("Restaurante");
+        resTa.addColumn("Persona");
+        resTa.addColumn("Turno");
+        resTa.addColumn("Mesa");
+
+        String sqlRes = "SELECT RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
+                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
+                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.ID = aplicacionrestaurante.ASIGNACION.idPer;";
+
+        String[] dataRes = new String[4];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlRes);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                resTa.addRow(dataRes);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return resTa;
 
     }
 
@@ -55,7 +84,7 @@ public class AsignacionDAO {
             while (barRts.next()) {
                 dataBar[0] = barRts.getString(1);
                 dataBar[1] = barRts.getString(2);
-                asiCo.addElement(dataBar[0]+". "+dataBar[1]);
+                asiCo.addElement(dataBar[0] + ". " + dataBar[1]);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,7 +105,7 @@ public class AsignacionDAO {
             while (barRts.next()) {
                 dataBar[0] = barRts.getString(1);
                 dataBar[1] = barRts.getString(2);
-                asiCo.addElement(dataBar[0]+". "+dataBar[1]);
+                asiCo.addElement(dataBar[0] + ". " + dataBar[1]);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
