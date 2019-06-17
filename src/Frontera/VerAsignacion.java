@@ -1,17 +1,40 @@
 package Frontera;
 
 import DAO.AsignacionDAO;
+import Entidad.Asignacion;
 
 public class VerAsignacion extends javax.swing.JPanel {
 
     private AsignacionDAO daoAsi = new AsignacionDAO();
-    
+
     public VerAsignacion() {
         initComponents();
     }
 
     public void verRestaurante(String nombre) {
         tableAsi.setModel(daoAsi.ver());
+    }
+
+    public Asignacion editarAsignacion() {
+
+        Asignacion asignacion = new Asignacion();
+
+        int rowSel = tableAsi.getSelectedRow();
+        if (rowSel >= 0) {
+            asignacion.setRestaurante(tableAsi.getValueAt(rowSel, 1).toString());
+            asignacion.setPersona(tableAsi.getValueAt(rowSel, 2).toString());
+            asignacion.setTurno(tableAsi.getValueAt(rowSel, 3).toString());
+            asignacion.setMesa(tableAsi.getValueAt(rowSel, 4).toString());
+        }
+        return asignacion;
+    }
+
+    public int fila() {
+        int rowSel = tableAsi.getSelectedRow();
+        if (rowSel >= 0) {
+            return Integer.parseInt(tableAsi.getValueAt(rowSel, 0).toString());
+        }
+        return 0;
     }
 
     /**

@@ -36,18 +36,19 @@ public class AsignacionDAO {
     }
 
     public DefaultTableModel ver() {
-        DefaultTableModel resTa = new DefaultTableModel();
+        DefaultTableModel asiTa = new DefaultTableModel();
 
-        resTa.addColumn("Restaurante");
-        resTa.addColumn("Persona");
-        resTa.addColumn("Turno");
-        resTa.addColumn("Mesa");
+        asiTa.addColumn("ID");
+        asiTa.addColumn("Restaurante");
+        asiTa.addColumn("Persona");
+        asiTa.addColumn("Turno");
+        asiTa.addColumn("Mesa");
 
-        String sqlRes = "SELECT RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
+        String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
                 + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.ID = aplicacionrestaurante.ASIGNACION.idPer;";
 
-        String[] dataRes = new String[4];
+        String[] dataRes = new String[5];
 
         try {
             Statement bcuSta = Conectado.createStatement();
@@ -57,17 +58,33 @@ public class AsignacionDAO {
                 dataRes[1] = bcuRts.getString(2);
                 dataRes[2] = bcuRts.getString(3);
                 dataRes[3] = bcuRts.getString(4);
-                resTa.addRow(dataRes);
+                dataRes[4] = bcuRts.getString(5);
+                asiTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        return resTa;
-
+        return asiTa;
     }
 
-    public void editar() {
+    public void editar(int restaurante, int persona, String turno, String mesa, int id) {
+
+        String sqlAsi = "UPDATE ASIGNACION SET idRes = ?, idPer = ?,turno = ?, mesa = ? WHERE asiID = ?;";
+
+        try {
+            PreparedStatement ps = Conectado.prepareStatement(sqlAsi);
+            ps.setInt(1, restaurante);
+            ps.setInt(2, persona);
+            ps.setString(3, turno);
+            ps.setString(4, mesa);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

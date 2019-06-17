@@ -7,6 +7,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
     private NuevaAsignacion nueva = new NuevaAsignacion();
     private VerAsignacion ver = new VerAsignacion();
     public Dialogo dialogo = new Dialogo(null, true);
+    private DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameAsignacion() {
         initComponents();
@@ -61,14 +62,31 @@ public class FrameAsignacion extends javax.swing.JPanel {
         back.setVisible(true);
     }
 
-    public void verRestaurante() {
+    public void verAsignacion() {
         principalAsignacion.setVisible(false);
         principalAsignacion.removeAll();
         principalAsignacion.add(ver);
         principalAsignacion.setVisible(true);
         ver.verRestaurante("");
         back.setVisible(true);
+        nueva.editarVisible();
 
+    }
+
+    public void editarAsignacion() {
+        int temInt = ver.fila();
+        if (temInt >= 1) {
+            principalAsignacion.setVisible(false);
+            principalAsignacion.removeAll();
+            principalAsignacion.add(nueva);
+            principalAsignacion.setVisible(true);
+            editar.setVisible(false);
+            nueva.editar(ver.editarAsignacion(), temInt);
+            nueva.comboRes();
+        } else {
+            dialogoOk.textoLabel("Por favor seleccione una fila");
+            dialogoOk.visible();
+        }
     }
 
     /**
@@ -117,6 +135,11 @@ public class FrameAsignacion extends javax.swing.JPanel {
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/note.png"))); // NOI18N
         editar.setToolTipText("Editar");
         editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarMouseClicked(evt);
+            }
+        });
         tituloAsignacion.add(editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 10, 40, 40));
 
         add(tituloAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
@@ -212,12 +235,16 @@ public class FrameAsignacion extends javax.swing.JPanel {
     }//GEN-LAST:event_restauranteNuevaLabelMouseClicked
 
     private void restauranteVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteVerIconMouseClicked
-        verRestaurante();
+        verAsignacion();
     }//GEN-LAST:event_restauranteVerIconMouseClicked
 
     private void restauranteVerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteVerLabelMouseClicked
-        verRestaurante();
+        verAsignacion();
     }//GEN-LAST:event_restauranteVerLabelMouseClicked
+
+    private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
+        editarAsignacion();
+    }//GEN-LAST:event_editarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
