@@ -315,6 +315,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         int selCon = dialogo.visible();
         if (selCon == 1) {
             principalPanel.setVisible(false);
+            asignacion.inicioPrincipal();
+            restaurante.iniciarPrincipal();
             principalPanel.removeAll();
             principalPanel.add(inicioPrincipal);
             principalPanel.setVisible(true);

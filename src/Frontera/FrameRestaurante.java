@@ -28,9 +28,6 @@ public class FrameRestaurante extends javax.swing.JPanel {
         if (!nuevo.validarCampos()) {
             dialogo.textoLabel("¿Desea guardar los datos?");
             int selCon = dialogo.visible();
-            if (selCon == 1) {
-                System.out.println("Datos guardados");
-            }
             if (selCon == 0) {
                 principalRestaurante.setVisible(false);
                 principalRestaurante.removeAll();
@@ -86,6 +83,16 @@ public class FrameRestaurante extends javax.swing.JPanel {
             dialogoOk.textoLabel("Por favor seleccione una fila");
             dialogoOk.visible();
         }
+    }
+
+    public void iniciarPrincipal() {
+        principalRestaurante.setVisible(false);
+        principalRestaurante.removeAll();
+        principalRestaurante.add(inicioRestaurante);
+        principalRestaurante.setVisible(true);
+        back.setVisible(false);
+        editar.setVisible(false);
+        nuevo.vaciarCampos();
     }
 
     /**

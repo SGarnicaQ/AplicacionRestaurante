@@ -20,34 +20,32 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.add(inicioAsignacion);
         principalAsignacion.setVisible(true);
         back.setVisible(false);
+        editar.setVisible(false);
     }
 
     public void validarInicioAsignacion() {
-        if (nueva.validarCampos()) {
-            dialogo.textoLabel("¿Desea volver atrás?");
-            int selCon = dialogo.visible();
-            if (selCon == 1) {
-                principalAsignacion.setVisible(false);
-                principalAsignacion.removeAll();
-                principalAsignacion.add(inicioAsignacion);
-                principalAsignacion.setVisible(true);
-                back.setVisible(false);
-            }
-        } else {
+        if (!nueva.validarCampos()) {
             dialogo.textoLabel("¿Desea guardar los datos?");
             int selCon = dialogo.visible();
-            if (selCon == 1) {
-                System.out.println("Datos guardados");
-
-            }
             if (selCon == 0) {
                 principalAsignacion.setVisible(false);
                 principalAsignacion.removeAll();
                 principalAsignacion.add(inicioAsignacion);
                 principalAsignacion.setVisible(true);
                 back.setVisible(false);
+                editar.setVisible(false);
                 nueva.vaciarCampos();
+
             }
+        }
+        if (nueva.validarCampos()) {
+            principalAsignacion.setVisible(false);
+            principalAsignacion.removeAll();
+            principalAsignacion.add(inicioAsignacion);
+            principalAsignacion.setVisible(true);
+            back.setVisible(false);
+            editar.setVisible(false);
+            nueva.vaciarCampos();
         }
     }
 
@@ -60,6 +58,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
         nueva.comboPer();
         nueva.nuevoVisible();
         back.setVisible(true);
+        editar.setVisible(false);
     }
 
     public void verAsignacion() {
@@ -69,8 +68,8 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         ver.verRestaurante("");
         back.setVisible(true);
+        editar.setVisible(true);
         nueva.editarVisible();
-
     }
 
     public void editarAsignacion() {
@@ -87,6 +86,16 @@ public class FrameAsignacion extends javax.swing.JPanel {
             dialogoOk.textoLabel("Por favor seleccione una fila");
             dialogoOk.visible();
         }
+    }
+
+    public void inicioPrincipal() {
+        principalAsignacion.setVisible(false);
+        principalAsignacion.removeAll();
+        principalAsignacion.add(inicioAsignacion);
+        principalAsignacion.setVisible(true);
+        back.setVisible(false);
+        editar.setVisible(false);
+        nueva.vaciarCampos();
     }
 
     /**
