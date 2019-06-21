@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 public class FrameAsignacion extends javax.swing.JPanel {
 
-    private NuevaAsignacion nueva = new NuevaAsignacion();
-    private VerAsignacion ver = new VerAsignacion();
+    private final NuevaAsignacion nueva = new NuevaAsignacion();
+    private final VerAsignacion ver = new VerAsignacion();
     public Dialogo dialogo = new Dialogo(null, true);
-    private DialogoOK dialogoOk = new DialogoOK(null, true);
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameAsignacion() {
         initComponents();

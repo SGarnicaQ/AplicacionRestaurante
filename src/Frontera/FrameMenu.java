@@ -1,21 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Frontera;
 
-/**
- *
- * @author Elladan
- */
-public class FrameMenu extends javax.swing.JPanel {
+public final class FrameMenu extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FrameMenu
-     */
+    private final NuevoMenu nuevo = new NuevoMenu();
+
+    public Dialogo dialogo = new Dialogo(null, true);
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
+
     public FrameMenu() {
         initComponents();
+        inicioMenu();
+    }
+
+    public void inicioMenu() {
+        principalMenu.setVisible(false);
+        principalMenu.removeAll();
+        principalMenu.add(inicioMenu);
+        principalMenu.setVisible(true);
+        back.setVisible(false);
+        editar.setVisible(false);
+    }
+
+    public void validarInicioMenu() {
+        if (!nuevo.validarCampos()) {
+            dialogo.textoLabel("¿Desea guardar los datos?");
+            int selCon = dialogo.visible();
+            if (selCon == 0) {
+                principalMenu.setVisible(false);
+                principalMenu.removeAll();
+                principalMenu.add(inicioMenu);
+                principalMenu.setVisible(true);
+                back.setVisible(false);
+                editar.setVisible(false);
+                //nuevo.vaciarCampos();
+            }
+        }
+        if (nuevo.validarCampos()) {
+            principalMenu.setVisible(false);
+            principalMenu.removeAll();
+            principalMenu.add(inicioMenu);
+            principalMenu.setVisible(true);
+            back.setVisible(false);
+            editar.setVisible(false);
+        }
+    }
+
+    public void nuevoRestaurante() {
+        principalMenu.setVisible(false);
+        principalMenu.removeAll();
+        principalMenu.add(nuevo);
+        principalMenu.setVisible(true);
+//        nuevo.comboCom();
+        back.setVisible(true);
+        editar.setVisible(false);
+        nuevo.nuevoVisible();
     }
 
     /**
@@ -152,7 +190,7 @@ public class FrameMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
- 
+        validarInicioMenu();
     }//GEN-LAST:event_backMouseClicked
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
@@ -168,11 +206,11 @@ public class FrameMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_menuVerLabelMouseClicked
 
     private void menuNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaLabelMouseClicked
-
+        nuevoRestaurante();
     }//GEN-LAST:event_menuNuevaLabelMouseClicked
 
     private void menuNuevaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaIconMouseClicked
-
+        nuevoRestaurante();
     }//GEN-LAST:event_menuNuevaIconMouseClicked
 
 
