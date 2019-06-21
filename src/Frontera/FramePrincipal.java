@@ -1,10 +1,21 @@
 package Frontera;
 
+import Entidad.Sistema;
+import javax.swing.JPanel;
+
 public class FramePrincipal extends javax.swing.JFrame {
+
+    private final FrameRestaurante restaurante = new FrameRestaurante();
+    private final FrameAsignacion asignacion = new FrameAsignacion();
+    private final FrameMenu menu = new FrameMenu();
+    private final Dialogo dialogo = new Dialogo(null, true);
+
+    public static Sistema sistema = new Sistema();
 
     public FramePrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        inicioGUI();
     }
 
     /**
@@ -16,21 +27,234 @@ public class FramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        contenedorPanel = new javax.swing.JPanel();
+        tituloPanel = new javax.swing.JPanel();
+        close = new javax.swing.JLabel();
+        servicioDeRestaurante = new javax.swing.JLabel();
+        principalPanel = new javax.swing.JPanel();
+        inicioPrincipal = new javax.swing.JPanel();
+        asignacionIcon = new javax.swing.JLabel();
+        asignacionLabel = new javax.swing.JLabel();
+        restauranteIcon = new javax.swing.JLabel();
+        restauranteLabel = new javax.swing.JLabel();
+        menuIcon = new javax.swing.JLabel();
+        menuLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        restauranteLabel2 = new javax.swing.JLabel();
+        restauranteLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        asignacionLabel1 = new javax.swing.JLabel();
+        opcionesPanel = new javax.swing.JPanel();
+        inicioIcon = new javax.swing.JLabel();
+        inicioLabel = new javax.swing.JLabel();
+
+        setTitle("Restaurante");
+        setUndecorated(true);
+        setResizable(false);
+
+        contenedorPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloPanel.setBackground(new java.awt.Color(36, 56, 63));
+        tituloPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel.png"))); // NOI18N
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+        });
+        tituloPanel.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 11, 70, 70));
+
+        servicioDeRestaurante.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
+        servicioDeRestaurante.setForeground(new java.awt.Color(192, 212, 216));
+        servicioDeRestaurante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        servicioDeRestaurante.setText("SERVICIO DE RESTAURANTE");
+        tituloPanel.add(servicioDeRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 11, 1100, 70));
+
+        contenedorPanel.add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 90));
+
+        principalPanel.setBackground(new java.awt.Color(63, 63, 63));
+        principalPanel.setLayout(new java.awt.BorderLayout());
+
+        inicioPrincipal.setBackground(new java.awt.Color(164, 186, 191));
+        inicioPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        asignacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asignacionIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/profile.png"))); // NOI18N
+        asignacionIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                asignacionIconMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(asignacionIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 130));
+
+        asignacionLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        asignacionLabel.setForeground(new java.awt.Color(36, 56, 63));
+        asignacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asignacionLabel.setText("ASIGNACIÓN");
+        asignacionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                asignacionLabelMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(asignacionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, 30));
+
+        restauranteIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/restaurantB1.png"))); // NOI18N
+        restauranteIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteIconMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(restauranteIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 150, 130));
+
+        restauranteLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        restauranteLabel.setForeground(new java.awt.Color(36, 56, 63));
+        restauranteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteLabel.setText("RESTAURANTE");
+        restauranteLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteLabelMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(restauranteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 170, 30));
+
+        menuIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/menu.png"))); // NOI18N
+        menuIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuIconMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(menuIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 150, 130));
+
+        menuLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        menuLabel.setForeground(new java.awt.Color(36, 56, 63));
+        menuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuLabel.setText("MENÚS");
+        menuLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicioPrincipal.add(menuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 170, 30));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/smartphone.png"))); // NOI18N
+        inicioPrincipal.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 150, 130));
+
+        restauranteLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        restauranteLabel2.setForeground(new java.awt.Color(36, 56, 63));
+        restauranteLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteLabel2.setText("SOBRE COSTOS");
+        inicioPrincipal.add(restauranteLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 460, 170, 30));
+
+        restauranteLabel3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        restauranteLabel3.setForeground(new java.awt.Color(36, 56, 63));
+        restauranteLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restauranteLabel3.setText("PEDIDOS");
+        inicioPrincipal.add(restauranteLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 30));
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/online-menu.png"))); // NOI18N
+        inicioPrincipal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 150, 130));
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/order.png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicioPrincipal.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, 130));
+
+        asignacionLabel1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        asignacionLabel1.setForeground(new java.awt.Color(36, 56, 63));
+        asignacionLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asignacionLabel1.setText("MENÚ PERSONA");
+        asignacionLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicioPrincipal.add(asignacionLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 170, 30));
+
+        principalPanel.add(inicioPrincipal, java.awt.BorderLayout.CENTER);
+
+        contenedorPanel.add(principalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 1080, 630));
+
+        opcionesPanel.setBackground(new java.awt.Color(68, 85, 89));
+        opcionesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        inicioIcon.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 22)); // NOI18N
+        inicioIcon.setForeground(new java.awt.Color(19, 38, 35));
+        inicioIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inicioIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/filter.png"))); // NOI18N
+        inicioIcon.setToolTipText("Inicio");
+        inicioIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicioIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inicioIconMouseClicked(evt);
+            }
+        });
+        opcionesPanel.add(inicioIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 70, 70));
+
+        inicioLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        inicioLabel.setForeground(new java.awt.Color(164, 186, 191));
+        inicioLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inicioLabel.setText("INICIO");
+        inicioLabel.setToolTipText("Inicio");
+        inicioLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicioLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inicioLabelMouseClicked(evt);
+            }
+        });
+        opcionesPanel.add(inicioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 70, 30));
+
+        contenedorPanel.add(opcionesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addComponent(contenedorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addComponent(contenedorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void inicioIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioIconMouseClicked
+        validarInicioGUI();
+    }//GEN-LAST:event_inicioIconMouseClicked
+
+    private void asignacionIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionIconMouseClicked
+        ver(asignacion);
+    }//GEN-LAST:event_asignacionIconMouseClicked
+
+    private void asignacionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabelMouseClicked
+        ver(asignacion);
+    }//GEN-LAST:event_asignacionLabelMouseClicked
+
+    private void restauranteIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteIconMouseClicked
+        ver(restaurante);
+    }//GEN-LAST:event_restauranteIconMouseClicked
+
+    private void restauranteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteLabelMouseClicked
+        ver(restaurante);
+    }//GEN-LAST:event_restauranteLabelMouseClicked
+
+    private void inicioLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioLabelMouseClicked
+        validarInicioGUI();
+    }//GEN-LAST:event_inicioLabelMouseClicked
+
+    private void menuIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIconMouseClicked
+        ver(menu);
+    }//GEN-LAST:event_menuIconMouseClicked
 
     /**
      * @param args the command line arguments
@@ -43,7 +267,7 @@ public class FramePrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -67,6 +291,60 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
     }
 
+    public void inicioGUI() {
+        principalPanel.setVisible(false);
+        principalPanel.removeAll();
+        principalPanel.add(inicioPrincipal);
+        principalPanel.setVisible(true);
+        inicioIcon.setVisible(false);
+        inicioLabel.setVisible(false);
+    }
+
+    public void validarInicioGUI() {
+        dialogo.textoLabel("¿Desea volver al inicio?");
+        int selCon = dialogo.visible();
+        if (selCon == 1) {
+            principalPanel.setVisible(false);
+            asignacion.inicioPrincipal();
+            restaurante.iniciarPrincipal();
+            principalPanel.removeAll();
+            principalPanel.add(inicioPrincipal);
+            principalPanel.setVisible(true);
+            inicioIcon.setVisible(false);
+            inicioLabel.setVisible(false);
+        }
+    }
+
+    public void ver(JPanel ob) {
+        principalPanel.setVisible(false);
+        principalPanel.removeAll();
+        principalPanel.add(ob);
+        principalPanel.setVisible(true);
+        inicioIcon.setVisible(true);
+        inicioLabel.setVisible(true);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel asignacionIcon;
+    private javax.swing.JLabel asignacionLabel;
+    private javax.swing.JLabel asignacionLabel1;
+    private javax.swing.JLabel close;
+    private javax.swing.JPanel contenedorPanel;
+    private javax.swing.JLabel inicioIcon;
+    private javax.swing.JLabel inicioLabel;
+    private javax.swing.JPanel inicioPrincipal;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel menuIcon;
+    private javax.swing.JLabel menuLabel;
+    private javax.swing.JPanel opcionesPanel;
+    private javax.swing.JPanel principalPanel;
+    private javax.swing.JLabel restauranteIcon;
+    private javax.swing.JLabel restauranteLabel;
+    private javax.swing.JLabel restauranteLabel2;
+    private javax.swing.JLabel restauranteLabel3;
+    private javax.swing.JLabel servicioDeRestaurante;
+    private javax.swing.JPanel tituloPanel;
     // End of variables declaration//GEN-END:variables
 }
