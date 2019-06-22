@@ -50,7 +50,7 @@ public final class FrameMenu extends javax.swing.JPanel {
         principalMenu.removeAll();
         principalMenu.add(nuevo);
         principalMenu.setVisible(true);
-//        nuevo.comboCom();
+        nuevo.comboCom();
         back.setVisible(true);
         editar.setVisible(false);
         nuevo.nuevoVisible();
@@ -75,8 +75,6 @@ public final class FrameMenu extends javax.swing.JPanel {
         menuVerLabel = new javax.swing.JLabel();
         menuNuevaLabel = new javax.swing.JLabel();
         menuNuevaIcon = new javax.swing.JLabel();
-
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tituloMenu.setBackground(new java.awt.Color(68, 85, 89));
         tituloMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,8 +106,6 @@ public final class FrameMenu extends javax.swing.JPanel {
             }
         });
         tituloMenu.add(editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 10, 40, 40));
-
-        add(tituloMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
         principalMenu.setBackground(new java.awt.Color(19, 38, 35));
         principalMenu.setLayout(new java.awt.BorderLayout());
@@ -186,7 +182,20 @@ public final class FrameMenu extends javax.swing.JPanel {
 
         principalMenu.add(inicioMenu, java.awt.BorderLayout.CENTER);
 
-        add(principalMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1080, 570));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(principalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(principalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

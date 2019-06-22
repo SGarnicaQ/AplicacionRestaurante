@@ -112,7 +112,7 @@ public class AsignacionDAO {
     public DefaultComboBoxModel comboPer() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
 
-        String sqlBar = "SELECT ID,nombre FROM PERSONA";
+        String sqlBar = "SELECT perID,nombre FROM PERSONA";
 
         String[] dataBar = new String[2];
 

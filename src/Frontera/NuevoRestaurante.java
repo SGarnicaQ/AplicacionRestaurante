@@ -6,8 +6,6 @@ import Entidad.Restaurante;
 
 public class NuevoRestaurante extends javax.swing.JPanel {
 
-    private final Dialogo dialogo = new Dialogo(null, true);
-
     private final Restaurante restaurante = new Restaurante();
     private final ValidarRestaurante validar = new ValidarRestaurante();
     private final RestauranteDAO daoRes = new RestauranteDAO();
