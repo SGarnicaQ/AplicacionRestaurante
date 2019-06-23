@@ -9,10 +9,8 @@ public class NuevoMenu extends javax.swing.JPanel {
     private final Menu menu = new Menu();
     private final ValidarMenu validar = new ValidarMenu();
     private final MenuDAO daoMen = new MenuDAO();
-    
+
     private final DialogoOK dialogoOk = new DialogoOK(null, true);
-
-
 
     public NuevoMenu() {
         initComponents();
@@ -29,39 +27,103 @@ public class NuevoMenu extends javax.swing.JPanel {
                 && "Ninguna".equals(comCom7.getSelectedItem().toString()));
     }
 
+    public void vaciarCampos() {
+        comRes.setSelectedIndex(0);
+        descripcionTF.setText("");
+        comCom1.setSelectedIndex(0);
+        comCom2.setSelectedIndex(0);
+        comCom3.setSelectedIndex(0);
+        comCom4.setSelectedIndex(0);
+        comCom5.setSelectedIndex(0);
+        comCom6.setSelectedIndex(0);
+        comCom7.setSelectedIndex(0);
+    }
+
+    public boolean validarComidas() {
+        return ("Ninguna".equals(comCom1.getSelectedItem().toString())
+                && "Ninguna".equals(comCom2.getSelectedItem().toString())
+                && "Ninguna".equals(comCom3.getSelectedItem().toString())
+                && "Ninguna".equals(comCom4.getSelectedItem().toString())
+                && "Ninguna".equals(comCom5.getSelectedItem().toString())
+                && "Ninguna".equals(comCom6.getSelectedItem().toString())
+                && "Ninguna".equals(comCom7.getSelectedItem().toString()));
+    }
+
     public void guardarDatos() {
 
-        menu.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-        menu.setDescripcion(descripcionTF.getText());
-        menu.setComida1(Character.toString(comCom1.getSelectedItem().toString().charAt(0)));
-        menu.setComida2(Character.toString(comCom2.getSelectedItem().toString().charAt(0)));
-        menu.setComida3(Character.toString(comCom2.getSelectedItem().toString().charAt(0)));
-        menu.setComida4(Character.toString(comCom3.getSelectedItem().toString().charAt(0)));
-        menu.setComida5(Character.toString(comCom2.getSelectedItem().toString().charAt(0)));
-        menu.setComida6(Character.toString(comCom3.getSelectedItem().toString().charAt(0)));
-        menu.setComida7(Character.toString(comCom4.getSelectedItem().toString().charAt(0)));
-        
-        
-
-        String respuesta = validar.validarMenu(menu);
-
-        if ("Longitud nombre incorrecta".equals(respuesta)) {
-            dialogoOk.textoLabel(respuesta);
-            dialogoOk.visible();
-        } else if ("Longitud ubicación incorrecta".equals(respuesta)) {
-            dialogoOk.textoLabel(respuesta);
-            dialogoOk.visible();
-        } else if ("Longitud tipo incorrecta".equals(respuesta)) {
-            dialogoOk.textoLabel(respuesta);
-            dialogoOk.visible();
-        } else if ("Longitud horario incorrecta".equals(respuesta)) {
+        if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
+            menu.setRestaurante("");
+            
+            String respuesta = validar.validarMenu(menu);
+            
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
         } else {
-            daoMen.crear(menu.getRestaurante(), menu.getDescripcion(), menu.getComida1(), menu.getComida2(), menu.getComida3(), menu.getComida4(), menu.getComida5(), menu.getComida6(), menu.getComida7());
-            //vaciarCampos();
-            dialogoOk.textoLabel(respuesta);
-            dialogoOk.visible();
+            menu.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+            menu.setDescripcion(descripcionTF.getText());
+            
+            String respuesta = validar.validarMenu(menu);
+            
+            if ("Longitud descripcion incorrecta".equals(respuesta)) {
+                dialogoOk.textoLabel(respuesta);
+                dialogoOk.visible();
+            } else {
+                if (!validarComidas()) {
+                    if ("Ninguna".equals(comCom1.getSelectedItem().toString())) {
+                        menu.setComida1(null);
+                    } else {
+                        menu.setComida1(Character.toString(comCom1.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom2.getSelectedItem().toString())) {
+                        menu.setComida2(null);
+                    } else {
+                        menu.setComida2(Character.toString(comCom2.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom3.getSelectedItem().toString())) {
+                        menu.setComida3(null);
+                    } else {
+                        menu.setComida3(Character.toString(comCom3.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom4.getSelectedItem().toString())) {
+                        menu.setComida4(null);
+                    } else {
+                        menu.setComida4(Character.toString(comCom4.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom5.getSelectedItem().toString())) {
+                        menu.setComida5(null);
+                    } else {
+                        menu.setComida5(Character.toString(comCom5.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom6.getSelectedItem().toString())) {
+                        menu.setComida6(null);
+                    } else {
+                        menu.setComida6(Character.toString(comCom6.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Ninguna".equals(comCom7.getSelectedItem().toString())) {
+                        menu.setComida7(null);
+                    } else {
+                        menu.setComida7(Character.toString(comCom7.getSelectedItem().toString().charAt(0)));
+                    }
+                    if ("Longitud restaurante incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud tipo incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud horario incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else {
+                        daoMen.crear(menu.getRestaurante(), menu.getDescripcion(), menu.getComida1(), menu.getComida2(), menu.getComida3(), menu.getComida4(), menu.getComida5(), menu.getComida6(), menu.getComida7());
+                        vaciarCampos();
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    }
+                } else {
+                    dialogoOk.textoLabel("Por favor ingrese una comida");
+                    dialogoOk.visible();
+                }
+            }
         }
     }
 
