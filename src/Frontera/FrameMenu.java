@@ -4,7 +4,8 @@ public final class FrameMenu extends javax.swing.JPanel {
 
     private final NuevoMenu nuevo = new NuevoMenu();
 
-    public Dialogo dialogo = new Dialogo(null, true);
+    private Dialogo dialogo = new Dialogo(null, true);
+    private VerMenu ver = new VerMenu();
     private final DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameMenu() {
@@ -32,7 +33,7 @@ public final class FrameMenu extends javax.swing.JPanel {
                 principalMenu.setVisible(true);
                 back.setVisible(false);
                 editar.setVisible(false);
-                //nuevo.vaciarCampos();
+                nuevo.vaciarCampos();
             }
         }
         if (nuevo.validarCampos()) {
@@ -50,12 +51,37 @@ public final class FrameMenu extends javax.swing.JPanel {
         principalMenu.removeAll();
         principalMenu.add(nuevo);
         principalMenu.setVisible(true);
-        nuevo.comboCom();
+        nuevo.comboRes();
         back.setVisible(true);
         editar.setVisible(false);
         nuevo.nuevoVisible();
     }
 
+    public void verMenu() {
+        principalMenu.setVisible(false);
+        principalMenu.removeAll();
+        principalMenu.add(ver);
+        principalMenu.setVisible(true);
+        ver.verMenu();
+        back.setVisible(true);
+        editar.setVisible(true);
+        nuevo.editarVisible();
+    }
+
+    public void editarMenu(){
+    
+    }
+    
+    public void inicioPrincipal(){
+        principalMenu.setVisible(false);
+        principalMenu.removeAll();
+        principalMenu.add(inicioMenu);
+        principalMenu.setVisible(true);
+        back.setVisible(false);
+        editar.setVisible(false);
+        nuevo.vaciarCampos();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -207,11 +233,11 @@ public final class FrameMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_editarMouseClicked
 
     private void menuVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuVerIconMouseClicked
-
+        verMenu();
     }//GEN-LAST:event_menuVerIconMouseClicked
 
     private void menuVerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuVerLabelMouseClicked
-
+        verMenu();
     }//GEN-LAST:event_menuVerLabelMouseClicked
 
     private void menuNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaLabelMouseClicked

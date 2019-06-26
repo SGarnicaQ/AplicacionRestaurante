@@ -46,7 +46,7 @@ public class AsignacionDAO {
 
         String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
-                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.ID = aplicacionrestaurante.ASIGNACION.idPer;";
+                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer;";
 
         String[] dataRes = new String[5];
 

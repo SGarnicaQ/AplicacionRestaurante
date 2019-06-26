@@ -1,10 +1,18 @@
 package Frontera;
 
+import DAO.MenuDAO;
+
 public class VerMenu extends javax.swing.JPanel {
 
+    private MenuDAO daoMen = new MenuDAO();
+    
    public VerMenu() {
         initComponents();
     }
+   
+   public void verMenu(){
+       tableMen.setModel(daoMen.ver());
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
