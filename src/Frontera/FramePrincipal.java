@@ -8,6 +8,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private final FrameRestaurante restaurante = new FrameRestaurante();
     private final FrameAsignacion asignacion = new FrameAsignacion();
     private final FrameMenu menu = new FrameMenu();
+    private final FrameMenuP menup = new FrameMenuP();
     private final Dialogo dialogo = new Dialogo(null, true);
 
     public static Sistema sistema = new Sistema();
@@ -166,6 +167,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/order.png"))); // NOI18N
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         inicioPrincipal.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, 130));
 
         asignacionLabel1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
@@ -173,6 +179,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         asignacionLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         asignacionLabel1.setText("MENÚ PERSONA");
         asignacionLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                asignacionLabel1MouseClicked(evt);
+            }
+        });
         inicioPrincipal.add(asignacionLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 170, 30));
 
         principalPanel.add(inicioPrincipal, java.awt.BorderLayout.CENTER);
@@ -255,6 +266,14 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void menuIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIconMouseClicked
         ver(menu);
     }//GEN-LAST:event_menuIconMouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        ver(menup);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void asignacionLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabel1MouseClicked
+        ver(menup);
+    }//GEN-LAST:event_asignacionLabel1MouseClicked
 
     /**
      * @param args the command line arguments

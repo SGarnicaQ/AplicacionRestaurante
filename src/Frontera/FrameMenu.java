@@ -46,7 +46,7 @@ public final class FrameMenu extends javax.swing.JPanel {
         }
     }
 
-    public void nuevoRestaurante() {
+    public void nuevoMenu() {
         principalMenu.setVisible(false);
         principalMenu.removeAll();
         principalMenu.add(nuevo);
@@ -122,7 +122,7 @@ public final class FrameMenu extends javax.swing.JPanel {
         menu.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         menu.setForeground(new java.awt.Color(164, 186, 191));
         menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menu.setText("MENÚ");
+        menu.setText("MENÚ RESTAURANTE");
         tituloMenu.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 9, 940, 40));
 
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,11 +255,11 @@ public final class FrameMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_menuVerLabelMouseClicked
 
     private void menuNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaLabelMouseClicked
-        nuevoRestaurante();
+        nuevoMenu();
     }//GEN-LAST:event_menuNuevaLabelMouseClicked
 
     private void menuNuevaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaIconMouseClicked
-        nuevoRestaurante();
+        nuevoMenu();
     }//GEN-LAST:event_menuNuevaIconMouseClicked
 
 

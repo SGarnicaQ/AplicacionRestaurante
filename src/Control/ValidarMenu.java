@@ -12,19 +12,19 @@ public class ValidarMenu {
             return ("Longitud restaurante incorrecta");
         }if (!verificarLongitudDescripcionMenu(menu.getDescripcion())) {
             return ("Longitud descripcion incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
+        }if (!verificarLongitudComidaMenu(menu.getComida1())) {
             return ("Longitud comida #1 incorrecta");
-        }if (!verificarLongitudComida2Menu(menu.getComida2())) {
+        }if (!verificarLongitudComidaMenu(menu.getComida2())) {
             return ("Longitud comida #2 incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
+        }if (!verificarLongitudComidaMenu(menu.getComida3())) {
             return ("Longitud comida #3 incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
-            return ("Longitud comida $4 incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
-            return ("Longitud comida $5 incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
+        }if (!verificarLongitudComidaMenu(menu.getComida4())) {
+            return ("Longitud comida #4 incorrecta");
+        }if (!verificarLongitudComidaMenu(menu.getComida5())) {
+            return ("Longitud comida #5 incorrecta");
+        }if (!verificarLongitudComidaMenu(menu.getComida6())) {
             return ("Longitud comida #6 incorrecta");
-        }if (!verificarLongitudComida1Menu(menu.getComida1())) {
+        }if (!verificarLongitudComidaMenu(menu.getComida7())) {
             return ("Longitud comida #7 incorrecta");
         }return ("Datos guardados");
     }
@@ -34,35 +34,10 @@ public class ValidarMenu {
     }
     
     public boolean verificarLongitudDescripcionMenu(String desMen) {
-        return (desMen.length() >= 1 && desMen.length() <= 32);
+        return (desMen.length() >= 1 && desMen.length() <= 64);
     }
 
-    public boolean verificarLongitudComida1Menu(String comMen) {
+    public boolean verificarLongitudComidaMenu(String comMen) {
         return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida2Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida3Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida4Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida5Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida6Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
-    public boolean verificarLongitudComida7Menu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
-    }
-    
+    }    
 }
