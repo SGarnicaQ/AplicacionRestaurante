@@ -1,18 +1,45 @@
 package Frontera;
 
 import DAO.MenuDAO;
+import Entidad.Menu;
 
 public class VerMenu extends javax.swing.JPanel {
 
     private MenuDAO daoMen = new MenuDAO();
-    
-   public VerMenu() {
+
+    public VerMenu() {
         initComponents();
     }
-   
-   public void verMenu(){
-       tableMen.setModel(daoMen.ver());
-   }
+
+    public void verMenu() {
+        tableMen.setModel(daoMen.ver());
+    }
+
+    public Menu editarMenu(){
+        Menu menu = new Menu();
+
+        int rowSel = tableMen.getSelectedRow();
+        if (rowSel >= 0) {
+            menu.setRestaurante(tableMen.getValueAt(rowSel, 1).toString());
+            menu.setDescripcion(tableMen.getValueAt(rowSel, 2).toString());
+            menu.setComida1(tableMen.getValueAt(rowSel, 3).toString());
+            menu.setComida2(tableMen.getValueAt(rowSel, 4).toString());
+            menu.setComida3(tableMen.getValueAt(rowSel, 5).toString());
+            menu.setComida4(tableMen.getValueAt(rowSel, 6).toString());
+            menu.setComida5(tableMen.getValueAt(rowSel, 7).toString());
+            menu.setComida6(tableMen.getValueAt(rowSel, 8).toString());
+            menu.setComida7(tableMen.getValueAt(rowSel, 9).toString());
+        }
+        return menu;
+    }
+    
+    public int fila() {
+        int rowSel = tableMen.getSelectedRow();
+        if (rowSel >= 0) {
+            return Integer.parseInt(tableMen.getValueAt(rowSel, 0).toString());
+        }
+        return 0;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

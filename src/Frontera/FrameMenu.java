@@ -70,7 +70,19 @@ public final class FrameMenu extends javax.swing.JPanel {
     }
 
     public void editarMenu() {
-
+        int temInt = ver.fila();
+        if (temInt >= 1) {
+            principalMenu.setVisible(false);
+            principalMenu.removeAll();
+            principalMenu.add(nuevo);
+            principalMenu.setVisible(true);
+            editar.setVisible(false);
+            nuevo.editar(ver.editarMenu(), temInt);
+            nuevo.comboRes();
+        } else {
+            dialogoOk.textoLabel("Por favor seleccione una fila");
+            dialogoOk.visible();
+        }
     }
 
     public void inicioPrincipal() {
@@ -230,7 +242,7 @@ public final class FrameMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_backMouseClicked
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
-
+        editarMenu();
     }//GEN-LAST:event_editarMouseClicked
 
     private void menuVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuVerIconMouseClicked
