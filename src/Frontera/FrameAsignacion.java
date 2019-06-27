@@ -35,7 +35,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
                 back.setVisible(false);
                 editar.setVisible(false);
                 nueva.vaciarCampos();
-
             }
         }
         if (nueva.validarCampos()) {
@@ -45,7 +44,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
             principalAsignacion.setVisible(true);
             back.setVisible(false);
             editar.setVisible(false);
-            nueva.vaciarCampos();
         }
     }
 
@@ -57,6 +55,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
         nueva.comboRes();
         nueva.comboPer();
         nueva.nuevoVisible();
+        nueva.vaciarCampos();
         back.setVisible(true);
         editar.setVisible(false);
     }
@@ -95,7 +94,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         back.setVisible(false);
         editar.setVisible(false);
-        nueva.vaciarCampos();
     }
 
     /**

@@ -307,6 +307,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             principalPanel.setVisible(false);
             asignacion.inicioPrincipal();
             restaurante.iniciarPrincipal();
+            menu.inicioPrincipal();
             principalPanel.removeAll();
             principalPanel.add(inicioPrincipal);
             principalPanel.setVisible(true);

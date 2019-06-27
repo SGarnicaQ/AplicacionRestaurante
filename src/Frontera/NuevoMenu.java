@@ -17,8 +17,7 @@ public class NuevoMenu extends javax.swing.JPanel {
     }
 
     public boolean validarCampos() {
-        return ("Ninguno".equals(comRes.getSelectedItem().toString())
-                && descripcionTF.getText().isEmpty()
+        return (descripcionTF.getText().isEmpty()
                 && comida1TF.getText().isEmpty()
                 && comida2TF.getText().isEmpty()
                 && comida3TF.getText().isEmpty()

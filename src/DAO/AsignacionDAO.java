@@ -91,6 +91,8 @@ public class AsignacionDAO {
     public DefaultComboBoxModel comboRes() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
 
+        asiCo.addElement("Ninguno");
+        
         String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
 
         String[] dataBar = new String[2];
@@ -111,6 +113,8 @@ public class AsignacionDAO {
 
     public DefaultComboBoxModel comboPer() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
+        
+        asiCo.addElement("Ninguna");
 
         String sqlBar = "SELECT perID,nombre FROM PERSONA";
 

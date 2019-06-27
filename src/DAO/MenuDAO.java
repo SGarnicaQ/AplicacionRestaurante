@@ -54,9 +54,8 @@ public class MenuDAO {
         menTa.addColumn("Comida #6");
         menTa.addColumn("Comida #7");
 
-        String sqlRes = "SELECT menID, idRes, descrip, com1, com2, com3, com4, com5, com6, com7, COMIDA.nombre FROM MENU "
-                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.MENU.idRes "
-                + "INNER JOIN COMIDA ON (aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com1 || aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com2 || aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com3 || aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com4 || aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com5 || aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com6|| aplicacionrestaurante.COMIDA.comID = aplicacionrestaurante.MENU.com7);";
+        String sqlRes = "SELECT menID, RESTAURANTE.nombre, descrip, com1, com2, com3, com4, com5, com6, com7 FROM MENU "
+                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.MENU.idRes ";
 
         String[] dataRes = new String[10];
 

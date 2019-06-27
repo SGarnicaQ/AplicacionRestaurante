@@ -52,6 +52,7 @@ public final class FrameMenu extends javax.swing.JPanel {
         principalMenu.add(nuevo);
         principalMenu.setVisible(true);
         nuevo.comboRes();
+        nuevo.vaciarCampos();
         back.setVisible(true);
         editar.setVisible(false);
         nuevo.nuevoVisible();
@@ -68,11 +69,11 @@ public final class FrameMenu extends javax.swing.JPanel {
         nuevo.editarVisible();
     }
 
-    public void editarMenu(){
-    
+    public void editarMenu() {
+
     }
-    
-    public void inicioPrincipal(){
+
+    public void inicioPrincipal() {
         principalMenu.setVisible(false);
         principalMenu.removeAll();
         principalMenu.add(inicioMenu);
@@ -81,7 +82,7 @@ public final class FrameMenu extends javax.swing.JPanel {
         editar.setVisible(false);
         nuevo.vaciarCampos();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

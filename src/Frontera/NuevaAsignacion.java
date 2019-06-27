@@ -5,47 +5,66 @@ import DAO.AsignacionDAO;
 import Entidad.Asignacion;
 
 public class NuevaAsignacion extends javax.swing.JPanel {
-
+    
     private final Dialogo dialogo = new Dialogo(null, true);
-
+    
     private final Asignacion asignacion = new Asignacion();
     private final ValidarAsignacion validar = new ValidarAsignacion();
     private final AsignacionDAO daoAsi = new AsignacionDAO();
-
+    
     private final DialogoOK dialogoOk = new DialogoOK(null, true);
-
+    
     private int filaU = 0;
-
+    
     public NuevaAsignacion() {
         initComponents();
     }
-
+    
     public boolean validarCampos() {
-        return (turnoTF.getText().isEmpty() && mesaTF.getText().isEmpty());
+        return (turnoTF.getText().isEmpty() 
+                && mesaTF.getText().isEmpty());
     }
-
+    
     public void vaciarCampos() {
+        comRes.setSelectedIndex(0);
+        comPer.setSelectedIndex(0);
         turnoTF.setText("");
         mesaTF.setText("");
     }
-
+    
     public void guardarDatos() {
-
-        if (comRes.getItemCount() == 0) {
-            dialogoOk.textoLabel("Ingrese un restaurante");
+        
+        String respuesta;
+        
+        if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
+            asignacion.setRestaurante("");
+            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+            asignacion.setTurno(turnoTF.getText());
+            asignacion.setMesa(mesaTF.getText());
+            
+            respuesta = validar.validarAsignacion(asignacion);
+            
+            dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
-        } else if (comPer.getItemCount() == 0) {
-            dialogoOk.textoLabel("Ingrese una persona");
+        } else if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
+            asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+            asignacion.setPersona("");
+            asignacion.setTurno(turnoTF.getText());
+            asignacion.setMesa(mesaTF.getText());
+            
+            respuesta = validar.validarAsignacion(asignacion);
+            
+            dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
         } else {
-
+            
             asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
             asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
             asignacion.setTurno(turnoTF.getText());
             asignacion.setMesa(mesaTF.getText());
-
-            String respuesta = validar.validarAsignacion(asignacion);
-
+            
+            respuesta = validar.validarAsignacion(asignacion);
+            
             if ("Longitud restaurante incorrecta".equals(respuesta)) {
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
@@ -64,73 +83,98 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             }
-
+            
         }
     }
-
+    
     public void editar(Asignacion asigna, int fila) {
-
+        
         comRes.setModel(daoAsi.comboRes());
         comPer.setModel(daoAsi.comboPer());
         turnoTF.setText(asigna.getTurno());
         mesaTF.setText(asigna.getMesa());
-
+        
         filaU = fila;
     }
-
+    
     public void actualizar() {
         if (filaU != 0) {
-            asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-            asignacion.setTurno(turnoTF.getText());
-            asignacion.setMesa(mesaTF.getText());
-
-            String respuesta = validar.validarAsignacion(asignacion);
-
-            if ("Longitud nombre incorrecta".equals(respuesta)) {
+            
+            String respuesta;
+            if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
+                asignacion.setRestaurante("");
+                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+                asignacion.setTurno(turnoTF.getText());
+                asignacion.setMesa(mesaTF.getText());
+                
+                respuesta = validar.validarAsignacion(asignacion);
+                
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
-            } else if ("Longitud ubicación incorrecta".equals(respuesta)) {
-                dialogoOk.textoLabel(respuesta);
-                dialogoOk.visible();
-            } else if ("Longitud tipo incorrecta".equals(respuesta)) {
-                dialogoOk.textoLabel(respuesta);
-                dialogoOk.visible();
-            } else if ("Longitud horario incorrecta".equals(respuesta)) {
+            } else if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
+                asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+                asignacion.setPersona("");
+                asignacion.setTurno(turnoTF.getText());
+                asignacion.setMesa(mesaTF.getText());
+                
+                respuesta = validar.validarAsignacion(asignacion);
+                
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             } else {
-                daoAsi.editar(Integer.parseInt(asignacion.getRestaurante()),Integer.parseInt(asignacion.getPersona()),asignacion.getTurno(),asignacion.getMesa(), filaU);
-                vaciarCampos();
-                dialogoOk.textoLabel(respuesta);
-                dialogoOk.visible();
-                filaU = 0;
+                
+                asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+                asignacion.setTurno(turnoTF.getText());
+                asignacion.setMesa(mesaTF.getText());
+                
+                respuesta = validar.validarAsignacion(asignacion);
+                
+                if ("Longitud nombre incorrecta".equals(respuesta)) {
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                } else if ("Longitud ubicación incorrecta".equals(respuesta)) {
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                } else if ("Longitud tipo incorrecta".equals(respuesta)) {
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                } else if ("Longitud horario incorrecta".equals(respuesta)) {
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                } else {
+                    daoAsi.editar(Integer.parseInt(asignacion.getRestaurante()), Integer.parseInt(asignacion.getPersona()), asignacion.getTurno(), asignacion.getMesa(), filaU);
+                    vaciarCampos();
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                    filaU = 0;
+                }
             }
         } else {
             dialogoOk.textoLabel("Por favor vuelva atrás");
             dialogoOk.visible();
         }
     }
-
+    
     public void comboRes() {
         comRes.setVisible(false);
         comRes.removeAll();
         comRes.setModel(daoAsi.comboRes());
         comRes.setVisible(true);
     }
-
+    
     public void comboPer() {
         comPer.setVisible(false);
         comPer.removeAll();
         comPer.setModel(daoAsi.comboPer());
         comPer.setVisible(true);
     }
-
+    
     public void nuevoVisible() {
         guardar.setVisible(true);
         editarNuevo.setVisible(false);
     }
-
+    
     public void editarVisible() {
         guardar.setVisible(false);
         editarNuevo.setVisible(true);
