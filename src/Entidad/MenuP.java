@@ -3,6 +3,7 @@ package Entidad;
 public class MenuP {
 
     private String persona;
+    private String mesa;
     private String comida1;
     private String comida2;
     private String comida3;
@@ -17,6 +18,14 @@ public class MenuP {
 
     public void setPersona(String persona) {
         this.persona = persona;
+    }
+
+    public String getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(String mesa) {
+        this.mesa = mesa;
     }
 
     public String getComida1() {

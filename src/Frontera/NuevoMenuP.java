@@ -1,10 +1,18 @@
 package Frontera;
 
+import Control.ValidarMenuP;
 import DAO.MenuPDAO;
+import Entidad.MenuP;
 
 public class NuevoMenuP extends javax.swing.JPanel {
 
     private final MenuPDAO daoMenp = new MenuPDAO();
+    private final MenuP menup = new MenuP();
+    private final ValidarMenuP validar = new ValidarMenuP();
+    
+
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
+    
     
     public NuevoMenuP() {
         initComponents();
@@ -43,13 +51,83 @@ public class NuevoMenuP extends javax.swing.JPanel {
         comida7TF.setText("");
     }
 
-        public void comboPer() {
+    public void guardarDatos() {
+
+        String respuesta;
+
+        if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
+            menup.setPersona("");
+
+            respuesta = validar.validarMenu(menup);
+
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
+        } else {
+            menup.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+            menup.setMesa(mesaTF.getText());
+            menup.setComida1(comida1TF.getText());
+            menup.setComida2(comida2TF.getText());
+            menup.setComida3(comida3TF.getText());
+            menup.setComida4(comida4TF.getText());
+            menup.setComida5(comida5TF.getText());
+            menup.setComida6(comida6TF.getText());
+            menup.setComida7(comida7TF.getText());
+
+            respuesta = validar.validarMenu(menup);
+
+            if ("Longitud mesa incorrecta".equals(respuesta)) {
+                dialogoOk.textoLabel(respuesta);
+                dialogoOk.visible();
+            } else {
+                if (!validarComidas()) {
+                    if ("Longitud persona incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud mesa incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #1 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #2 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #3 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #4 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #5 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #6 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else if ("Longitud comida #7 incorrecta".equals(respuesta)) {
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    } else {
+                        daoMenp.crear(menup.getPersona(), menup.getMesa(), menup.getComida1(), menup.getComida2(), menup.getComida3(), menup.getComida4(), menup.getComida5(), menup.getComida6(), menup.getComida7());
+                        vaciarCampos();
+                        dialogoOk.textoLabel(respuesta);
+                        dialogoOk.visible();
+                    }
+                } else {
+                    dialogoOk.textoLabel("Por favor ingrese una comida");
+                    dialogoOk.visible();
+                }
+            }
+        }
+    }
+
+    public void comboPer() {
         comPer.setVisible(false);
         comPer.removeAll();
         comPer.setModel(daoMenp.comboPer());
         comPer.setVisible(true);
     }
-     
+
     public void nuevoVisible() {
         guardar.setVisible(true);
         editarNuevo.setVisible(false);
@@ -379,7 +457,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
-
+        guardarDatos();
     }//GEN-LAST:event_guardarMouseClicked
 
     private void editarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNuevoMouseClicked

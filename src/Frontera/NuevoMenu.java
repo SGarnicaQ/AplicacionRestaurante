@@ -83,7 +83,7 @@ public class NuevoMenu extends javax.swing.JPanel {
                     if ("Longitud restaurante incorrecta".equals(respuesta)) {
                         dialogoOk.textoLabel(respuesta);
                         dialogoOk.visible();
-                    } else if ("Longitud tipo incorrecta".equals(respuesta)) {
+                    } else if ("Longitud descripcion incorrecta".equals(respuesta)) {
                         dialogoOk.textoLabel(respuesta);
                         dialogoOk.visible();
                     } else if ("Longitud comida #1 incorrecta".equals(respuesta)) {
