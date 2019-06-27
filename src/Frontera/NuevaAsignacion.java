@@ -51,7 +51,7 @@ public class NuevaAsignacion extends javax.swing.JPanel {
             dialogoOk.visible();
         } else if ("Ninguno".equals(comTur.getSelectedItem().toString())) {
             asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-            asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
+            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
             asignacion.setTurno(0);
 
             respuesta = validar.validarAsignacion(asignacion);
@@ -61,8 +61,8 @@ public class NuevaAsignacion extends javax.swing.JPanel {
         } else {
 
             asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-            asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
-            asignacion.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
+            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+            asignacion.setTurno(Integer.parseInt(Character.toString(comTur.getSelectedItem().toString().charAt(0))));
             asignacion.setMesa(mesaTF.getText());
 
             respuesta = validar.validarAsignacion(asignacion);
@@ -130,8 +130,8 @@ public class NuevaAsignacion extends javax.swing.JPanel {
             } else {
 
                 asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-                asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
-                asignacion.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
+                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+                asignacion.setTurno(Integer.parseInt(Character.toString(comTur.getSelectedItem().toString().charAt(0))));
                 asignacion.setMesa(mesaTF.getText());
 
                 respuesta = validar.validarAsignacion(asignacion);
