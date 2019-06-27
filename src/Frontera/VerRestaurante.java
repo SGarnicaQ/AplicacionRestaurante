@@ -11,7 +11,7 @@ public class VerRestaurante extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void verRestaurante(String nombre) {
+    public void verRestaurante() {
         tableRes.setModel(daoRes.ver());
     }
 

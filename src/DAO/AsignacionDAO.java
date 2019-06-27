@@ -17,14 +17,14 @@ public class AsignacionDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String restaurante, String persona, String turno, String mesa) {
+    public void crear(String restaurante, String persona, int turno, String mesa) {
         String sqlAsi = "INSERT INTO ASIGNACION(idRes, idPer, turno, mesa) VALUES (?,?,?,?)";
 
         try {
             try (PreparedStatement ps = Conectado.prepareStatement(sqlAsi)) {
                 ps.setString(1, restaurante);
                 ps.setString(2, persona);
-                ps.setString(3, turno);
+                ps.setInt(3, turno);
                 ps.setString(4, mesa);
                 ps.execute();
             }
@@ -68,7 +68,7 @@ public class AsignacionDAO {
         return asiTa;
     }
 
-    public void editar(int restaurante, int persona, String turno, String mesa, int id) {
+    public void editar(int restaurante, int persona, int turno, String mesa, int id) {
 
         String sqlAsi = "UPDATE ASIGNACION SET idRes = ?, idPer = ?,turno = ?, mesa = ? WHERE asiID = ?;";
 
@@ -76,7 +76,7 @@ public class AsignacionDAO {
             PreparedStatement ps = Conectado.prepareStatement(sqlAsi);
             ps.setInt(1, restaurante);
             ps.setInt(2, persona);
-            ps.setString(3, turno);
+            ps.setInt(3, turno);
             ps.setString(4, mesa);
             ps.setInt(5, id);
             ps.executeUpdate();

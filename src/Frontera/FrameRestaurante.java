@@ -63,7 +63,7 @@ public final class FrameRestaurante extends javax.swing.JPanel {
         principalRestaurante.removeAll();
         principalRestaurante.add(ver);
         principalRestaurante.setVisible(true);
-        ver.verRestaurante("");
+        ver.verRestaurante();
         back.setVisible(true);
         editar.setVisible(true);
         nuevo.editarVisible();

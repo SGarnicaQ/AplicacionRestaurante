@@ -32,11 +32,11 @@ public class ValidarAsignacion {
         return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
     }
 
-    public boolean verificarLongitudMesaAsignacion(String nombreRes) {
-        return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
+    public boolean verificarLongitudTurnoAsignacion(int nombreRes) {
+        return (nombreRes == 1 || nombreRes == 2);
     }
 
-    public boolean verificarLongitudTurnoAsignacion(String nombreRes) {
+    public boolean verificarLongitudMesaAsignacion(String nombreRes) {
         return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
     }
 

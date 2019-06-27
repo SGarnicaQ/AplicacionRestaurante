@@ -5,66 +5,68 @@ import DAO.AsignacionDAO;
 import Entidad.Asignacion;
 
 public class NuevaAsignacion extends javax.swing.JPanel {
-    
+
     private final Dialogo dialogo = new Dialogo(null, true);
-    
+
     private final Asignacion asignacion = new Asignacion();
     private final ValidarAsignacion validar = new ValidarAsignacion();
     private final AsignacionDAO daoAsi = new AsignacionDAO();
-    
+
     private final DialogoOK dialogoOk = new DialogoOK(null, true);
-    
+
     private int filaU = 0;
-    
+
     public NuevaAsignacion() {
         initComponents();
     }
-    
+
     public boolean validarCampos() {
-        return (turnoTF.getText().isEmpty() 
-                && mesaTF.getText().isEmpty());
+        return (mesaTF.getText().isEmpty());
     }
-    
+
     public void vaciarCampos() {
         comRes.setSelectedIndex(0);
         comPer.setSelectedIndex(0);
-        turnoTF.setText("");
+        comTur.setSelectedIndex(0);
         mesaTF.setText("");
     }
-    
+
     public void guardarDatos() {
-        
+
         String respuesta;
-        
         if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
             asignacion.setRestaurante("");
-            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-            asignacion.setTurno(turnoTF.getText());
-            asignacion.setMesa(mesaTF.getText());
-            
+
             respuesta = validar.validarAsignacion(asignacion);
-            
+
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
         } else if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
             asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
             asignacion.setPersona("");
-            asignacion.setTurno(turnoTF.getText());
-            asignacion.setMesa(mesaTF.getText());
-            
+
             respuesta = validar.validarAsignacion(asignacion);
-            
+
+            dialogoOk.textoLabel(respuesta);
+            dialogoOk.visible();
+        } else if ("Ninguno".equals(comTur.getSelectedItem().toString())) {
+            asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+            asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
+            asignacion.setTurno(0);
+
+            respuesta = validar.validarAsignacion(asignacion);
+
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
         } else {
-            
+
             asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-            asignacion.setTurno(turnoTF.getText());
+            asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
+            asignacion.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
             asignacion.setMesa(mesaTF.getText());
-            
+
             respuesta = validar.validarAsignacion(asignacion);
-            
+
             if ("Longitud restaurante incorrecta".equals(respuesta)) {
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
@@ -83,53 +85,57 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             }
-            
+
         }
     }
-    
+
     public void editar(Asignacion asigna, int fila) {
-        
+
         comRes.setModel(daoAsi.comboRes());
         comPer.setModel(daoAsi.comboPer());
-        turnoTF.setText(asigna.getTurno());
+        comTur.setSelectedIndex(0);
         mesaTF.setText(asigna.getMesa());
-        
+
         filaU = fila;
     }
-    
+
     public void actualizar() {
         if (filaU != 0) {
-            
+
             String respuesta;
             if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
                 asignacion.setRestaurante("");
-                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-                asignacion.setTurno(turnoTF.getText());
-                asignacion.setMesa(mesaTF.getText());
-                
+
                 respuesta = validar.validarAsignacion(asignacion);
-                
+
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             } else if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
                 asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
                 asignacion.setPersona("");
-                asignacion.setTurno(turnoTF.getText());
-                asignacion.setMesa(mesaTF.getText());
-                
+
                 respuesta = validar.validarAsignacion(asignacion);
-                
+
+                dialogoOk.textoLabel(respuesta);
+                dialogoOk.visible();
+            } else if ("Ninguno".equals(comTur.getSelectedItem().toString())) {
+                asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+                asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
+                asignacion.setTurno(0);
+
+                respuesta = validar.validarAsignacion(asignacion);
+
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             } else {
-                
+
                 asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-                asignacion.setTurno(turnoTF.getText());
+                asignacion.setPersona(Character.toString(comTur.getSelectedItem().toString().charAt(0)));
+                asignacion.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
                 asignacion.setMesa(mesaTF.getText());
-                
+
                 respuesta = validar.validarAsignacion(asignacion);
-                
+
                 if ("Longitud nombre incorrecta".equals(respuesta)) {
                     dialogoOk.textoLabel(respuesta);
                     dialogoOk.visible();
@@ -155,26 +161,35 @@ public class NuevaAsignacion extends javax.swing.JPanel {
             dialogoOk.visible();
         }
     }
-    
+
     public void comboRes() {
         comRes.setVisible(false);
         comRes.removeAll();
         comRes.setModel(daoAsi.comboRes());
         comRes.setVisible(true);
     }
-    
+
     public void comboPer() {
         comPer.setVisible(false);
         comPer.removeAll();
         comPer.setModel(daoAsi.comboPer());
         comPer.setVisible(true);
     }
-    
+
+    public void comboTur() {
+        comTur.setVisible(false);
+        comTur.removeAllItems();
+        comTur.addItem("Ninguno");
+        comTur.addItem("1");
+        comTur.addItem("2");
+        comTur.setVisible(true);
+    }
+
     public void nuevoVisible() {
         guardar.setVisible(true);
         editarNuevo.setVisible(false);
     }
-    
+
     public void editarVisible() {
         guardar.setVisible(false);
         editarNuevo.setVisible(true);
@@ -193,60 +208,60 @@ public class NuevaAsignacion extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        turnoTF = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         mesaTF = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        comPer = new javax.swing.JComboBox<>();
+        comTur = new javax.swing.JComboBox<>();
         comRes = new javax.swing.JComboBox<>();
         editarNuevo = new javax.swing.JLabel();
         guardar = new javax.swing.JLabel();
+        comPer = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(164, 186, 191));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(36, 56, 63));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Persona");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(36, 56, 63));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Restaurante");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 200, 30));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(36, 56, 63));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Mesa");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 200, 30));
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(36, 56, 63));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Turno");
-
-        turnoTF.setBackground(new java.awt.Color(164, 186, 191));
-        turnoTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        turnoTF.setForeground(new java.awt.Color(36, 56, 63));
-        turnoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        turnoTF.setBorder(null);
-
-        jSeparator3.setBackground(new java.awt.Color(36, 56, 63));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 200, 30));
 
         mesaTF.setBackground(new java.awt.Color(164, 186, 191));
         mesaTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         mesaTF.setForeground(new java.awt.Color(36, 56, 63));
         mesaTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mesaTF.setBorder(null);
+        add(mesaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 240, 30));
 
         jSeparator4.setBackground(new java.awt.Color(36, 56, 63));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 240, 10));
 
-        comPer.setBackground(new java.awt.Color(164, 186, 191));
-        comPer.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
-        comPer.setForeground(new java.awt.Color(36, 56, 63));
+        comTur.setBackground(new java.awt.Color(164, 186, 191));
+        comTur.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        comTur.setForeground(new java.awt.Color(36, 56, 63));
+        add(comTur, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 240, 31));
 
         comRes.setBackground(new java.awt.Color(164, 186, 191));
         comRes.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         comRes.setForeground(new java.awt.Color(36, 56, 63));
+        add(comRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 60, 240, 30));
 
         editarNuevo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editarNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/test.png"))); // NOI18N
@@ -257,6 +272,7 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 editarNuevoMouseClicked(evt);
             }
         });
+        add(editarNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 70, 70));
 
         guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/clipboardM.png"))); // NOI18N
@@ -267,77 +283,12 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 guardarMouseClicked(evt);
             }
         });
+        add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 470, 70, 70));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comRes, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(352, 352, 352)
-                        .addComponent(editarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(turnoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(mesaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(980, 980, 980)
-                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comRes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(turnoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mesaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220)
-                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        comPer.setBackground(new java.awt.Color(164, 186, 191));
+        comPer.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        comPer.setForeground(new java.awt.Color(36, 56, 63));
+        add(comPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 109, 240, 31));
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
@@ -352,15 +303,14 @@ public class NuevaAsignacion extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comPer;
     private javax.swing.JComboBox<String> comRes;
+    private javax.swing.JComboBox<String> comTur;
     private javax.swing.JLabel editarNuevo;
     private javax.swing.JLabel guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField mesaTF;
-    private javax.swing.JTextField turnoTF;
     // End of variables declaration//GEN-END:variables
 }
