@@ -136,6 +136,82 @@ public class NuevoMenu extends javax.swing.JPanel {
         filaU = fila;
     }
 
+    public void actualizar() {
+        if (filaU != 0) {
+
+            String respuesta;
+            if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
+                menu.setRestaurante("");
+
+                respuesta = validar.validarMenu(menu);
+
+                dialogoOk.textoLabel(respuesta);
+                dialogoOk.visible();
+            } else {
+                menu.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+                menu.setDescripcion(descripcionTF.getText());
+                menu.setComida1(comida1TF.getText());
+                menu.setComida2(comida2TF.getText());
+                menu.setComida3(comida3TF.getText());
+                menu.setComida4(comida4TF.getText());
+                menu.setComida5(comida5TF.getText());
+                menu.setComida6(comida6TF.getText());
+                menu.setComida7(comida7TF.getText());
+
+                respuesta = validar.validarMenu(menu);
+
+                if ("Longitud descripcion incorrecta".equals(respuesta)) {
+                    dialogoOk.textoLabel(respuesta);
+                    dialogoOk.visible();
+                } else {
+                    if (!validarComidas()) {
+                        if ("Longitud restaurante incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud tipo incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #1 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #2 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #3 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #4 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #5 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #6 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else if ("Longitud comida #7 incorrecta".equals(respuesta)) {
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                        } else {
+                            daoMen.editar(Integer.parseInt(menu.getRestaurante()), menu.getDescripcion(), menu.getComida1(), menu.getComida2(), menu.getComida3(), menu.getComida4(), menu.getComida5(), menu.getComida6(), menu.getComida7(), filaU);
+                            vaciarCampos();
+                            dialogoOk.textoLabel(respuesta);
+                            dialogoOk.visible();
+                            filaU = 0;
+                        }
+                    } else {
+                        dialogoOk.textoLabel("Por favor ingrese una comida");
+                        dialogoOk.visible();
+                    }
+                }
+            }
+        } else {
+            dialogoOk.textoLabel("Por favor vuelva atrás");
+            dialogoOk.visible();
+
+        }
+    }
+
     public void comboRes() {
         comRes.setVisible(false);
         comRes.removeAll();
@@ -472,7 +548,7 @@ public class NuevoMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNuevoMouseClicked
-        
+        actualizar();
     }//GEN-LAST:event_editarNuevoMouseClicked
 
     private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked

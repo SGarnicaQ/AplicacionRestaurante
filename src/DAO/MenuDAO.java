@@ -84,7 +84,7 @@ public class MenuDAO {
 
     public void editar(int resta, String desc, String com1, String com2, String com3, String com4, String com5, String com6, String com7, int id) {
         
-        String sqlAsi = "UPDATE MENU SET idRes = ?, descrip = ?, com1 = ?, com2 = ?, com3 = ?, com4 = ?, com5 = ?, com6 = ?, com7 = ? WHERE asiID = ?;";
+        String sqlAsi = "UPDATE MENU SET idRes = ?, descrip = ?, com1 = ?, com2 = ?, com3 = ?, com4 = ?, com5 = ?, com6 = ?, com7 = ? WHERE menID = ?;";
 
         try {
             PreparedStatement ps = Conectado.prepareStatement(sqlAsi);
