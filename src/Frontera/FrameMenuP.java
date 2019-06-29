@@ -58,6 +58,44 @@ public class FrameMenuP extends javax.swing.JPanel {
         nuevo.nuevoVisible();
     }
 
+    public void verMenuP() {
+        principalMenuP.setVisible(false);
+        principalMenuP.removeAll();
+        principalMenuP.add(ver);
+        principalMenuP.setVisible(true);
+        nuevo.comboPer();
+        nuevo.vaciarCampos();
+        ver.verMenuP();
+        back.setVisible(true);
+        editar.setVisible(true);
+        nuevo.editarVisible();
+    }
+
+    public void editarMenuP() {
+        int temInt = ver.fila();
+        if (temInt >= 1) {
+            principalMenuP.setVisible(false);
+            principalMenuP.removeAll();
+            principalMenuP.add(nuevo);
+            principalMenuP.setVisible(true);
+            editar.setVisible(false);
+            nuevo.editar(ver.editarMenu(), temInt);
+            nuevo.comboPer();
+        } else {
+            dialogoOk.textoLabel("Por favor seleccione una fila");
+            dialogoOk.visible();
+        }
+    }
+
+    public void inicioPrincipal() {
+        principalMenuP.setVisible(false);
+        principalMenuP.removeAll();
+        principalMenuP.add(inicioMenuP);
+        principalMenuP.setVisible(true);
+        back.setVisible(false);
+        editar.setVisible(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,15 +243,15 @@ public class FrameMenuP extends javax.swing.JPanel {
     }//GEN-LAST:event_backMouseClicked
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
-
+        editarMenuP();
     }//GEN-LAST:event_editarMouseClicked
 
     private void menupVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menupVerIconMouseClicked
-
+        verMenuP();
     }//GEN-LAST:event_menupVerIconMouseClicked
 
     private void menupVerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menupVerLabelMouseClicked
-
+        verMenuP();
     }//GEN-LAST:event_menupVerLabelMouseClicked
 
     private void menuNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaLabelMouseClicked

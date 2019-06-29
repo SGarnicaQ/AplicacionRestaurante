@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class MenuPDAO {
 
@@ -39,8 +40,46 @@ public class MenuPDAO {
         }
     }
 
-    public void ver() {
+    public DefaultTableModel ver() {
+        DefaultTableModel menTa = new DefaultTableModel();
 
+        menTa.addColumn("ID");
+        menTa.addColumn("Persona");
+        menTa.addColumn("Mesa");
+        menTa.addColumn("Comida #1");
+        menTa.addColumn("Comida #2");
+        menTa.addColumn("Comida #3");
+        menTa.addColumn("Comida #4");
+        menTa.addColumn("Comida #5");
+        menTa.addColumn("Comida #6");
+        menTa.addColumn("Comida #7");
+
+        String sqlRes = "SELECT perID, PERSONA.nombre, mesa, com1, com2, com3, com4, com5, com6, com7 FROM MENUP "
+                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.MENUP.idPer ";
+
+        String[] dataRes = new String[10];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlRes);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+                dataRes[7] = bcuRts.getString(8);
+                dataRes[8] = bcuRts.getString(9);
+                dataRes[9] = bcuRts.getString(10);
+                menTa.addRow(dataRes);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return menTa;
     }
 
     public void editar() {

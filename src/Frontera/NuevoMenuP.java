@@ -9,11 +9,11 @@ public class NuevoMenuP extends javax.swing.JPanel {
     private final MenuPDAO daoMenp = new MenuPDAO();
     private final MenuP menup = new MenuP();
     private final ValidarMenuP validar = new ValidarMenuP();
-    
 
     private final DialogoOK dialogoOk = new DialogoOK(null, true);
-    
-    
+
+    private int filaU = 0;
+
     public NuevoMenuP() {
         initComponents();
     }
@@ -119,6 +119,21 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 }
             }
         }
+    }
+
+    public void editar(MenuP men, int fila) {
+
+        comPer.setModel(daoMenp.comboPer());
+        mesaTF.setText(men.getMesa());
+        comida1TF.setText(men.getComida1());
+        comida2TF.setText(men.getComida2());
+        comida3TF.setText(men.getComida3());
+        comida4TF.setText(men.getComida4());
+        comida5TF.setText(men.getComida5());
+        comida6TF.setText(men.getComida6());
+        comida7TF.setText(men.getComida7());
+
+        filaU = fila;
     }
 
     public void comboPer() {
@@ -461,7 +476,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
     }//GEN-LAST:event_guardarMouseClicked
 
     private void editarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNuevoMouseClicked
-
+        
     }//GEN-LAST:event_editarNuevoMouseClicked
 
 

@@ -5,7 +5,7 @@ import Entidad.Menu;
 
 public class VerMenu extends javax.swing.JPanel {
 
-    private MenuDAO daoMen = new MenuDAO();
+    private final MenuDAO daoMen = new MenuDAO();
 
     public VerMenu() {
         initComponents();
