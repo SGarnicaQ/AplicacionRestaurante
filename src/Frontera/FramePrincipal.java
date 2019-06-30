@@ -49,6 +49,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         opcionesPanel = new javax.swing.JPanel();
         inicioIcon = new javax.swing.JLabel();
         inicioLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setTitle("Restaurante");
         setUndecorated(true);
@@ -140,7 +142,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         menuLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         menuLabel.setForeground(new java.awt.Color(36, 56, 63));
         menuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menuLabel.setText("MENÚS");
+        menuLabel.setText("M. RESTAURANTE");
         menuLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inicioPrincipal.add(menuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 170, 30));
 
@@ -158,10 +160,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         restauranteLabel3.setForeground(new java.awt.Color(36, 56, 63));
         restauranteLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteLabel3.setText("PEDIDOS");
+        restauranteLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inicioPrincipal.add(restauranteLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 30));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/online-menu.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inicioPrincipal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 150, 130));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -218,6 +222,16 @@ public class FramePrincipal extends javax.swing.JFrame {
             }
         });
         opcionesPanel.add(inicioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 70, 30));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/star.png"))); // NOI18N
+        opcionesPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 160));
+
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(192, 212, 216));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("GRUPO 5");
+        opcionesPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 160, 30));
 
         contenedorPanel.add(opcionesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, 630));
 
@@ -327,6 +341,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             asignacion.inicioPrincipal();
             restaurante.iniciarPrincipal();
             menu.inicioPrincipal();
+            menup.inicioPrincipal();
             principalPanel.removeAll();
             principalPanel.add(inicioPrincipal);
             principalPanel.setVisible(true);
@@ -353,7 +368,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel inicioIcon;
     private javax.swing.JLabel inicioLabel;
     private javax.swing.JPanel inicioPrincipal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel menuIcon;
