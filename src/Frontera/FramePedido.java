@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Frontera;
 
-/**
- *
- * @author Elladan
- */
 public class FramePedido extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FramePedido
-     */
     public FramePedido() {
         initComponents();
     }
@@ -161,27 +149,27 @@ public class FramePedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        
+
     }//GEN-LAST:event_backMouseClicked
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
-        
+
     }//GEN-LAST:event_editarMouseClicked
 
     private void menupVerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menupVerIconMouseClicked
-        
+
     }//GEN-LAST:event_menupVerIconMouseClicked
 
     private void menupVerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menupVerLabelMouseClicked
-        
+
     }//GEN-LAST:event_menupVerLabelMouseClicked
 
     private void menuNuevaLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaLabelMouseClicked
-        
+
     }//GEN-LAST:event_menuNuevaLabelMouseClicked
 
     private void menuNuevaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNuevaIconMouseClicked
-        
+
     }//GEN-LAST:event_menuNuevaIconMouseClicked
 
 
