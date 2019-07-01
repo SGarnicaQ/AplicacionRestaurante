@@ -4,15 +4,16 @@ import Entidad.Sistema;
 import javax.swing.JPanel;
 
 public class FramePrincipal extends javax.swing.JFrame {
-
+    
     private final FrameRestaurante restaurante = new FrameRestaurante();
     private final FrameAsignacion asignacion = new FrameAsignacion();
     private final FrameMenu menu = new FrameMenu();
     private final FrameMenuP menup = new FrameMenuP();
+    private final FramePedido pedido = new FramePedido();
     private final Dialogo dialogo = new Dialogo(null, true);
-
+    
     public static Sistema sistema = new Sistema();
-
+    
     public FramePrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -160,12 +161,22 @@ public class FramePrincipal extends javax.swing.JFrame {
         restauranteLabel3.setForeground(new java.awt.Color(36, 56, 63));
         restauranteLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteLabel3.setText("PEDIDOS");
-        restauranteLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        restauranteLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restauranteLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restauranteLabel3MouseClicked(evt);
+            }
+        });
         inicioPrincipal.add(restauranteLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 30));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/online-menu.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         inicioPrincipal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 150, 130));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -289,6 +300,14 @@ public class FramePrincipal extends javax.swing.JFrame {
         ver(menup);
     }//GEN-LAST:event_asignacionLabel1MouseClicked
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        ver(pedido);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void restauranteLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteLabel3MouseClicked
+        ver(pedido);
+    }//GEN-LAST:event_restauranteLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -323,7 +342,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void inicioGUI() {
         principalPanel.setVisible(false);
         principalPanel.removeAll();
@@ -332,7 +351,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         inicioIcon.setVisible(false);
         inicioLabel.setVisible(false);
     }
-
+    
     public void validarInicioGUI() {
         dialogo.textoLabel("¿Desea volver al inicio?");
         int selCon = dialogo.visible();
@@ -349,7 +368,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             inicioLabel.setVisible(false);
         }
     }
-
+    
     public void ver(JPanel ob) {
         principalPanel.setVisible(false);
         principalPanel.removeAll();
