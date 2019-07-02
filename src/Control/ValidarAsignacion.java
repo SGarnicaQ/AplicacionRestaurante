@@ -8,11 +8,11 @@ public class ValidarAsignacion {
     }
 
     public String validarAsignacion(Asignacion asignacion) {
-        if (!verificarLongitudNombreAsignacion(asignacion.getPersona())) {
-            return ("Longitud persona incorrecta");
-        }
         if (!verificarLongitudRestauranteAsignacion(asignacion.getRestaurante())) {
             return ("Longitud restaurante incorrecta");
+        }
+        if (!verificarLongitudPersonaAsignacion(asignacion.getPersona())) {
+            return ("Longitud persona incorrecta");
         }
         if (!verificarLongitudTurnoAsignacion(asignacion.getTurno())) {
             return ("Longitud turno incorrecta");
@@ -24,19 +24,19 @@ public class ValidarAsignacion {
         return ("Datos guardados");
     }
 
-    public boolean verificarLongitudNombreAsignacion(String nombreRes) {
-        return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
-    }
-
     public boolean verificarLongitudRestauranteAsignacion(String nombreRes) {
         return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
     }
 
-    public boolean verificarLongitudMesaAsignacion(String nombreRes) {
+    public boolean verificarLongitudPersonaAsignacion(String nombreRes) {
         return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
     }
 
-    public boolean verificarLongitudTurnoAsignacion(String nombreRes) {
+    public boolean verificarLongitudTurnoAsignacion(int nombreRes) {
+        return (nombreRes == 1 || nombreRes == 2);
+    }
+
+    public boolean verificarLongitudMesaAsignacion(String nombreRes) {
         return (nombreRes.length() >= 1 && nombreRes.length() <= 32);
     }
 

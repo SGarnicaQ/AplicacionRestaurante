@@ -11,7 +11,7 @@ public class VerAsignacion extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void verRestaurante(String nombre) {
+    public void verAsignacion() {
         tableAsi.setModel(daoAsi.ver());
     }
 
@@ -23,7 +23,7 @@ public class VerAsignacion extends javax.swing.JPanel {
         if (rowSel >= 0) {
             asignacion.setRestaurante(tableAsi.getValueAt(rowSel, 1).toString());
             asignacion.setPersona(tableAsi.getValueAt(rowSel, 2).toString());
-            asignacion.setTurno(tableAsi.getValueAt(rowSel, 3).toString());
+            asignacion.setTurno(Integer.parseInt(tableAsi.getValueAt(rowSel, 3).toString()));
             asignacion.setMesa(tableAsi.getValueAt(rowSel, 4).toString());
         }
         return asignacion;

@@ -17,14 +17,14 @@ public class AsignacionDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String restaurante, String persona, String turno, String mesa) {
+    public void crear(String restaurante, String persona, int turno, String mesa) {
         String sqlAsi = "INSERT INTO ASIGNACION(idRes, idPer, turno, mesa) VALUES (?,?,?,?)";
 
         try {
             try (PreparedStatement ps = Conectado.prepareStatement(sqlAsi)) {
                 ps.setString(1, restaurante);
                 ps.setString(2, persona);
-                ps.setString(3, turno);
+                ps.setInt(3, turno);
                 ps.setString(4, mesa);
                 ps.execute();
             }
@@ -46,7 +46,7 @@ public class AsignacionDAO {
 
         String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
-                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.ID = aplicacionrestaurante.ASIGNACION.idPer;";
+                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer;";
 
         String[] dataRes = new String[5];
 
@@ -68,7 +68,7 @@ public class AsignacionDAO {
         return asiTa;
     }
 
-    public void editar(int restaurante, int persona, String turno, String mesa, int id) {
+    public void editar(int restaurante, int persona, int turno, String mesa, int id) {
 
         String sqlAsi = "UPDATE ASIGNACION SET idRes = ?, idPer = ?,turno = ?, mesa = ? WHERE asiID = ?;";
 
@@ -76,7 +76,7 @@ public class AsignacionDAO {
             PreparedStatement ps = Conectado.prepareStatement(sqlAsi);
             ps.setInt(1, restaurante);
             ps.setInt(2, persona);
-            ps.setString(3, turno);
+            ps.setInt(3, turno);
             ps.setString(4, mesa);
             ps.setInt(5, id);
             ps.executeUpdate();
@@ -91,6 +91,8 @@ public class AsignacionDAO {
     public DefaultComboBoxModel comboRes() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
 
+        asiCo.addElement("Ninguno");
+        
         String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
 
         String[] dataBar = new String[2];
@@ -111,8 +113,10 @@ public class AsignacionDAO {
 
     public DefaultComboBoxModel comboPer() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
+        
+        asiCo.addElement("Ninguna");
 
-        String sqlBar = "SELECT ID,nombre FROM PERSONA";
+        String sqlBar = "SELECT perID,nombre FROM PERSONA";
 
         String[] dataBar = new String[2];
 

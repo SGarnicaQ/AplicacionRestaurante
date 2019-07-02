@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 public class FrameAsignacion extends javax.swing.JPanel {
 
-    private NuevaAsignacion nueva = new NuevaAsignacion();
-    private VerAsignacion ver = new VerAsignacion();
+    private final NuevaAsignacion nueva = new NuevaAsignacion();
+    private final VerAsignacion ver = new VerAsignacion();
     public Dialogo dialogo = new Dialogo(null, true);
-    private DialogoOK dialogoOk = new DialogoOK(null, true);
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameAsignacion() {
         initComponents();
@@ -35,7 +35,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
                 back.setVisible(false);
                 editar.setVisible(false);
                 nueva.vaciarCampos();
-
             }
         }
         if (nueva.validarCampos()) {
@@ -45,7 +44,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
             principalAsignacion.setVisible(true);
             back.setVisible(false);
             editar.setVisible(false);
-            nueva.vaciarCampos();
         }
     }
 
@@ -56,7 +54,9 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         nueva.comboRes();
         nueva.comboPer();
+        nueva.comboTur();
         nueva.nuevoVisible();
+        nueva.vaciarCampos();
         back.setVisible(true);
         editar.setVisible(false);
     }
@@ -66,7 +66,10 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.removeAll();
         principalAsignacion.add(ver);
         principalAsignacion.setVisible(true);
-        ver.verRestaurante("");
+        nueva.comboRes();
+        nueva.comboPer();
+        nueva.comboTur();
+        ver.verAsignacion();
         back.setVisible(true);
         editar.setVisible(true);
         nueva.editarVisible();
@@ -82,6 +85,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
             editar.setVisible(false);
             nueva.editar(ver.editarAsignacion(), temInt);
             nueva.comboRes();
+            nueva.comboTur();
         } else {
             dialogoOk.textoLabel("Por favor seleccione una fila");
             dialogoOk.visible();
@@ -95,7 +99,6 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         back.setVisible(false);
         editar.setVisible(false);
-        nueva.vaciarCampos();
     }
 
     /**

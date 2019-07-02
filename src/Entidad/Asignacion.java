@@ -4,7 +4,7 @@ public class Asignacion {
 
     private String restaurante;
     private String persona;
-    private String turno;
+    private int turno;
     private String mesa;
 
     public Asignacion() {
@@ -26,11 +26,11 @@ public class Asignacion {
         this.persona = persona;
     }
 
-    public String getTurno() {
+    public int getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(int turno) {
         this.turno = turno;
     }
 

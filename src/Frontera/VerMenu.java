@@ -1,38 +1,42 @@
 package Frontera;
 
-import DAO.RestauranteDAO;
-import Entidad.Restaurante;
+import DAO.MenuDAO;
+import Entidad.Menu;
 
-public class VerRestaurante extends javax.swing.JPanel {
+public class VerMenu extends javax.swing.JPanel {
 
-    private RestauranteDAO daoRes = new RestauranteDAO();
+    private final MenuDAO daoMen = new MenuDAO();
 
-    public VerRestaurante() {
+    public VerMenu() {
         initComponents();
     }
 
-    public void verRestaurante() {
-        tableRes.setModel(daoRes.ver());
+    public void verMenu() {
+        tableMen.setModel(daoMen.ver());
     }
 
-    public Restaurante editarRestaurante() {
+    public Menu editarMenu(){
+        Menu menu = new Menu();
 
-        Restaurante restaurante = new Restaurante();
-
-        int rowSel = tableRes.getSelectedRow();
+        int rowSel = tableMen.getSelectedRow();
         if (rowSel >= 0) {
-            restaurante.setNombre(tableRes.getValueAt(rowSel, 1).toString());
-            restaurante.setUbicacion(tableRes.getValueAt(rowSel, 2).toString());
-            restaurante.setTipo(tableRes.getValueAt(rowSel, 3).toString());
-            restaurante.setHorario(tableRes.getValueAt(rowSel, 4).toString());
+            menu.setRestaurante(tableMen.getValueAt(rowSel, 1).toString());
+            menu.setDescripcion(tableMen.getValueAt(rowSel, 2).toString());
+            menu.setComida1(tableMen.getValueAt(rowSel, 3).toString());
+            menu.setComida2(tableMen.getValueAt(rowSel, 4).toString());
+            menu.setComida3(tableMen.getValueAt(rowSel, 5).toString());
+            menu.setComida4(tableMen.getValueAt(rowSel, 6).toString());
+            menu.setComida5(tableMen.getValueAt(rowSel, 7).toString());
+            menu.setComida6(tableMen.getValueAt(rowSel, 8).toString());
+            menu.setComida7(tableMen.getValueAt(rowSel, 9).toString());
         }
-        return restaurante;
+        return menu;
     }
-
+    
     public int fila() {
-        int rowSel = tableRes.getSelectedRow();
+        int rowSel = tableMen.getSelectedRow();
         if (rowSel >= 0) {
-            return Integer.parseInt(tableRes.getValueAt(rowSel, 0).toString());
+            return Integer.parseInt(tableMen.getValueAt(rowSel, 0).toString());
         }
         return 0;
     }
@@ -47,14 +51,14 @@ public class VerRestaurante extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableRes = new javax.swing.JTable();
+        tableMen = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(164, 186, 191));
 
-        tableRes.setBackground(new java.awt.Color(36, 56, 63));
-        tableRes.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 14)); // NOI18N
-        tableRes.setForeground(new java.awt.Color(192, 212, 216));
-        tableRes.setModel(new javax.swing.table.DefaultTableModel(
+        tableMen.setBackground(new java.awt.Color(36, 56, 63));
+        tableMen.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 14)); // NOI18N
+        tableMen.setForeground(new java.awt.Color(192, 212, 216));
+        tableMen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -65,10 +69,10 @@ public class VerRestaurante extends javax.swing.JPanel {
 
             }
         ));
-        tableRes.setGridColor(new java.awt.Color(36, 56, 63));
-        tableRes.setSelectionBackground(new java.awt.Color(164, 186, 191));
-        tableRes.setSelectionForeground(new java.awt.Color(36, 56, 63));
-        jScrollPane1.setViewportView(tableRes);
+        tableMen.setGridColor(new java.awt.Color(36, 56, 63));
+        tableMen.setSelectionBackground(new java.awt.Color(164, 186, 191));
+        tableMen.setSelectionForeground(new java.awt.Color(36, 56, 63));
+        jScrollPane1.setViewportView(tableMen);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,6 +95,6 @@ public class VerRestaurante extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableRes;
+    private javax.swing.JTable tableMen;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,14 +1,12 @@
 package Frontera;
 
-import Entidad.Restaurante;
-import javax.swing.JOptionPane;
 
-public class FrameRestaurante extends javax.swing.JPanel {
+public final class FrameRestaurante extends javax.swing.JPanel {
 
-    private NuevoRestaurante nuevo = new NuevoRestaurante();
-    private VerRestaurante ver = new VerRestaurante();
-    private Dialogo dialogo = new Dialogo(null, true);
-    private DialogoOK dialogoOk = new DialogoOK(null, true);
+    private final NuevoRestaurante nuevo = new NuevoRestaurante();
+    private final VerRestaurante ver = new VerRestaurante();
+    private final Dialogo dialogo = new Dialogo(null, true);
+    private final DialogoOK dialogoOk = new DialogoOK(null, true);
 
     public FrameRestaurante() {
         initComponents();
@@ -45,6 +43,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
             principalRestaurante.setVisible(true);
             back.setVisible(false);
             editar.setVisible(false);
+            nuevo.vaciarCampos();
         }
 
     }
@@ -64,7 +63,7 @@ public class FrameRestaurante extends javax.swing.JPanel {
         principalRestaurante.removeAll();
         principalRestaurante.add(ver);
         principalRestaurante.setVisible(true);
-        ver.verRestaurante("");
+        ver.verRestaurante();
         back.setVisible(true);
         editar.setVisible(true);
         nuevo.editarVisible();
