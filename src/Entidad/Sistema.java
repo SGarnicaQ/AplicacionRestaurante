@@ -6,6 +6,15 @@ public class Sistema {
 
     private ArrayList<Restaurante> restaurantes;
     private ArrayList<Asignacion> asignaciones;
+    private ArrayList<Menu> menus;
+
+    public ArrayList<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(ArrayList<Menu> menus) {
+        this.menus = menus;
+    }
 
     public Sistema() {
     }

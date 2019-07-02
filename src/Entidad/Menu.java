@@ -11,7 +11,7 @@ public class Menu {
     private String comida5;
     private String comida6;
     private String comida7;
-    
+
     
     public Menu() {
     }
