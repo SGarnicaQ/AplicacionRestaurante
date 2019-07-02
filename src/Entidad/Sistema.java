@@ -7,6 +7,15 @@ public class Sistema {
     private ArrayList<Restaurante> restaurantes;
     private ArrayList<Asignacion> asignaciones;
     private ArrayList<Menu> menus;
+    private ArrayList<MenuP> menusp;
+
+    public ArrayList<MenuP> getMenusp() {
+        return menusp;
+    }
+
+    public void setMenusp(ArrayList<MenuP> menusp) {
+        this.menusp = menusp;
+    }
 
     public ArrayList<Menu> getMenus() {
         return menus;
