@@ -5,38 +5,35 @@ import Entidad.MenuP;
 public class ValidarMenuP {
 
     public String validarMenu(MenuP menu) {
-         if (!verificarLongitudPersonaMenu(menu.getPersona())) {
+        if (!verificarLongitudNombrePersona(menu.getPersona())) {
             return ("Longitud persona incorrecta");
-        }if (!verificarLongitudMesaMenu(menu.getMesa())) {
+        }
+        if (!verificarLongitudMesaPersona(menu.getMesa())) {
             return ("Longitud mesa incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida1())) {
-            return ("Longitud comida #1 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida2())) {
-            return ("Longitud comida #2 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida3())) {
-            return ("Longitud comida #3 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida4())) {
-            return ("Longitud comida #4 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida5())) {
-            return ("Longitud comida #5 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida6())) {
-            return ("Longitud comida #6 incorrecta");
-        }if (!verificarLongitudComidaMenu(menu.getComida7())) {
-            return ("Longitud comida #7 incorrecta");
+        }
+        if (!verificarLongitudTurnoPersona(menu.getTurno())) {
+            return ("Longitud turno incorrecta");
+        }
+        if (!verificarLongitudMenuPersona(menu.getMenu())) {
+            return ("Longitud menu incorrecta");
         }
         return ("Datos guardados");
     }
 
-    public boolean verificarLongitudPersonaMenu(String resMen) {
-        return (resMen.length() >= 1 && resMen.length() <= 32);
+    public boolean verificarLongitudNombrePersona(String nomPer) {
+        return (nomPer.length() >= 1 && nomPer.length() <= 32);
     }
 
-    public boolean verificarLongitudMesaMenu(String desMen) {
-        return (desMen.length() >= 1 && desMen.length() <= 64);
+    public boolean verificarLongitudMesaPersona(String mesPer) {
+        return (mesPer.length() >= 1 && mesPer.length() <= 64);
     }
 
-    public boolean verificarLongitudComidaMenu(String comMen) {
-        return (comMen.length() >= 0 && comMen.length() <= 32);
+    public boolean verificarLongitudTurnoPersona(String turPer) {
+        return (turPer.length() >= 0 && turPer.length() <= 32);
+    }
+
+    public boolean verificarLongitudMenuPersona(String menPer) {
+        return (menPer.length() >= 0 && menPer.length() <= 32);
     }
 
 }

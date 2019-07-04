@@ -16,16 +16,17 @@ public class RestauranteDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String nombre, String ubicacion, String tipo, String horario) {
+    public void crear(String nombre, String ubicacion, String tipo, int turno, String horario) {
 
-        String sqlRes = "INSERT INTO RESTAURANTE(nombre, ubicacion, tipo, horario) VALUES (?,?,?,?)";
+        String sqlRes = "INSERT INTO RESTAURANTE(nombre, ubicacion, tipo, turno, horario) VALUES (?,?,?,?,?)";
 
         try {
             try (PreparedStatement ps = Conectado.prepareStatement(sqlRes)) {
                 ps.setString(1, nombre);
                 ps.setString(2, ubicacion);
                 ps.setString(3, tipo);
-                ps.setString(4, horario);
+                ps.setInt(4, turno);
+                ps.setString(5, horario);
                 ps.execute();
             }
 
@@ -67,9 +68,9 @@ public class RestauranteDAO {
         return resTa;
     }
 
-    public void editar(String nombre, String ubicacion, String tipo, String horario, int id) {
+    public void editar(String nombre, String ubicacion, String tipo, String horario, int turno, int id) {
 
-        String sqlRes = "UPDATE RESTAURANTE SET nombre=?, ubicacion=?, tipo=?, horario=? WHERE resID = ?";
+        String sqlRes = "UPDATE RESTAURANTE SET nombre=?, ubicacion=?, tipo=?, horario=?, turno=? WHERE resID = ?";
 
         try {
             PreparedStatement ps = Conectado.prepareStatement(sqlRes);
@@ -77,6 +78,7 @@ public class RestauranteDAO {
             ps.setString(2, ubicacion);
             ps.setString(3, tipo);
             ps.setString(4, horario);
+            ps.setInt(5, turno);
             ps.setInt(5, id);
             ps.executeUpdate();
             ps.close();

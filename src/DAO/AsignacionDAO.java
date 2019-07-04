@@ -44,7 +44,7 @@ public class AsignacionDAO {
         asiTa.addColumn("Turno");
         asiTa.addColumn("Mesa");
 
-        String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, turno, mesa FROM ASIGNACION "
+        String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, ASIGNACION.turno, mesa FROM ASIGNACION "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
                 + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer;";
 
@@ -92,7 +92,7 @@ public class AsignacionDAO {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
 
         asiCo.addElement("Ninguno");
-        
+
         String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
 
         String[] dataBar = new String[2];
@@ -113,7 +113,7 @@ public class AsignacionDAO {
 
     public DefaultComboBoxModel comboPer() {
         DefaultComboBoxModel asiCo = new DefaultComboBoxModel();
-        
+
         asiCo.addElement("Ninguna");
 
         String sqlBar = "SELECT perID,nombre FROM PERSONA";
@@ -132,6 +132,43 @@ public class AsignacionDAO {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         return asiCo;
+    }
+
+    public String[] comboTur(String id) {
+        
+        String sqlBar = "SELECT turno FROM RESTAURANTE WHERE resID = '" + id + "'";
+
+        String[] dataBar = new String[1];
+
+        try {
+            Statement barSQL = Conectado.createStatement();
+            ResultSet barRts = barSQL.executeQuery(sqlBar);
+            while (barRts.next()) {
+                dataBar[0] = barRts.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataBar;
+    }
+
+    public String[] turno(int id) {
+
+        String sqlDatos = "SELECT turno FROM RESTAURANTE WHERE resID = " + id;
+
+        String[] dataRes = new String[1];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
     }
 
 }
