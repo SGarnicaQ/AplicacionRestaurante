@@ -22,13 +22,8 @@ public class VerMenuP extends javax.swing.JPanel {
         if (rowSel >= 0) {
             menu.setPersona(tableMenp.getValueAt(rowSel, 1).toString());
             menu.setMesa(tableMenp.getValueAt(rowSel, 2).toString());
-            menu.setComida1(tableMenp.getValueAt(rowSel, 3).toString());
-            menu.setComida2(tableMenp.getValueAt(rowSel, 4).toString());
-            menu.setComida3(tableMenp.getValueAt(rowSel, 5).toString());
-            menu.setComida4(tableMenp.getValueAt(rowSel, 6).toString());
-            menu.setComida5(tableMenp.getValueAt(rowSel, 7).toString());
-            menu.setComida6(tableMenp.getValueAt(rowSel, 8).toString());
-            menu.setComida7(tableMenp.getValueAt(rowSel, 9).toString());
+            menu.setTurno(tableMenp.getValueAt(rowSel, 3).toString());
+            menu.setMenu(tableMenp.getValueAt(rowSel, 4).toString());
         }
         return menu;
     }
