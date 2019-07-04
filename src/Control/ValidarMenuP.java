@@ -5,7 +5,7 @@ import Entidad.MenuP;
 public class ValidarMenuP {
 
 
-    public String validarMenu(MenuP menu) {
+    public String validarMenuP(MenuP menu) {
         if (!verificarLongitudNombrePersona(menu.getPersona())) {
             return ("Longitud persona incorrecta");
         }
