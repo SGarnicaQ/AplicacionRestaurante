@@ -1,11 +1,12 @@
 package Entidad;
 
 public class Restaurante {
-    
+
     private String nombre;
     private String ubicacion;
     private String tipo;
     private String horario;
+    private int turno;
 
     public Restaurante() {
     }
@@ -41,5 +42,13 @@ public class Restaurante {
     public void setHorario(String horario) {
         this.horario = horario;
     }
-    
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+
 }

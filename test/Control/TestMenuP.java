@@ -23,38 +23,35 @@ import static org.junit.Assert.*;
 public class TestMenuP {
     private static ValidarMenuP validarMenuP = new ValidarMenuP();
     
+    private static final String LONGITUD_NOMBRE_PERSONA = "Longitud persona incorrecta";
+    private static final String LONGITUD_MENU = "Longitud menu incorrecta";
+    
     public TestMenuP() {
-        ArrayList<MenuP> mensp = new ArrayList<>();
-
-        MenuP a = new MenuP();
-
-        a.setPersona("");
-        a.setMesa("Desasyuno #1");
-        a.setComida1("Huevos Fritos");
-        a.setComida2("Pan tajado con mantequilla");
-        a.setComida3("Chocolate");
-
-        mensp.add(a);
-
-        sistema.setMenusp(mensp);
-
-        for (MenuP mep : mensp) {
-            System.out.println(mep.getPersona());
-            System.out.println(mep.getMesa());
-            System.out.println(mep.getComida1());
-            System.out.println(mep.getComida2());
-            System.out.println(mep.getComida3());
-            System.out.println(mep.getComida4());
-            System.out.println(mep.getComida5());
-            System.out.println(mep.getComida6());
-            System.out.println(mep.getComida7());
-            
-            System.out.println("---------");
-        }
     }
     
     @BeforeClass
     public static void setUpClass() {
+        ArrayList<MenuP> menps = new ArrayList<>();
+
+        MenuP a = new MenuP();
+
+        a.setPersona("Maria");
+        a.setMesa("10");
+        a.setTurno("2");
+        a.setMenu("5");
+
+        menps.add(a);
+
+        sistema.setMenusP(menps);
+
+        for (MenuP me : menps) {
+            System.out.println(me.getPersona());
+            System.out.println(me.getMesa());
+            System.out.println(me.getTurno());
+            System.out.println(me.getMenu());
+            
+            System.out.println("---------");
+        }
     }
     
     @AfterClass
@@ -75,75 +72,35 @@ public class TestMenuP {
     // @Test
     // public void hello() {}
     
+    
     @Test
-    public void testLongitudRestauranteMenu() {
+    public void testLongitudPersona() {
         MenuP menp = new MenuP();
         
         menp.setPersona("");
-        menp.setMesa("Desayuno #1");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("Chocolate");
+        menp.setMesa("10");
+        menp.setTurno("2");
+        menp.setMenu("#Cena 1");
         
-        assertEquals(validarMenuP.validarMenuP(menp), );
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_NOMBRE_PERSONA);
         
-        menp.setPersona("Delicias del MarDelicias del MarD");
-        menp.setMesa("Desayuno #1");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("Chocolate");
+        menp.setPersona("MariaMariaMariaMariaMariaMariaMar");
+        menp.setMesa("10");
+        menp.setTurno("2");
+        menp.setMenu("#Cena 1");
         
-        assertEquals(validarMenuP.validarMenuP(menp), );
-    }
-    
-    
-    @Test
-    public void testLongitudDescripcion() {
-        MenuP menp = new MenuP();
-        
-        menp.setPersona("Delicias del Mar");
-        menp.setMesa("");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("Chocolate");
-        
-        assertEquals(validarMenuP.validarMenuP(menp), );
-        
-        menp.setPersona("Delicias del Mar");
-        menp.setMesa("Desayuno #1Desayuno #1Desayuno #1Desayuno #1Desayuno #1Desayuno #");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("Chocolate");
-        
-        assertEquals(validarMenuP.validarMenuP(menp), );
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_NOMBRE_PERSONA);
     }
     
     @Test
-    public void testLongitudComida() {
+    public void testLongitudMenu() {
         MenuP menp = new MenuP();
                 
-        menp.setPersona("Delicias del Mar");
-        menp.setMesa("Desayuno #1");
-        menp.setComida1("Huevos FritosHuevos FritosHuevos ");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("Chocolate");
+        menp.setPersona("Maria");
+        menp.setMesa("10");
+        menp.setTurno("2");
+        menp.setMenu("#Cena 1#Cena 1#Cena 1#Cena 1#Cena ");
         
-        assertEquals(validarMenuP.validarMenuP(menp), );
-        
-        menp.setPersona("Delicias del Mar");
-        menp.setMesa("Desayuno #1");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequillaPan taj");
-        menp.setComida3("Chocolate");
-        
-        assertEquals(validarMenuP.validarMenuP(menp), );
-        
-        menp.setPersona("Delicias del Mar");
-        menp.setMesa("Desayuno #1");
-        menp.setComida1("Huevos Fritos");
-        menp.setComida2("Pan tajado con mantequilla");
-        menp.setComida3("ChocolateChocolateChocolateChocol");
-        
-        assertEquals(validarMenuP.validarMenuP(menp), );
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_MENU);
     }
 }
