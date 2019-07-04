@@ -68,7 +68,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
         principalAsignacion.setVisible(true);
         nueva.comboRes();
         nueva.comboPer();
-        nueva.comboTur();
+        //nueva.comboTur();
         ver.verAsignacion();
         back.setVisible(true);
         editar.setVisible(true);
@@ -85,7 +85,7 @@ public class FrameAsignacion extends javax.swing.JPanel {
             editar.setVisible(false);
             nueva.editar(ver.editarAsignacion(), temInt);
             nueva.comboRes();
-            nueva.comboTur();
+            //nueva.comboTur();
         } else {
             dialogoOk.textoLabel("Por favor seleccione una fila");
             dialogoOk.visible();
