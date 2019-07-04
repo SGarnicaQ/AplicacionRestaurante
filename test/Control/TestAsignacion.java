@@ -30,7 +30,7 @@ public class TestAsignacion {
         a.setRestaurante("Delicias del Mar");
         a.setPersona("Alejandra");
         a.setMesa("21");
-        a.setTurno("1");
+        a.setTurno(1);
 
         asignaciones.add(a);
 
@@ -64,13 +64,13 @@ public class TestAsignacion {
 
         asi.setRestaurante("");
         asi.setPersona("Alejandra");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_RESTAURANTE);
 
         asi.setRestaurante("Delicias del MarDelicias del MarD");
         asi.setPersona("Alejandra");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_RESTAURANTE);
     }
@@ -82,13 +82,13 @@ public class TestAsignacion {
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_PERSONA);
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("AlejandraAlejandraAlejandraAlejan");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_PERSONA);
     }
@@ -100,13 +100,13 @@ public class TestAsignacion {
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("Alejandra");
-        asi.setTurno("");
+        asi.setTurno(-1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_TURNO);
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("Alejandra");
-        asi.setTurno("123456789012345678901234567890123");
+        asi.setTurno(12);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_TURNO);
     }
@@ -118,13 +118,13 @@ public class TestAsignacion {
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("Alejandra");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_MESA);
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("Alejandra");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("123456789012345678901234567890123");
         assertEquals(validarAsignacion.validarAsignacion(asi), LONGITUD_NOMBRE_MESA);
     }
@@ -136,7 +136,7 @@ public class TestAsignacion {
 
         asi.setRestaurante("Delicias del Mar");
         asi.setPersona("Alejandra");
-        asi.setTurno("21");
+        asi.setTurno(1);
         asi.setMesa("1");
         assertEquals(validarAsignacion.validarAsignacion(asi), DATOS_GUARDADOS);
     }
