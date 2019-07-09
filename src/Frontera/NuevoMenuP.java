@@ -73,7 +73,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
         if ("Ninguna".equals(comPer.getSelectedItem().toString())) {
             menup.setPersona(0);
 
-            respuesta = validar.validarMenu(menup);
+            respuesta = validar.validarMenuP(menup);
 
             dialogoOk.textoLabel(respuesta);
             dialogoOk.visible();
@@ -86,7 +86,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
             menup.setPostre("asdas");
             menup.setCostoAdi("asd");
 
-            respuesta = validar.validarMenu(menup);
+            respuesta = validar.validarMenuP(menup);
 
             if ("Longitud mesa incorrecta".equals(respuesta)) {
                 dialogoOk.textoLabel(respuesta);
@@ -150,7 +150,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
             if (true/*"Ninguna".equals(comMen.getSelectedItem().toString())*/) {
                 //menup.setPersona("");
 
-                respuesta = validar.validarMenu(menup);
+                respuesta = validar.validarMenuP(menup);
 
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
@@ -160,7 +160,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 menup.setTurno(turnoLabel.getText());
                 //menup.setMenu(Character.toString(comMen.getSelectedItem().toString().charAt(0)));
 
-                respuesta = validar.validarMenu(menup);
+                respuesta = validar.validarMenuP(menup);
 
                 if ("Longitud descripcion incorrecta".equals(respuesta)) {
                     dialogoOk.textoLabel(respuesta);
