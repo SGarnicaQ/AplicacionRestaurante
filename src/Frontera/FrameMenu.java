@@ -52,6 +52,8 @@ public final class FrameMenu extends javax.swing.JPanel {
         principalMenu.add(nuevo);
         principalMenu.setVisible(true);
         nuevo.comboRes();
+        nuevo.comboFec();
+        nuevo.comboDes();
         nuevo.vaciarCampos();
         back.setVisible(true);
         editar.setVisible(false);
@@ -64,6 +66,8 @@ public final class FrameMenu extends javax.swing.JPanel {
         principalMenu.add(ver);
         principalMenu.setVisible(true);
         nuevo.comboRes();
+        nuevo.comboFec();
+        nuevo.comboDes();
         nuevo.vaciarCampos();
         ver.verMenu();
         back.setVisible(true);

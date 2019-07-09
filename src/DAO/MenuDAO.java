@@ -17,20 +17,21 @@ public class MenuDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String resta, String desc, String com1, String com2, String com3, String com4, String com5, String com6, String com7) {
-        String sqlAsi = "INSERT INTO MENU(idRes, descrip, com1, com2, com3, com4, com5, com6, com7) VALUES (?,?,?,?,?,?,?,?,?)";
+    public void crear(String resta, String desc,String dia, String com1, String com2, String com3, String com4, String com5, String com6, String com7) {
+        String sqlAsi = "INSERT INTO MENU(idRes, descrip, dia, com1, com2, com3, com4, com5, com6, com7) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try {
             try (PreparedStatement ps = Conectado.prepareStatement(sqlAsi)) {
                 ps.setString(1, resta);
                 ps.setString(2, desc);
-                ps.setString(3, com1);
-                ps.setString(4, com2);
-                ps.setString(5, com3);
-                ps.setString(6, com4);
-                ps.setString(7, com5);
-                ps.setString(8, com6);
-                ps.setString(9, com7);
+                ps.setString(3, dia);
+                ps.setString(4, com1);
+                ps.setString(5, com2);
+                ps.setString(6, com3);
+                ps.setString(7, com4);
+                ps.setString(8, com5);
+                ps.setString(9, com6);
+                ps.setString(10, com7);
                 ps.execute();
             }
 
@@ -46,6 +47,7 @@ public class MenuDAO {
         menTa.addColumn("ID");
         menTa.addColumn("Restaurante");
         menTa.addColumn("Descripcion");
+        menTa.addColumn("Día");
         menTa.addColumn("Comida #1");
         menTa.addColumn("Comida #2");
         menTa.addColumn("Comida #3");
@@ -54,10 +56,10 @@ public class MenuDAO {
         menTa.addColumn("Comida #6");
         menTa.addColumn("Comida #7");
 
-        String sqlRes = "SELECT menID, RESTAURANTE.nombre, descrip, com1, com2, com3, com4, com5, com6, com7 FROM MENU "
+        String sqlRes = "SELECT menID, RESTAURANTE.nombre, descrip, dia, com1, com2, com3, com4, com5, com6, com7 FROM MENU "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.MENU.idRes ";
 
-        String[] dataRes = new String[10];
+        String[] dataRes = new String[11];
 
         try {
             Statement bcuSta = Conectado.createStatement();
@@ -73,6 +75,7 @@ public class MenuDAO {
                 dataRes[7] = bcuRts.getString(8);
                 dataRes[8] = bcuRts.getString(9);
                 dataRes[9] = bcuRts.getString(10);
+                dataRes[10] = bcuRts.getString(11);
                 menTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
@@ -111,7 +114,7 @@ public class MenuDAO {
 
         menCo.addElement("Ninguno");
 
-        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
+        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE WHERE nombre = 'Mediterraneo' OR nombre = 'Atlántico'";
 
         String[] dataBar = new String[2];
 

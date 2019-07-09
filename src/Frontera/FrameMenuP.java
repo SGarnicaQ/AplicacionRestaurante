@@ -52,7 +52,7 @@ public class FrameMenuP extends javax.swing.JPanel {
         principalMenuP.add(nuevo);
         principalMenuP.setVisible(true);
         nuevo.comboPer();
-        nuevo.comboMen();
+        nuevo.comboFec();
         nuevo.vaciarCampos();
         back.setVisible(true);
         editar.setVisible(false);
@@ -65,7 +65,6 @@ public class FrameMenuP extends javax.swing.JPanel {
         principalMenuP.add(ver);
         principalMenuP.setVisible(true);
         nuevo.comboPer();
-        nuevo.comboMen();
         nuevo.vaciarCampos();
         ver.verMenuP();
         back.setVisible(true);
