@@ -110,6 +110,16 @@ public class TestMenuP {
         menp.setCostoAdi("Vino");
         
         assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_MESA);
+        
+        menp.setPersona(123456789);
+        menp.setMesa("12345678901234567890123456789012345678901234567890123456789012345");
+        menp.setTurno("2");        
+        menp.setEntrada("Galletas");
+        menp.setPlatoFue("Pollo");
+        menp.setPostre("Gelatina");
+        menp.setCostoAdi("Vino");
+        
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_MESA);
     }
     
     @Test
@@ -125,5 +135,20 @@ public class TestMenuP {
         menp.setCostoAdi("Vino");
         
         assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_TURNO);
+    }
+    
+    @Test
+    public void testLongitudEntradaPersona() {
+        MenuP menp = new MenuP();
+        
+        menp.setPersona(123456789);
+        menp.setMesa("10");
+        menp.setTurno("2");        
+        menp.setEntrada("GalletasGalletasGalletasGalletasG");
+        menp.setPlatoFue("Pollo");
+        menp.setPostre("Gelatina");
+        menp.setCostoAdi("Vino");
+        
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_ENTRADA);
     }
 }
