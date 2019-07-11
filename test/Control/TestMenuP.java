@@ -24,7 +24,9 @@ public class TestMenuP {
     private static ValidarMenuP validarMenuP = new ValidarMenuP();
     
     private static final String LONGITUD_NOMBRE_PERSONA = "Longitud persona incorrecta";
-    private static final String LONGITUD_MENU = "Longitud menu incorrecta";
+    private static final String LONGITUD_MESA = "Longitud mesa incorrecta";
+    private static final String LONGITUD_TURNO = "Longitud turno incorrecta";
+    private static final String LONGITUD_ENTRADA = "Longitud entrada incorrecta";
     
     public TestMenuP() {
     }
@@ -35,10 +37,13 @@ public class TestMenuP {
 
         MenuP a = new MenuP();
 
-        a.setPersona("Maria");
+        a.setPersona(123456789);
         a.setMesa("10");
-        a.setTurno("2");
-        a.setMenu("5");
+        a.setTurno("2");        
+        a.setEntrada("Galletas");
+        a.setPlatoFue("Pollo");
+        a.setPostre("Gelatina");
+        a.setCostoAdi("Vino");
 
         menps.add(a);
 
@@ -48,7 +53,10 @@ public class TestMenuP {
             System.out.println(me.getPersona());
             System.out.println(me.getMesa());
             System.out.println(me.getTurno());
-            System.out.println(me.getMenu());
+            System.out.println(me.getEntrada());
+            System.out.println(me.getPlatoFue());
+            System.out.println(me.getPostre());
+            System.out.println(me.getCostoAdi());
             
             System.out.println("---------");
         }
@@ -74,33 +82,48 @@ public class TestMenuP {
     
     
     @Test
-    public void testLongitudPersona() {
+    public void testLongitudNombrePersona() {
         MenuP menp = new MenuP();
         
-        menp.setPersona("");
+        menp.setPersona(0);
         menp.setMesa("10");
-        menp.setTurno("2");
-        menp.setMenu("#Cena 1");
-        
-        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_NOMBRE_PERSONA);
-        
-        menp.setPersona("MariaMariaMariaMariaMariaMariaMar");
-        menp.setMesa("10");
-        menp.setTurno("2");
-        menp.setMenu("#Cena 1");
+        menp.setTurno("2");        
+        menp.setEntrada("Galletas");
+        menp.setPlatoFue("Pollo");
+        menp.setPostre("Gelatina");
+        menp.setCostoAdi("Vino");
+
         
         assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_NOMBRE_PERSONA);
     }
     
     @Test
-    public void testLongitudMenu() {
+    public void testLongitudMesaPersona() {
         MenuP menp = new MenuP();
                 
-        menp.setPersona("Maria");
-        menp.setMesa("10");
-        menp.setTurno("2");
-        menp.setMenu("#Cena 1#Cena 1#Cena 1#Cena 1#Cena ");
+        menp.setPersona(123456789);
+        menp.setMesa("");
+        menp.setTurno("2");        
+        menp.setEntrada("Galletas");
+        menp.setPlatoFue("Pollo");
+        menp.setPostre("Gelatina");
+        menp.setCostoAdi("Vino");
         
-        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_MENU);
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_MESA);
+    }
+    
+    @Test
+    public void testLongitudTurnoPersona() {
+        MenuP menp = new MenuP();
+                
+        menp.setPersona(123456789);
+        menp.setMesa("10");
+        menp.setTurno("121212121212121212121212121212121");        
+        menp.setEntrada("Galletas");
+        menp.setPlatoFue("Pollo");
+        menp.setPostre("Gelatina");
+        menp.setCostoAdi("Vino");
+        
+        assertEquals(validarMenuP.validarMenuP(menp), LONGITUD_TURNO);
     }
 }

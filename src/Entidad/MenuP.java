@@ -5,7 +5,6 @@ public class MenuP {
     private int persona;
     private String mesa;
     private String turno;
-    private String menu;
     private String entrada;
     private String platoFue;
     private String postre;
@@ -33,14 +32,6 @@ public class MenuP {
 
     public void setTurno(String turno) {
         this.turno = turno;
-    }
-
-    public String getMenu() {
-        return menu;
-    }
-
-    public void setMenu(String menu) {
-        this.menu = menu;
     }
 
     public String getEntrada() {
