@@ -15,7 +15,7 @@ public class ValidarMenuP {
             return ("Longitud turno incorrecta");
         }
         if (!verificarLongitudEntradaPersona(menu.getEntrada())) {
-            return ("Longitud menu incorrecta");
+            return ("Longitud entrada incorrecta");
         }
         return ("Datos guardados");
     }

@@ -53,7 +53,7 @@ public class MenuPDAO {
         String sqlRes = "SELECT menpID, PERSONA.nombre, mesa, turno, entrada, platoFue, postre, costoAdi FROM MENUP "
                 + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.MENUP.idPer ";
 
-        String[] dataRes = new String[5];
+        String[] dataRes = new String[8];
 
         try {
             Statement bcuSta = Conectado.createStatement();
@@ -64,6 +64,9 @@ public class MenuPDAO {
                 dataRes[2] = bcuRts.getString(3);
                 dataRes[3] = bcuRts.getString(4);
                 dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+                dataRes[7] = bcuRts.getString(8);
                 menTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
