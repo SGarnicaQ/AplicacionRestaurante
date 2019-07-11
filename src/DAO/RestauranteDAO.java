@@ -79,7 +79,7 @@ public class RestauranteDAO {
             ps.setString(3, tipo);
             ps.setString(4, horario);
             ps.setInt(5, turno);
-            ps.setInt(5, id);
+            ps.setInt(6, id);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {

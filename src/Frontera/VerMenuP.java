@@ -20,7 +20,7 @@ public class VerMenuP extends javax.swing.JPanel {
 
         int rowSel = tableMenp.getSelectedRow();
         if (rowSel >= 0) {
-            menu.setPersona(tableMenp.getValueAt(rowSel, 1).toString());
+            //menu.setPersona(tableMenp.getValueAt(rowSel, 1).toString());
             menu.setMesa(tableMenp.getValueAt(rowSel, 2).toString());
             menu.setTurno(tableMenp.getValueAt(rowSel, 3).toString());
             menu.setMenu(tableMenp.getValueAt(rowSel, 4).toString());

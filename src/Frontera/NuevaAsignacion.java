@@ -111,10 +111,10 @@ public class NuevaAsignacion extends javax.swing.JPanel {
                 dialogoOk.visible();
             } else {
                 
-                asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
-                asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
-                asignacion.setTurno(Integer.parseInt(Character.toString(comRes.getSelectedItem().toString().charAt(0))));
-                asignacion.setMesa(mesaTF.getText());
+            asignacion.setRestaurante(Character.toString(comRes.getSelectedItem().toString().charAt(0)));
+            asignacion.setPersona(Character.toString(comPer.getSelectedItem().toString().charAt(0)));
+            asignacion.setTurno(Integer.parseInt(turnoLabel.getText()));
+            asignacion.setMesa(mesaTF.getText());
                 
                 respuesta = validar.validarAsignacion(asignacion);
                 

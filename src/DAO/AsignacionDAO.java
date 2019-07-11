@@ -46,7 +46,7 @@ public class AsignacionDAO {
 
         String sqlRes = "SELECT asiID, RESTAURANTE.nombre, PERSONA.nombre, ASIGNACION.turno, mesa FROM ASIGNACION "
                 + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes "
-                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer;";
+                + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer WHERE RESTAURANTE.nombre = 'Mediterraneo' OR RESTAURANTE.nombre = 'Atlántico'";
 
         String[] dataRes = new String[5];
 
@@ -93,7 +93,7 @@ public class AsignacionDAO {
 
         asiCo.addElement("Ninguno");
 
-        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
+        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE WHERE nombre = 'Mediterraneo' OR nombre = 'Atlántico'";
 
         String[] dataBar = new String[2];
 

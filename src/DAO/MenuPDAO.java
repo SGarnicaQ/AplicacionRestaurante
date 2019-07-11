@@ -17,15 +17,18 @@ public class MenuPDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String perso, String mesa, String turno, String menu) {
-        String sqlAsi = "INSERT INTO MENUP(idPer, mesa, turno, menu) VALUES (?,?,?,?)";
+    public void crear(int perso, String mesa, String turno, String entrada, String platoFue, String postre, String costoAdi) {
+        String sqlAsi = "INSERT INTO MENUP (idPer, mesa, turno, entrada, platoFue, postre, costoAdi) VALUES (?,?,?,?,?,?,?)";
 
         try {
             try (PreparedStatement ps = Conectado.prepareStatement(sqlAsi)) {
-                ps.setString(1, perso);
+                ps.setInt(1, perso);
                 ps.setString(2, mesa);
                 ps.setString(3, turno);
-                ps.setString(4, menu);
+                ps.setString(4, entrada);
+                ps.setString(5, platoFue);
+                ps.setString(6, postre);
+                ps.setString(7, costoAdi);
                 ps.execute();
             }
 
@@ -42,12 +45,15 @@ public class MenuPDAO {
         menTa.addColumn("Persona");
         menTa.addColumn("Mesa");
         menTa.addColumn("Turno");
-        menTa.addColumn("Menú");
+        menTa.addColumn("Entrada");
+        menTa.addColumn("Plato fuerte");
+        menTa.addColumn("Postre");
+        menTa.addColumn("Costo adicional");
 
-        String sqlRes = "SELECT menpID, PERSONA.nombre, mesa, turno, menu FROM MENUP "
+        String sqlRes = "SELECT menpID, PERSONA.nombre, mesa, turno, entrada, platoFue, postre, costoAdi FROM MENUP "
                 + "INNER JOIN PERSONA ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.MENUP.idPer ";
 
-        String[] dataRes = new String[5];
+        String[] dataRes = new String[8];
 
         try {
             Statement bcuSta = Conectado.createStatement();
@@ -58,6 +64,9 @@ public class MenuPDAO {
                 dataRes[2] = bcuRts.getString(3);
                 dataRes[3] = bcuRts.getString(4);
                 dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+                dataRes[7] = bcuRts.getString(8);
                 menTa.addRow(dataRes);
             }
         } catch (SQLException ex) {
@@ -91,7 +100,9 @@ public class MenuPDAO {
 
         menpCo.addElement("Ninguna");
 
-        String sqlBar = "SELECT PERSONA.perID, PERSONA.nombre FROM PERSONA INNER JOIN ASIGNACION ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer";
+        String sqlBar = "SELECT PERSONA.perID, PERSONA.nombre FROM PERSONA "
+                + "INNER JOIN ASIGNACION ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer "
+                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.ASIGNACION.idRes = aplicacionrestaurante.RESTAURANTE.resID WHERE RESTAURANTE.nombre = 'Mediterraneo' OR RESTAURANTE.nombre = 'Atlántico'";
 
         String[] dataBar = new String[2];
 
@@ -112,7 +123,8 @@ public class MenuPDAO {
     public DefaultComboBoxModel comboMen(String res) {
         DefaultComboBoxModel menpCo = new DefaultComboBoxModel();
 
-        String sqlBar = "SELECT menID FROM MENU INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.MENU.idRes WHERE RESTAURANTE.nombre = '" + res + "'";
+        String sqlBar = "SELECT menID FROM MENU "
+                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.MENU.idRes WHERE RESTAURANTE.nombre = '" + res + "'";
 
         String[] dataBar = new String[1];
 
@@ -187,6 +199,126 @@ public class MenuPDAO {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Integer.parseInt(dataBar[0]);
+    }
+
+    public String[] turno(int id) {
+
+        String sqlDatos = "SELECT mesa, turno FROM ASIGNACION WHERE idPer = " + id;
+
+        String[] dataRes = new String[2];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
+    }
+
+    public String[] comidaEnt(String dia) {
+
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Entrada'";
+
+        String[] dataRes = new String[7];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
+    }
+
+    public String[] comidaPla(String dia) {
+
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Plato fuerte'";
+
+        String[] dataRes = new String[7];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
+    }
+
+    public String[] comidaPos(String dia) {
+
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Postre'";
+
+        String[] dataRes = new String[7];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
+    }
+
+    public String[] comidaCos(String dia) {
+
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Costo adicional'";
+
+        String[] dataRes = new String[7];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
     }
 
 }

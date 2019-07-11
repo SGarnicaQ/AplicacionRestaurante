@@ -4,6 +4,7 @@ public class Menu {
 
     private String restaurante;
     private String descripcion;
+    private String dia;
     private String comida1;
     private String comida2;
     private String comida3;
@@ -31,6 +32,16 @@ public class Menu {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+    
+    
 
     public String getComida1() {
         return comida1;

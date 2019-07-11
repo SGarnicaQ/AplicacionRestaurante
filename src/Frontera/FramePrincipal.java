@@ -35,10 +35,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         servicioDeRestaurante = new javax.swing.JLabel();
         principalPanel = new javax.swing.JPanel();
         inicioPrincipal = new javax.swing.JPanel();
-        asignacionIcon = new javax.swing.JLabel();
-        asignacionLabel = new javax.swing.JLabel();
         restauranteIcon = new javax.swing.JLabel();
         restauranteLabel = new javax.swing.JLabel();
+        asignacionIcon = new javax.swing.JLabel();
+        asignacionLabel = new javax.swing.JLabel();
         menuIcon = new javax.swing.JLabel();
         menuLabel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -86,28 +86,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         inicioPrincipal.setBackground(new java.awt.Color(164, 186, 191));
         inicioPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        asignacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/profile.png"))); // NOI18N
-        asignacionIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        asignacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                asignacionIconMouseClicked(evt);
-            }
-        });
-        inicioPrincipal.add(asignacionIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 130));
-
-        asignacionLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
-        asignacionLabel.setForeground(new java.awt.Color(36, 56, 63));
-        asignacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        asignacionLabel.setText("ASIGNACIÓN");
-        asignacionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        asignacionLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                asignacionLabelMouseClicked(evt);
-            }
-        });
-        inicioPrincipal.add(asignacionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, 30));
-
         restauranteIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restauranteIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/restaurantB1.png"))); // NOI18N
         restauranteIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -116,7 +94,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 restauranteIconMouseClicked(evt);
             }
         });
-        inicioPrincipal.add(restauranteIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 150, 130));
+        inicioPrincipal.add(restauranteIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 130));
 
         restauranteLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         restauranteLabel.setForeground(new java.awt.Color(36, 56, 63));
@@ -128,7 +106,29 @@ public class FramePrincipal extends javax.swing.JFrame {
                 restauranteLabelMouseClicked(evt);
             }
         });
-        inicioPrincipal.add(restauranteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 170, 30));
+        inicioPrincipal.add(restauranteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, 30));
+
+        asignacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asignacionIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/profile.png"))); // NOI18N
+        asignacionIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                asignacionIconMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(asignacionIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 150, 130));
+
+        asignacionLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        asignacionLabel.setForeground(new java.awt.Color(36, 56, 63));
+        asignacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asignacionLabel.setText("ASIGNACION");
+        asignacionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        asignacionLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                asignacionLabelMouseClicked(evt);
+            }
+        });
+        inicioPrincipal.add(asignacionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 170, 30));
 
         menuIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/menu.png"))); // NOI18N
@@ -268,14 +268,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         validarInicioGUI();
     }//GEN-LAST:event_inicioIconMouseClicked
 
-    private void asignacionIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionIconMouseClicked
-        ver(asignacion);
-    }//GEN-LAST:event_asignacionIconMouseClicked
-
-    private void asignacionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabelMouseClicked
-        ver(asignacion);
-    }//GEN-LAST:event_asignacionLabelMouseClicked
-
     private void restauranteIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteIconMouseClicked
         ver(restaurante);
     }//GEN-LAST:event_restauranteIconMouseClicked
@@ -283,6 +275,14 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void restauranteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restauranteLabelMouseClicked
         ver(restaurante);
     }//GEN-LAST:event_restauranteLabelMouseClicked
+
+    private void asignacionIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionIconMouseClicked
+        ver(asignacion);
+    }//GEN-LAST:event_asignacionIconMouseClicked
+
+    private void asignacionLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asignacionLabelMouseClicked
+        ver(asignacion);
+    }//GEN-LAST:event_asignacionLabelMouseClicked
 
     private void inicioLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioLabelMouseClicked
         validarInicioGUI();

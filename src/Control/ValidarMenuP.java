@@ -15,14 +15,14 @@ public class ValidarMenuP {
         if (!verificarLongitudTurnoPersona(menu.getTurno())) {
             return ("Longitud turno incorrecta");
         }
-        if (!verificarLongitudMenuPersona(menu.getMenu())) {
-            return ("Longitud menu incorrecta");
+        if (!verificarLongitudEntradaPersona(menu.getEntrada())) {
+            return ("Longitud entrada incorrecta");
         }
         return ("Datos guardados");
     }
 
-    public boolean verificarLongitudNombrePersona(String nomPer) {
-        return (nomPer.length() >= 1 && nomPer.length() <= 32);
+    public boolean verificarLongitudNombrePersona(int nomPer) {
+        return (nomPer != 0);
     }
 
     public boolean verificarLongitudMesaPersona(String mesPer) {
@@ -33,7 +33,7 @@ public class ValidarMenuP {
         return (turPer.length() >= 0 && turPer.length() <= 32);
     }
 
-    public boolean verificarLongitudMenuPersona(String menPer) {
+    public boolean verificarLongitudEntradaPersona(String menPer) {
         return (menPer.length() >= 0 && menPer.length() <= 32);
     }
 

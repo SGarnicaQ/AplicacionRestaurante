@@ -38,7 +38,11 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         restaurante.setUbicacion(ubicacionTF.getText());
         restaurante.setTipo(tipoTF.getText());
         restaurante.setHorario(horarioTF.getText());
-        restaurante.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
+        if (comTur.isVisible()) {
+            restaurante.setTurno(Integer.parseInt(comTur.getSelectedItem().toString()));
+        }else {
+            System.out.println(restaurante.getTurno());
+        }
 
         String respuesta = validar.validarRestaurante(restaurante);
 
@@ -95,7 +99,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
             } else {
-                daoRes.editar(restaurante.getNombre(), restaurante.getUbicacion(), restaurante.getTipo(), restaurante.getHorario(),restaurante.getTurno(), filaU);
+                daoRes.editar(restaurante.getNombre(), restaurante.getUbicacion(), restaurante.getTipo(), restaurante.getHorario(), restaurante.getTurno(), filaU);
                 vaciarCampos();
                 dialogoOk.textoLabel(respuesta);
                 dialogoOk.visible();
@@ -107,14 +111,23 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         }
     }
 
-    public void comTur(){
+    public void comTur() {
         comTur.setVisible(false);
         comTur.removeAllItems();
         comTur.addItem("1");
         comTur.addItem("2");
         comTur.setVisible(true);
     }
-    
+
+    public void comTurVis() {
+        comTur.setVisible(false);
+        turnoLabel.setVisible(false);
+        if ("Mediterraneo".equals(nombreTF.getText()) || "Atlántico".equals(nombreTF.getText())) {
+            comTur.setVisible(true);
+            turnoLabel.setVisible(true);
+        }
+    }
+
     public void nuevoVisible() {
         guardar.setVisible(true);
         editarNuevo.setVisible(false);
@@ -185,6 +198,11 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         nombreTF.setBorder(null);
         nombreTF.setCaretColor(new java.awt.Color(36, 56, 63));
         nombreTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombreTF.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                nombreTFCaretUpdate(evt);
+            }
+        });
         add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 240, 30));
 
         primerSeparador.setBackground(new java.awt.Color(36, 56, 63));
@@ -260,6 +278,10 @@ public class NuevoRestaurante extends javax.swing.JPanel {
     private void editarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNuevoMouseClicked
         actualizar();
     }//GEN-LAST:event_editarNuevoMouseClicked
+
+    private void nombreTFCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_nombreTFCaretUpdate
+        comTurVis();
+    }//GEN-LAST:event_nombreTFCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
