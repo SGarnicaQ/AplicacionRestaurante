@@ -76,17 +76,20 @@ public class MenuPDAO {
         return menTa;
     }
 
-    public void editar(int perso, String mesa, String turno, String menu, int id) {
+    public void editar(int perso, String mesa, String turno, String entrada, String platoFue, String postre, String costoAdi, int id) {
 
-        String sqlAsi = "UPDATE MENUP SET idPer = ?, mesa = ?, turno = ?, menu = ? WHERE menpID = ?;";
+        String sqlAsi = "UPDATE MENUP SET idPer = ?, mesa = ?, turno = ?, entrada = ?, platoFue = ?, postre = ?, costoAdi = ? WHERE menpID = ?;";
 
         try {
             PreparedStatement ps = Conectado.prepareStatement(sqlAsi);
             ps.setInt(1, perso);
             ps.setString(2, mesa);
             ps.setString(3, turno);
-            ps.setString(4, menu);
-            ps.setInt(5, id);
+            ps.setString(4, entrada);
+            ps.setString(5, platoFue);
+            ps.setString(6, postre);
+            ps.setString(7, costoAdi);
+            ps.setInt(8, id);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -102,7 +105,7 @@ public class MenuPDAO {
 
         String sqlBar = "SELECT PERSONA.perID, PERSONA.nombre FROM PERSONA "
                 + "INNER JOIN ASIGNACION ON aplicacionrestaurante.PERSONA.perID = aplicacionrestaurante.ASIGNACION.idPer "
-                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.ASIGNACION.idRes = aplicacionrestaurante.RESTAURANTE.resID WHERE RESTAURANTE.nombre = 'Mediterraneo' OR RESTAURANTE.nombre = 'Atlántico'";
+                + "INNER JOIN RESTAURANTE ON aplicacionrestaurante.ASIGNACION.idRes = aplicacionrestaurante.RESTAURANTE.resID WHERE RESTAURANTE.tipo = 'Principal' OR RESTAURANTE.tipo = 'principal'";
 
         String[] dataBar = new String[2];
 
@@ -203,9 +206,9 @@ public class MenuPDAO {
 
     public String[] turno(int id) {
 
-        String sqlDatos = "SELECT mesa, turno FROM ASIGNACION WHERE idPer = " + id;
+        String sqlDatos = "SELECT mesa, ASIGNACION.turno, RESTAURANTE.nombre FROM ASIGNACION INNER JOIN RESTAURANTE ON aplicacionrestaurante.RESTAURANTE.resID = aplicacionrestaurante.ASIGNACION.idRes WHERE idPer = " + id;
 
-        String[] dataRes = new String[2];
+        String[] dataRes = new String[3];
 
         try {
             Statement bcuSta = Conectado.createStatement();
@@ -213,6 +216,7 @@ public class MenuPDAO {
             while (bcuRts.next()) {
                 dataRes[0] = bcuRts.getString(1);
                 dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class
@@ -221,9 +225,9 @@ public class MenuPDAO {
         return dataRes;
     }
 
-    public String[] comidaEnt(String dia) {
+    public String[] comidaEnt(String dia, int per) {
 
-        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Entrada'";
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU INNER JOIN ASIGNACION ON aplicacionrestaurante.MENU.idRes = aplicacionrestaurante.ASIGNACION.idRes WHERE dia = '" + dia + "' AND descrip = 'Entrada' AND ASIGNACION.idPer = '" + per + "'";
 
         String[] dataRes = new String[7];
 
@@ -246,34 +250,9 @@ public class MenuPDAO {
         return dataRes;
     }
 
-    public String[] comidaPla(String dia) {
+    public String[] comidaPla(String dia, int per) {
 
-        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Plato fuerte'";
-
-        String[] dataRes = new String[7];
-
-        try {
-            Statement bcuSta = Conectado.createStatement();
-            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
-            while (bcuRts.next()) {
-                dataRes[0] = bcuRts.getString(1);
-                dataRes[1] = bcuRts.getString(2);
-                dataRes[2] = bcuRts.getString(3);
-                dataRes[3] = bcuRts.getString(4);
-                dataRes[4] = bcuRts.getString(5);
-                dataRes[5] = bcuRts.getString(6);
-                dataRes[6] = bcuRts.getString(7);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePrincipal.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        return dataRes;
-    }
-
-    public String[] comidaPos(String dia) {
-
-        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Postre'";
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU  INNER JOIN ASIGNACION ON aplicacionrestaurante.MENU.idRes = aplicacionrestaurante.ASIGNACION.idRes WHERE dia = '" + dia + "' AND descrip = 'Plato fuerte' AND ASIGNACION.idPer = '" + per + "'";
 
         String[] dataRes = new String[7];
 
@@ -296,9 +275,34 @@ public class MenuPDAO {
         return dataRes;
     }
 
-    public String[] comidaCos(String dia) {
+    public String[] comidaPos(String dia, int per) {
 
-        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU WHERE dia = '" + dia + "' AND descrip = 'Costo adicional'";
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU  INNER JOIN ASIGNACION ON aplicacionrestaurante.MENU.idRes = aplicacionrestaurante.ASIGNACION.idRes WHERE dia = '" + dia + "' AND descrip = 'Postre' AND ASIGNACION.idPer = '" + per + "'";
+
+        String[] dataRes = new String[7];
+
+        try {
+            Statement bcuSta = Conectado.createStatement();
+            ResultSet bcuRts = bcuSta.executeQuery(sqlDatos);
+            while (bcuRts.next()) {
+                dataRes[0] = bcuRts.getString(1);
+                dataRes[1] = bcuRts.getString(2);
+                dataRes[2] = bcuRts.getString(3);
+                dataRes[3] = bcuRts.getString(4);
+                dataRes[4] = bcuRts.getString(5);
+                dataRes[5] = bcuRts.getString(6);
+                dataRes[6] = bcuRts.getString(7);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataRes;
+    }
+
+    public String[] comidaCos(String dia, int per) {
+
+        String sqlDatos = "SELECT com1, com2, com3, com4, com5, com6, com7 FROM MENU  INNER JOIN ASIGNACION ON aplicacionrestaurante.MENU.idRes = aplicacionrestaurante.ASIGNACION.idRes WHERE dia = '" + dia + "' AND descrip = 'Costo adicional' AND ASIGNACION.idPer = '" + per + "'";
 
         String[] dataRes = new String[7];
 

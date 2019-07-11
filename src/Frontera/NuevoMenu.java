@@ -108,7 +108,7 @@ public class NuevoMenu extends javax.swing.JPanel {
                         dialogoOk.textoLabel(respuesta);
                         dialogoOk.visible();
                     } else {
-                        daoMen.crear(menu.getRestaurante(), menu.getDescripcion(),menu.getDia(), menu.getComida1(), menu.getComida2(), menu.getComida3(), menu.getComida4(), menu.getComida5(), menu.getComida6(), menu.getComida7());
+                        daoMen.crear(menu.getRestaurante(), menu.getDescripcion(), menu.getDia(), menu.getComida1(), menu.getComida2(), menu.getComida3(), menu.getComida4(), menu.getComida5(), menu.getComida6(), menu.getComida7());
                         vaciarCampos();
                         dialogoOk.textoLabel(respuesta);
                         dialogoOk.visible();
@@ -124,7 +124,6 @@ public class NuevoMenu extends javax.swing.JPanel {
     public void editar(Menu men, int fila) {
 
         comRes.setModel(daoMen.comboRes());
-        //comDes.setModel(daoMen.comboRes());
         comida1TF.setText(men.getComida1());
         comida2TF.setText(men.getComida2());
         comida3TF.setText(men.getComida3());
@@ -232,15 +231,36 @@ public class NuevoMenu extends javax.swing.JPanel {
         comRes.setModel(daoMen.comboRes());
         comRes.setVisible(true);
     }
-    
-    public void comboDes(){
+
+    public void loadDes() {
         comDes.setVisible(false);
         comDes.removeAllItems();
-        comDes.addItem("Entrada");
-        comDes.addItem("Plato fuerte");
-        comDes.addItem("Postre");
-        comDes.addItem("Costo adicional");
+        comDes.addItem("Ninguno");
         comDes.setVisible(true);
+        tipoLabel.setText("");
+    }
+
+    public void comboDes() {
+        tipoLabel.setText(daoMen.tipo(comRes.getSelectedItem().toString().substring(3, comRes.getSelectedItem().toString().length())));
+        if ("Principal".equals(tipoLabel.getText())) {
+            comDes.setVisible(false);
+            comDes.removeAllItems();
+            comDes.addItem("Entrada");
+            comDes.addItem("Plato fuerte");
+            comDes.addItem("Postre");
+            comDes.addItem("Costo adicional");
+            comDes.setVisible(true);
+        } else {
+            comDes.setVisible(false);
+            comDes.removeAllItems();
+            comDes.addItem("Buffet - Desayuno");
+            comDes.addItem("Buffet - Almuerzo");
+            comDes.addItem("Buffet - Cena");
+            comDes.setVisible(true);
+        }
+        if ("Ninguno".equals(comRes.getSelectedItem().toString())) {
+            loadDes();            
+        }
     }
 
     public void nuevoVisible() {
@@ -290,6 +310,7 @@ public class NuevoMenu extends javax.swing.JPanel {
         guardar = new javax.swing.JLabel();
         comFec = new javax.swing.JComboBox<>();
         comRes = new javax.swing.JComboBox<>();
+        tipoLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(164, 186, 191));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -455,17 +476,22 @@ public class NuevoMenu extends javax.swing.JPanel {
         comFec.setBackground(new java.awt.Color(164, 186, 191));
         comFec.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         comFec.setForeground(new java.awt.Color(36, 56, 63));
-        comFec.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comFecItemStateChanged(evt);
-            }
-        });
         add(comFec, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 200, 30));
 
         comRes.setBackground(new java.awt.Color(164, 186, 191));
         comRes.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
         comRes.setForeground(new java.awt.Color(36, 56, 63));
+        comRes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comResItemStateChanged(evt);
+            }
+        });
         add(comRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 60, 240, 30));
+
+        tipoLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
+        tipoLabel.setForeground(new java.awt.Color(36, 56, 63));
+        tipoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(tipoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNuevoMouseClicked
@@ -476,9 +502,9 @@ public class NuevoMenu extends javax.swing.JPanel {
         guardarDatos();
     }//GEN-LAST:event_guardarMouseClicked
 
-    private void comFecItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comFecItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comFecItemStateChanged
+    private void comResItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comResItemStateChanged
+        comboDes();
+    }//GEN-LAST:event_comResItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -510,5 +536,6 @@ public class NuevoMenu extends javax.swing.JPanel {
     private javax.swing.JSeparator separador6;
     private javax.swing.JSeparator separador7;
     private javax.swing.JSeparator separador8;
+    private javax.swing.JLabel tipoLabel;
     // End of variables declaration//GEN-END:variables
 }

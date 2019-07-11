@@ -15,24 +15,25 @@ public class VerMenu extends javax.swing.JPanel {
         tableMen.setModel(daoMen.ver());
     }
 
-    public Menu editarMenu(){
+    public Menu editarMenu() {
         Menu menu = new Menu();
 
         int rowSel = tableMen.getSelectedRow();
         if (rowSel >= 0) {
             menu.setRestaurante(tableMen.getValueAt(rowSel, 1).toString());
             menu.setDescripcion(tableMen.getValueAt(rowSel, 2).toString());
-            menu.setComida1(tableMen.getValueAt(rowSel, 3).toString());
-            menu.setComida2(tableMen.getValueAt(rowSel, 4).toString());
-            menu.setComida3(tableMen.getValueAt(rowSel, 5).toString());
-            menu.setComida4(tableMen.getValueAt(rowSel, 6).toString());
-            menu.setComida5(tableMen.getValueAt(rowSel, 7).toString());
-            menu.setComida6(tableMen.getValueAt(rowSel, 8).toString());
-            menu.setComida7(tableMen.getValueAt(rowSel, 9).toString());
+            menu.setDia(tableMen.getValueAt(rowSel, 3).toString());
+            menu.setComida1(tableMen.getValueAt(rowSel, 4).toString());
+            menu.setComida2(tableMen.getValueAt(rowSel, 5).toString());
+            menu.setComida3(tableMen.getValueAt(rowSel, 6).toString());
+            menu.setComida4(tableMen.getValueAt(rowSel, 7).toString());
+            menu.setComida5(tableMen.getValueAt(rowSel, 8).toString());
+            menu.setComida6(tableMen.getValueAt(rowSel, 9).toString());
+            menu.setComida7(tableMen.getValueAt(rowSel, 10).toString());
         }
         return menu;
     }
-    
+
     public int fila() {
         int rowSel = tableMen.getSelectedRow();
         if (rowSel >= 0) {
@@ -69,6 +70,7 @@ public class VerMenu extends javax.swing.JPanel {
 
             }
         ));
+        tableMen.setToolTipText("");
         tableMen.setGridColor(new java.awt.Color(36, 56, 63));
         tableMen.setSelectionBackground(new java.awt.Color(164, 186, 191));
         tableMen.setSelectionForeground(new java.awt.Color(36, 56, 63));
