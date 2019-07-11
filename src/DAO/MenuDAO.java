@@ -17,7 +17,7 @@ public class MenuDAO {
     Conexion con = new Conexion();
     Connection Conectado = con.conectar("root", "17111996");
 
-    public void crear(String resta, String desc,String dia, String com1, String com2, String com3, String com4, String com5, String com6, String com7) {
+    public void crear(String resta, String desc, String dia, String com1, String com2, String com3, String com4, String com5, String com6, String com7) {
         String sqlAsi = "INSERT INTO MENU(idRes, descrip, dia, com1, com2, com3, com4, com5, com6, com7) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try {
@@ -86,7 +86,7 @@ public class MenuDAO {
     }
 
     public void editar(int resta, String desc, String com1, String com2, String com3, String com4, String com5, String com6, String com7, int id) {
-        
+
         String sqlAsi = "UPDATE MENU SET idRes = ?, descrip = ?, com1 = ?, com2 = ?, com3 = ?, com4 = ?, com5 = ?, com6 = ?, com7 = ? WHERE menID = ?;";
 
         try {
@@ -114,7 +114,7 @@ public class MenuDAO {
 
         menCo.addElement("Ninguno");
 
-        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE WHERE nombre = 'Mediterraneo' OR nombre = 'Atlántico'";
+        String sqlBar = "SELECT resID,nombre FROM RESTAURANTE";
 
         String[] dataBar = new String[2];
 
@@ -153,6 +153,24 @@ public class MenuDAO {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         return menCo;
+    }
+
+    public String tipo(String res) {
+
+        String sqlBar = "SELECT tipo FROM RESTAURANTE WHERE nombre = '" + res + "'";
+
+        String[] dataBar = new String[2];
+
+        try {
+            Statement barSQL = Conectado.createStatement();
+            ResultSet barRts = barSQL.executeQuery(sqlBar);
+            while (barRts.next()) {
+                dataBar[0] = barRts.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataBar[0];
     }
 
 }

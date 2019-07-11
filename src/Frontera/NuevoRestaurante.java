@@ -122,7 +122,7 @@ public class NuevoRestaurante extends javax.swing.JPanel {
     public void comTurVis() {
         comTur.setVisible(false);
         turnoLabel.setVisible(false);
-        if ("Mediterraneo".equals(nombreTF.getText()) || "Atlántico".equals(nombreTF.getText())) {
+        if ("Principal".equals(tipoTF.getText())) {
             comTur.setVisible(true);
             turnoLabel.setVisible(true);
         }
@@ -198,11 +198,6 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         nombreTF.setBorder(null);
         nombreTF.setCaretColor(new java.awt.Color(36, 56, 63));
         nombreTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombreTF.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                nombreTFCaretUpdate(evt);
-            }
-        });
         add(nombreTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 240, 30));
 
         primerSeparador.setBackground(new java.awt.Color(36, 56, 63));
@@ -223,6 +218,11 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         tipoTF.setForeground(new java.awt.Color(36, 56, 63));
         tipoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tipoTF.setBorder(null);
+        tipoTF.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tipoTFCaretUpdate(evt);
+            }
+        });
         add(tipoTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 240, 30));
 
         tercerSeparador.setBackground(new java.awt.Color(36, 56, 63));
@@ -279,9 +279,9 @@ public class NuevoRestaurante extends javax.swing.JPanel {
         actualizar();
     }//GEN-LAST:event_editarNuevoMouseClicked
 
-    private void nombreTFCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_nombreTFCaretUpdate
+    private void tipoTFCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tipoTFCaretUpdate
         comTurVis();
-    }//GEN-LAST:event_nombreTFCaretUpdate
+    }//GEN-LAST:event_tipoTFCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
