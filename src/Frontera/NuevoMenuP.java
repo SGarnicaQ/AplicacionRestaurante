@@ -23,11 +23,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 && turnoLabel.getText().isEmpty());
     }
 
-    public boolean validarComidas() {
-        return (restauranteLabel.getText().isEmpty()
-                && turnoLabel.getText().isEmpty());
-    }
-
     public void vaciarCampos() {
         comPer.setSelectedIndex(0);
         mesaLabel.setText("");
@@ -155,7 +150,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
                     dialogoOk.textoLabel(respuesta);
                     dialogoOk.visible();
                 } else {
-                    if (!validarComidas()) {
+                    if (!validarCampos()) {
                         if ("Longitud persona incorrecta".equals(respuesta)) {
                             dialogoOk.textoLabel(respuesta);
                             dialogoOk.visible();
@@ -233,7 +228,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
                         dialogoOk.textoLabel(respuesta);
                         dialogoOk.visible();
                     } else {
-                        if (!validarComidas()) {
+                        if (!validarCampos()) {
                             if ("Longitud persona incorrecta".equals(respuesta)) {
                                 dialogoOk.textoLabel(respuesta);
                                 dialogoOk.visible();
@@ -260,6 +255,7 @@ public class NuevoMenuP extends javax.swing.JPanel {
                                 vaciarCampos();
                                 dialogoOk.textoLabel(respuesta);
                                 dialogoOk.visible();
+                                filaU=0;
                             }
                         } else {
                             dialogoOk.textoLabel("Por favor ingrese una comida");
@@ -652,7 +648,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
         comFec = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(164, 186, 191));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/clipboardM.png"))); // NOI18N
@@ -663,7 +658,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 guardarMouseClicked(evt);
             }
         });
-        add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 470, 70, 70));
 
         editarNuevo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editarNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/test.png"))); // NOI18N
@@ -674,30 +668,25 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 editarNuevoMouseClicked(evt);
             }
         });
-        add(editarNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 70, 70));
 
         comida2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida2.setForeground(new java.awt.Color(36, 56, 63));
         comida2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida2.setText("Plato fuerte");
-        add(comida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 200, 30));
 
         persona.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         persona.setForeground(new java.awt.Color(36, 56, 63));
         persona.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         persona.setText("Persona");
-        add(persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 200, 30));
 
         comida1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida1.setForeground(new java.awt.Color(36, 56, 63));
         comida1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         comida1.setText("Turno");
-        add(comida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 200, 30));
 
         turnoLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         turnoLabel.setForeground(new java.awt.Color(36, 56, 63));
         turnoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(turnoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 240, 30));
 
         comPer.setBackground(new java.awt.Color(164, 186, 191));
         comPer.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -707,65 +696,54 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPerItemStateChanged(evt);
             }
         });
-        add(comPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 240, 30));
 
         mesaTF.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         mesaTF.setForeground(new java.awt.Color(36, 56, 63));
         mesaTF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mesaTF.setText("Mesa");
-        add(mesaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 200, 30));
 
         restauranteLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         restauranteLabel.setForeground(new java.awt.Color(36, 56, 63));
         restauranteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(restauranteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 30));
 
         mesaLabel.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         mesaLabel.setForeground(new java.awt.Color(36, 56, 63));
         mesaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(mesaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 240, 30));
 
         comida4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida4.setForeground(new java.awt.Color(36, 56, 63));
         comida4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida4.setText("Entrada");
-        add(comida4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 200, 30));
 
         comida5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida5.setForeground(new java.awt.Color(36, 56, 63));
         comida5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida5.setText("Costo adicional");
-        add(comida5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, 200, 30));
 
         comida6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida6.setForeground(new java.awt.Color(36, 56, 63));
         comida6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida6.setText("Postre");
-        add(comida6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 200, 30));
 
         comida7.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida7.setForeground(new java.awt.Color(36, 56, 63));
         comida7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida7.setText("Entrada");
-        add(comida7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 200, 30));
 
         comida3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida3.setForeground(new java.awt.Color(36, 56, 63));
         comida3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida3.setText("Plato fuerte");
-        add(comida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 200, 30));
 
         comida8.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida8.setForeground(new java.awt.Color(36, 56, 63));
         comida8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida8.setText("Postre");
-        add(comida8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 200, 30));
 
         comida9.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         comida9.setForeground(new java.awt.Color(36, 56, 63));
         comida9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comida9.setText("Costo adicional");
-        add(comida9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, 200, 30));
 
         comPla1.setBackground(new java.awt.Color(164, 186, 191));
         comPla1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -775,7 +753,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla1ActionPerformed(evt);
             }
         });
-        add(comPla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 200, 30));
 
         comEnt1.setBackground(new java.awt.Color(164, 186, 191));
         comEnt1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -785,7 +762,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt1ActionPerformed(evt);
             }
         });
-        add(comEnt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 250, 200, 30));
 
         comCos1.setBackground(new java.awt.Color(164, 186, 191));
         comCos1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -795,7 +771,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos1ActionPerformed(evt);
             }
         });
-        add(comCos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 200, 30));
 
         comPos1.setBackground(new java.awt.Color(164, 186, 191));
         comPos1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -805,7 +780,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos1ActionPerformed(evt);
             }
         });
-        add(comPos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 200, 30));
 
         comCos2.setBackground(new java.awt.Color(164, 186, 191));
         comCos2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -815,7 +789,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos2ActionPerformed(evt);
             }
         });
-        add(comCos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, 200, 30));
 
         comPos2.setBackground(new java.awt.Color(164, 186, 191));
         comPos2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -825,7 +798,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos2ActionPerformed(evt);
             }
         });
-        add(comPos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 200, 30));
 
         comPla2.setBackground(new java.awt.Color(164, 186, 191));
         comPla2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -835,7 +807,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla2ActionPerformed(evt);
             }
         });
-        add(comPla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 200, 30));
 
         comEnt2.setBackground(new java.awt.Color(164, 186, 191));
         comEnt2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -845,7 +816,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt2ActionPerformed(evt);
             }
         });
-        add(comEnt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 200, 30));
 
         comPla4.setBackground(new java.awt.Color(164, 186, 191));
         comPla4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -855,7 +825,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla4ActionPerformed(evt);
             }
         });
-        add(comPla4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 200, 30));
 
         comEnt4.setBackground(new java.awt.Color(164, 186, 191));
         comEnt4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -865,7 +834,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt4ActionPerformed(evt);
             }
         });
-        add(comEnt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 200, 30));
 
         comCos4.setBackground(new java.awt.Color(164, 186, 191));
         comCos4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -875,7 +843,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos4ActionPerformed(evt);
             }
         });
-        add(comCos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 370, 200, 30));
 
         comPos4.setBackground(new java.awt.Color(164, 186, 191));
         comPos4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -885,7 +852,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos4ActionPerformed(evt);
             }
         });
-        add(comPos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 200, 30));
 
         comPla3.setBackground(new java.awt.Color(164, 186, 191));
         comPla3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -895,7 +861,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla3ActionPerformed(evt);
             }
         });
-        add(comPla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 200, 30));
 
         comEnt3.setBackground(new java.awt.Color(164, 186, 191));
         comEnt3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -905,7 +870,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt3ActionPerformed(evt);
             }
         });
-        add(comEnt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, 30));
 
         comPos3.setBackground(new java.awt.Color(164, 186, 191));
         comPos3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -915,7 +879,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos3ActionPerformed(evt);
             }
         });
-        add(comPos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 200, 30));
 
         comCos3.setBackground(new java.awt.Color(164, 186, 191));
         comCos3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -925,7 +888,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos3ActionPerformed(evt);
             }
         });
-        add(comCos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 200, 30));
 
         comPos7.setBackground(new java.awt.Color(164, 186, 191));
         comPos7.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -935,7 +897,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos7ActionPerformed(evt);
             }
         });
-        add(comPos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 200, 30));
 
         comPla7.setBackground(new java.awt.Color(164, 186, 191));
         comPla7.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -945,7 +906,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla7ActionPerformed(evt);
             }
         });
-        add(comPla7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 200, 30));
 
         comCos7.setBackground(new java.awt.Color(164, 186, 191));
         comCos7.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -955,7 +915,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos7ActionPerformed(evt);
             }
         });
-        add(comCos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 200, 30));
 
         comEnt7.setBackground(new java.awt.Color(164, 186, 191));
         comEnt7.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -965,7 +924,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt7ActionPerformed(evt);
             }
         });
-        add(comEnt7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 200, 30));
 
         comPos6.setBackground(new java.awt.Color(164, 186, 191));
         comPos6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -975,7 +933,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos6ActionPerformed(evt);
             }
         });
-        add(comPos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 200, 30));
 
         comPos5.setBackground(new java.awt.Color(164, 186, 191));
         comPos5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -985,7 +942,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPos5ActionPerformed(evt);
             }
         });
-        add(comPos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 200, 30));
 
         comPla5.setBackground(new java.awt.Color(164, 186, 191));
         comPla5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -995,7 +951,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla5ActionPerformed(evt);
             }
         });
-        add(comPla5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 200, 30));
 
         comPla6.setBackground(new java.awt.Color(164, 186, 191));
         comPla6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1005,7 +960,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comPla6ActionPerformed(evt);
             }
         });
-        add(comPla6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 200, 30));
 
         comEnt6.setBackground(new java.awt.Color(164, 186, 191));
         comEnt6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1015,7 +969,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt6ActionPerformed(evt);
             }
         });
-        add(comEnt6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 200, 30));
 
         comEnt5.setBackground(new java.awt.Color(164, 186, 191));
         comEnt5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1025,7 +978,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comEnt5ActionPerformed(evt);
             }
         });
-        add(comEnt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 200, 30));
 
         comCos5.setBackground(new java.awt.Color(164, 186, 191));
         comCos5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1035,7 +987,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos5ActionPerformed(evt);
             }
         });
-        add(comCos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, 200, 30));
 
         comCos6.setBackground(new java.awt.Color(164, 186, 191));
         comCos6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1045,7 +996,6 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comCos6ActionPerformed(evt);
             }
         });
-        add(comCos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 450, 200, 30));
 
         comFec.setBackground(new java.awt.Color(164, 186, 191));
         comFec.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 18)); // NOI18N
@@ -1055,7 +1005,208 @@ public class NuevoMenuP extends javax.swing.JPanel {
                 comFecItemStateChanged(evt);
             }
         });
-        add(comFec, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 200, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(restauranteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addComponent(persona, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(comFec, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(editarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(mesaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(mesaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(comida1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(turnoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comida4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comida7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comida3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comida2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comida6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comida8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comida9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comida5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(comEnt1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(comPla1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPos1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comCos1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(comEnt2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPla2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPos2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comCos2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(comEnt3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPla3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPos3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comCos3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(comEnt4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPla4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPos4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comCos4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(comEnt5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPla5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comPos5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(comCos5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comEnt6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comEnt7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comPla6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comPla7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comPos6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comPos7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comCos6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comCos7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(restauranteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(persona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(comPer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(comFec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(editarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mesaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comida1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(turnoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comida4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comida5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comEnt1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPla1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comCos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comEnt2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPla2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPos2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comCos2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comEnt3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPla3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPos3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comCos3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comEnt4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPla4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPos4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comCos4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comEnt5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPla5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comPos5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comCos5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comEnt6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(comEnt7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comPla6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(comPla7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comPos6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(comPos7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comCos6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(comCos7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked

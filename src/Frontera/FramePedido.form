@@ -16,22 +16,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tituloMenuP" alignment="0" min="-2" pref="1080" max="-2" attributes="0"/>
-          <Component id="principalMenuP" alignment="0" min="-2" pref="1080" max="-2" attributes="0"/>
+          <Component id="tituloPedido" alignment="0" min="-2" pref="1080" max="-2" attributes="0"/>
+          <Component id="principalPedido" alignment="0" min="-2" pref="1080" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="tituloMenuP" min="-2" pref="60" max="-2" attributes="0"/>
+              <Component id="tituloPedido" min="-2" pref="60" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="principalMenuP" min="-2" pref="570" max="-2" attributes="0"/>
+              <Component id="principalPedido" min="-2" pref="570" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="tituloMenuP">
+    <Container class="javax.swing.JPanel" name="tituloPedido">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="59" green="55" red="44" type="rgb"/>
@@ -42,7 +42,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="menup">
+        <Component class="javax.swing.JLabel" name="pedido">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Franklin Gothic Medium Cond" size="24" style="1"/>
@@ -101,7 +101,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="principalMenuP">
+    <Container class="javax.swing.JPanel" name="principalPedido">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="23" green="26" red="13" type="rgb"/>
@@ -110,7 +110,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="inicioMenuP">
+        <Container class="javax.swing.JPanel" name="inicioPedido">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bf" green="ba" red="a4" type="rgb"/>
@@ -129,14 +129,14 @@
                       <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="menuNuevaIcon" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="pedidoNuevaIcon" min="-2" pref="260" max="-2" attributes="0"/>
                               <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
-                              <Component id="menupVerIcon" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="pedidoVerIcon" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="menuNuevaLabel" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="pedidoNuevaLabel" min="-2" pref="260" max="-2" attributes="0"/>
                               <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
-                              <Component id="menupVerLabel" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="pedidoVerLabel" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -147,19 +147,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="menuNuevaIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                          <Component id="menupVerIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="pedidoNuevaIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="pedidoVerIcon" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="menuNuevaLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="menupVerLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="pedidoNuevaLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="pedidoVerLabel" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="menupVerIcon">
+            <Component class="javax.swing.JLabel" name="pedidoVerIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -170,10 +170,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menupVerIconMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pedidoVerIconMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="menupVerLabel">
+            <Component class="javax.swing.JLabel" name="pedidoVerLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
@@ -188,10 +188,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menupVerLabelMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pedidoVerLabelMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="menuNuevaLabel">
+            <Component class="javax.swing.JLabel" name="pedidoNuevaLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Franklin Gothic Medium Cond" size="18" style="1"/>
@@ -206,10 +206,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuNuevaLabelMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pedidoNuevaLabelMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="menuNuevaIcon">
+            <Component class="javax.swing.JLabel" name="pedidoNuevaIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -220,7 +220,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuNuevaIconMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pedidoNuevaIconMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

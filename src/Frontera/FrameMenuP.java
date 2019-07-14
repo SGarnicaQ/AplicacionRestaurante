@@ -66,6 +66,7 @@ public class FrameMenuP extends javax.swing.JPanel {
         principalMenuP.add(ver);
         principalMenuP.setVisible(true);
         nuevo.comboPer();
+        nuevo.comboFec();
         nuevo.vaciarCampos();
         ver.verMenuP();
         back.setVisible(true);
